@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RegistrationPatientComponent } from './registration-patient/registration-patient.component';
 
 import { LoginComponent } from './login/login.component';
 
@@ -16,13 +17,15 @@ import { RegistrationMgmtComponent } from './registration-mgmt/registration-mgmt
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+
+    LoginComponent,
 
     RegistrationDoctorComponent,
     RegistrationNurseComponent,
     RegistrationPatientComponent,
     RegistrationAdminComponent,
     RegistrationMgmtComponent
+
 
   ],
   imports: [
