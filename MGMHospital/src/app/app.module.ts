@@ -16,7 +16,7 @@ import { RegistrationMgmtComponent } from './registration-mgmt/registration-mgmt
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
 
     RegistrationDoctorComponent,
     RegistrationNurseComponent,
