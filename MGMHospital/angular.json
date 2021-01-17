@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "MGMHospital"
+  "defaultProject": "MGMHospital",
+  "cli": {
+    "analytics": "74f983b1-f73c-4c5e-ba21-74f9a40c2ff1"
+  }
 }

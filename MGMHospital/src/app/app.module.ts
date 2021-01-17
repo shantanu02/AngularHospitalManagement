@@ -3,10 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RegistrationDoctorComponent } from './registration-doctor/registration-doctor.component';
+import { RegistrationNurseComponent } from './registration-nurse/registration-nurse.component';
+import { RegistrationPatientComponent } from './registration-patient/registration-patient.component';
+import { RegistrationAdminComponent } from './registration-admin/registration-admin.component';
+import { RegistrationMgmtComponent } from './registration-mgmt/registration-mgmt.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegistrationDoctorComponent,
+    RegistrationNurseComponent,
+    RegistrationPatientComponent,
+    RegistrationAdminComponent,
+    RegistrationMgmtComponent
   ],
   imports: [
     BrowserModule,
