@@ -1,4 +1,4 @@
-<div class="sticky-top">
+<div >
   <div id="topbar" class="d-none d-lg-flex align-items-center">
     <div class="container-fluid d-flex">
       <div class="contact-info mr-auto">
@@ -18,7 +18,7 @@
 
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><img src="assets/img/logo1.png" alt="logo" class="responsive" style="width: auto;
+    <a class="navbar-brand"  href="#"><img src="assets/img/logo1.png" id="photo" alt="logo" class="responsive" style="width: auto;
       height: auto;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,14 +51,14 @@
                     Register
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Doctor</a>
-                    <a class="dropdown-item" href="#">Patient</a>
-                    <a class="dropdown-item" href="#">Nurse</a>
+                    <a class="dropdown-item" routerLink="/registration-doctor">Doctor</a>
+                    <a class="dropdown-item" routerLink="/registration-patient">Patient</a>
+                    <a class="dropdown-item" routerLink="/registration-nurse">Nurse</a>
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link btn btn-primary text-white" type="button" href="#" >Sign In</a>
+                <a class="nav-link btn btn-primary text-white" type="button" routerLink="/login">Sign In</a>
             </li>
         </ul>
     </div>
