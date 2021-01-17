@@ -3,9 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegistrationPatientComponent } from './registration-patient/registration-patient.component';
 
 
+
 import { LoginComponent } from './login/login.component';
-
-
 import { RegistrationDoctorComponent } from './registration-doctor/registration-doctor.component';
 import { RegistrationNurseComponent } from './registration-nurse/registration-nurse.component';
 import { RegistrationPatientComponent } from './registration-patient/registration-patient.component';
