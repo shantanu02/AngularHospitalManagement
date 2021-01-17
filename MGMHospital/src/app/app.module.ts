@@ -12,8 +12,6 @@ import { ServicesComponent } from './services/services.component';
 import { DepartmentComponent } from './department/department.component';
 import { DoctorComponent } from './doctor/doctor.component';
 
-import { RegistrationPatientComponent } from './registration-patient/registration-patient.component';
-
 import { LoginComponent } from './login/login.component';
 
 import { RegistrationDoctorComponent } from './registration-doctor/registration-doctor.component';
@@ -33,7 +31,7 @@ import { RegistrationMgmtComponent } from './registration-mgmt/registration-mgmt
     AboutComponent,
     ServicesComponent,
     DepartmentComponent,
-    DoctorComponent
+    DoctorComponent,
     LoginComponent,
     RegistrationDoctorComponent,
     RegistrationNurseComponent,
