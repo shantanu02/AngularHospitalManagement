@@ -3,6 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { HomepageComponent } from './homepage/homepage.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
+import { ServicesComponent } from './services/services.component';
+import { DepartmentComponent } from './department/department.component';
+import { DoctorComponent } from './doctor/doctor.component';
+
 import { RegistrationPatientComponent } from './registration-patient/registration-patient.component';
 
 import { LoginComponent } from './login/login.component';
@@ -18,14 +27,19 @@ import { RegistrationMgmtComponent } from './registration-mgmt/registration-mgmt
   declarations: [
     AppComponent,
 
+    HomepageComponent,
+    NavbarComponent,
+    FooterComponent,
+    AboutComponent,
+    ServicesComponent,
+    DepartmentComponent,
+    DoctorComponent
     LoginComponent,
-
     RegistrationDoctorComponent,
     RegistrationNurseComponent,
     RegistrationPatientComponent,
     RegistrationAdminComponent,
     RegistrationMgmtComponent
-
 
   ],
   imports: [
