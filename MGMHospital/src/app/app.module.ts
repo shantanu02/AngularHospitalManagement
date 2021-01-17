@@ -16,6 +16,7 @@ import { RegistrationMgmtComponent } from './registration-mgmt/registration-mgmt
 @NgModule({
   declarations: [
     AppComponent,
+
     LoginComponent,
 
     RegistrationDoctorComponent,
@@ -23,6 +24,7 @@ import { RegistrationMgmtComponent } from './registration-mgmt/registration-mgmt
     RegistrationPatientComponent,
     RegistrationAdminComponent,
     RegistrationMgmtComponent
+
 
   ],
   imports: [

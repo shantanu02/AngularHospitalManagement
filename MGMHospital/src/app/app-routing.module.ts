@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+
 import { LoginComponent } from './login/login.component';
-
-
 import { RegistrationDoctorComponent } from './registration-doctor/registration-doctor.component';
 import { RegistrationNurseComponent } from './registration-nurse/registration-nurse.component';
 import { RegistrationPatientComponent } from './registration-patient/registration-patient.component';
@@ -19,6 +18,7 @@ const routes: Routes = [
   {path:'registration-mgmt',component:RegistrationMgmtComponent},
   
   {path:'',redirectTo:'/registration-doctor',pathMatch:'full'}
+
 
 ];
 
