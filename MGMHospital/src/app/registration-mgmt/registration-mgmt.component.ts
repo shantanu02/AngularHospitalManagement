@@ -18,7 +18,14 @@ export class RegistrationMgmtComponent implements OnInit {
   AddManagement(objManagement:Management)
   {
       this.managementService.AddManagement(objManagement).subscribe(res=>{
-          alert("Added");
+          if(res)
+          {
+                alert("Registration SuccessFull");
+          }
+          else
+          {
+              alert("Registration Failed");
+          }
       })
   }
 
