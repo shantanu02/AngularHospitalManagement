@@ -18,7 +18,14 @@ export class RegistrationNurseComponent implements OnInit {
   AddNurse(objNurse:Nurse)
   {
       this.nurseServiceService.Addnurse(objNurse).subscribe(res=>{
-          alert(res);
+         if(res)
+         {
+           alert("Registration SuccessFull");
+         }
+         else
+         {
+           alert("Registration Failed");
+         }
       })
   }
 
