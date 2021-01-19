@@ -33,10 +33,15 @@ export class LoginComponent implements OnInit {
         else if(res.userRole == "management")
         {
           alert("This is Management");
+          this.router.navigate(['Management-Homepage']);
         }
         else if(res.userRole == "Nurse")
         {
           alert("This is Nurse");
+        }
+        else if(res.userRole == "patient")
+        {
+            alert("This is Patient");
         }
         else
         {

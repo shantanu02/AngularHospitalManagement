@@ -27,6 +27,7 @@ export class RegistrationPatientComponent implements OnInit {
       alert(res);
       if(res){
         alert("Patient Added Successfully");
+         this.router.navigate(['homepage']);
       }else{
         alert("Patient already exists");
       }

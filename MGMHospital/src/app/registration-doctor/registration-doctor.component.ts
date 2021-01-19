@@ -24,6 +24,7 @@ export class RegistrationDoctorComponent implements OnInit {
         if(res)
         {
             alert("Registration SuccessFull");
+            this.router.navigate(['homepage']);
         }else
         {
             alert("Registration Failed");
