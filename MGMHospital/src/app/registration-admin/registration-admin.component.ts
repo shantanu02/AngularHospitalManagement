@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { adminInformation, AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-registration-admin',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationAdminComponent implements OnInit {
 
-  constructor() { }
+  objAdmin:adminInformation = new adminInformation(null,null,null,null,null,null);
+  constructor(private adminService: AdminService,private router: Router) { }
 
   ngOnInit(): void {
   }
+  AddAdmin(objAdmin:adminInformation)
+  {
+    this.adminService.AddAdmin(objAdmin).subscribe(res=>{
+      alert("Added");
+    })
+  }
+
 
 }
