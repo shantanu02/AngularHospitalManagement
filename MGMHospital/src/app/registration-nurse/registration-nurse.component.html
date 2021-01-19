@@ -32,7 +32,7 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="firstName" type="text" name="firstname" placeholder="First Name"
+                        <input id="firstName" [(ngModel)]="objNurse.nurseFName" type="text" name="firstname" placeholder="First Name"
                             class="form-control bg-white border-left-0 border-md">
                     </div>
 
@@ -43,7 +43,7 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="lastName" type="text" name="lastname" placeholder="Last Name"
+                        <input id="lastName" type="text" [(ngModel)]="objNurse.nurseLName" name="lastname" placeholder="Last Name"
                             class="form-control bg-white border-left-0 border-md">
                     </div>
 
@@ -55,7 +55,7 @@
                               <i class="fa fa-envelope" aria-hidden="true"></i>
                             </span>
                         </div>
-                        <input id="UserName" type="text" name="UserName" placeholder="Email Address"
+                        <input id="UserName" type="text" name="UserName" [(ngModel)]="objNurse.nurseEmail" placeholder="Email Address"
                             class="form-control bg-white border-left-0 border-md">
                     </div>
 
@@ -67,7 +67,7 @@
 
                             </span>
                         </div>
-                        <input id="Password" type="text" name="Password" placeholder="Password"
+                        <input id="Password" type="text" name="Password" [(ngModel)]="objNurse.nursePassword" placeholder="Password"
                             class="form-control bg-white border-left-0 border-md">
                     </div>
 
@@ -78,7 +78,7 @@
                               <i class="fa fa-phone" aria-hidden="true"></i>
                             </span>
                         </div>
-                        <input id="email" type="email" name="email" placeholder="Mobile Number"
+                        <input id="phone" type="number" name="phone" [(ngModel)]="objNurse.nursePhone" placeholder="Mobile Number"
                             class="form-control bg-white border-left-0 border-md">
                     </div>
 
@@ -89,11 +89,10 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <select id="job" name="jobtitle"
+                        <select id="job" name="jobtitle" [(ngModel)]="objNurse.nurseGender"
                             class="form-control custom-select bg-white border-left-0 border-md">
-                            <option value="">Please Select Gender </option>
-                            <option value="">Male</option>
-                            <option value="">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                         </select>
                     </div>
 
@@ -104,13 +103,15 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <select id="job" name="jobtitle"
+                        <select id="job" name="jobtitle" [(ngModel)]="objNurse.nurseQualification"
                             class="form-control custom-select bg-white border-left-0 border-md">
                             <option value=""> Select Qualification</option>
-                            <option value="">ENT</option>
-                            <option value="">Dentist</option>
-                            <option value="">Dietician</option>
-                        </select>
+                            <option value="Bachelor of Science in Nursing "> Bachelor of Science in Nursing (BSN)</option>
+                            <option value="Doctorate Of Nursing Practice ">Doctorate Of Nursing Practice (DNP)</option>
+                            <option value="Clinical Nurse Specialist">Clinical Nurse Specialist (CNS)</option>
+                            <option value="Family Nurse Practitioner">Family Nurse Practitioner (FNP)</option>
+
+                          </select>
                     </div>
 
                     <!-- Experience in  -->
@@ -120,56 +121,46 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="email" type="email" name="email" placeholder="Experience(In year)"
+                        <input id="experience" type="number" name="Experience" [(ngModel)]="objNurse.nurseExperience" placeholder="Experience(In year)"
                             class="form-control bg-white border-left-0 border-md">
                     </div>
 
 
-                    <!-- state
+                    <!-- state -->
                     <div class="input-group col-lg-6 mb-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <select id="job" name="jobtitle"
-                            class="form-control custom-select bg-white border-left-0 border-md">
-                            <option value="">Please Select State </option>
-                            <option value="">Maharashatra</option>
-                            <option value="">Madhaya Pradesh</option>
-                        </select>
+                        <input id="state" type="text" name="State" [(ngModel)]="objNurse.nurseState" placeholder="State"
+                        class="form-control bg-white border-left-0 border-md">
                     </div>
 
-                    City
+                    <!-- City -->
                     <div class="input-group col-lg-6 mb-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <select id="job" name="jobtitle"
-                            class="form-control custom-select bg-white border-left-0 border-md">
-                            <option value="">Please Select City </option>
-                            <option value="">Mumbai</option>
-                            <option value="">Jabalpur</option>
-                        </select>
-                    </div> -->
-                    <!--Specialist In
+                        <input id="City" type="text" name="City" [(ngModel)]="objNurse.nurseCity" placeholder="City"
+                        class="form-control bg-white border-left-0 border-md">
+                    </div>
 
-                    <div class="input-group col-lg-12 mb-4">
+
+                  <!-- Zip code -->
+                    <div class="input-group col-lg-6 mb-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <select id="job" name="jobtitle"
-                            class="form-control custom-select bg-white border-left-0 border-md">
-                            <option value="">Please Select Specialist</option>
-                            <option value="">ENT</option>
-                            <option value="">Dentist</option>
-                            <option value="">Dietician</option>
-                        </select>
-                    </div>-->
+                        <input id="ZipCode" type="text" name="Code" [(ngModel)]="objNurse.nurseZipCode" placeholder="Zip Code"
+                        class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+
 
                     <!-- Address -->
                     <div class="input-group col-lg-12 mb-4">
@@ -178,15 +169,29 @@
                           <i class="fa fa-address-book" aria-hidden="true"></i>
                         </span>
                     </div>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                            placeholder="    Address"></textarea>
+                    <input id="address" type="text" name="address" [(ngModel)]="objNurse.nurseAddress" placeholder="Address"
+                    class="form-control bg-white border-left-0 border-md">
                     </div>
+
+                       <!-- NurseDOB -->
+                    <div class="input-group col-lg-12 mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                          <i class="fa fa-address-book" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                        <input id="DOB" type="date" name="DOB" [(ngModel)]="objNurse.nurseDOB"
+                        class="form-control bg-white border-left-0 border-md">
+                    </div>
+
 
                     <!-- Submit Button -->
                     <div class="form-group col-lg-12 mx-auto mb-0">
-                        <a href="#" class="btn btn-primary btn-block py-2">
-                            <span class="font-weight-bold">Create your account</span>
-                        </a>
+                        <button (click)="AddNurse(objNurse)" class="btn btn-primary btn-block py-2">
+                          <span class="font-weight-bold">Create your account</span>
+                        </button>
+
+
                     </div>
 
                     <!-- Divider Text -->
