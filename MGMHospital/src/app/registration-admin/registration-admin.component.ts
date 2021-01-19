@@ -17,7 +17,15 @@ export class RegistrationAdminComponent implements OnInit {
   AddAdmin(objAdmin:adminInformation)
   {
     this.adminService.AddAdmin(objAdmin).subscribe(res=>{
-      alert("Added");
+
+        if(res)
+        {
+            alert("Registration SuccessFull");
+        }else
+        {
+            alert("Registration Failed");
+            this.router.navigate(['registration-admin']);
+        }
     })
   }
 

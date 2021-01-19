@@ -18,7 +18,7 @@ export class RegistrationNurseComponent implements OnInit {
   AddNurse(objNurse:Nurse)
   {
       this.nurseServiceService.Addnurse(objNurse).subscribe(res=>{
-          alert("Nurse Added");
+          alert(res);
       })
   }
 
