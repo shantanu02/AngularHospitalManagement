@@ -21,6 +21,7 @@ import { RegistrationNurseComponent } from './registration-nurse/registration-nu
 import { RegistrationPatientComponent } from './registration-patient/registration-patient.component';
 import { RegistrationAdminComponent } from './registration-admin/registration-admin.component';
 import { RegistrationMgmtComponent } from './registration-mgmt/registration-mgmt.component';
+import { ManagementHomepageComponent } from './management-homepage/management-homepage.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { RegistrationMgmtComponent } from './registration-mgmt/registration-mgmt
     RegistrationNurseComponent,
     RegistrationPatientComponent,
     RegistrationAdminComponent,
-    RegistrationMgmtComponent
+    RegistrationMgmtComponent,
+    ManagementHomepageComponent
 
   ],
   imports: [

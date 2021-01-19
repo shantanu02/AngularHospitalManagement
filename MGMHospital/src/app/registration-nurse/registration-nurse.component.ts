@@ -21,6 +21,7 @@ export class RegistrationNurseComponent implements OnInit {
          if(res)
          {
            alert("Registration SuccessFull");
+           this.router.navigate(['homepage']);
          }
          else
          {

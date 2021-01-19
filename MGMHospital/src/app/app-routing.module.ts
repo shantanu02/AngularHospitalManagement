@@ -14,6 +14,7 @@ import { AboutComponent } from './about/about.component';
 import { ServicesComponent } from './services/services.component';
 import { DepartmentComponent } from './department/department.component';
 import { DoctorComponent } from './doctor/doctor.component';
+import { ManagementHomepageComponent } from './management-homepage/management-homepage.component';
 
 const routes: Routes = [
    { path: 'login', component: LoginComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path:'services', component:ServicesComponent},
   {path:'department', component:DepartmentComponent},
   {path:'doctor', component:DoctorComponent},
+  {path:'Management-Homepage', component:ManagementHomepageComponent},
 
   {path:'', redirectTo:'homepage', pathMatch:'full'},
 
