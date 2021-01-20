@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService, UserLogin } from '../login.service';
-
+import {Management, ManagementService} from '../management.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,12 +12,14 @@ export class LoginComponent implements OnInit {
   public imgsrc1 = 'assets/background.jpg';
   public imgsrc2 = 'assets/avatar.svg';
 
-  constructor(private loginService:LoginService,private router: Router) { }
+  constructor(private loginService:LoginService,private router: Router,private managementService:ManagementService) { }
 
   ngOnInit(): void {
   }
 
   objUserLogin:UserLogin = new UserLogin(null,null,null);
+  objManagementSession:Management = new Management(null,null,null,null,null,null);
+
 
   Validate(objUserLogin:UserLogin)
   {
@@ -33,7 +35,12 @@ export class LoginComponent implements OnInit {
         else if(res.userRole == "management")
         {
           alert("This is Management");
-          this.router.navigate(['Management-Homepage']);
+             this.managementService.GetManagement(res.userEmail).subscribe(result=>{
+            this.objManagementSession = result;
+            sessionStorage.setItem('mgmtLogin',JSON.stringify(this.objManagementSession));
+            this.router.navigate(['Management-Homepage']);
+          })
+
         }
         else if(res.userRole == "Nurse")
         {

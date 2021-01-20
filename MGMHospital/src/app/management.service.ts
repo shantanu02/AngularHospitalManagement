@@ -20,10 +20,16 @@ export class Management
 })
 export class ManagementService {
 
+  objManagement:Management = new  Management(null,null,null,null,null,null);
   constructor(private httpClient: HttpClient) { }
 
   AddManagement(objManagement:Management)
   {
     return this.httpClient.post<Management>("http://localhost:8080/mgmt/addMgmt",objManagement);
+  }
+
+  GetManagement(management_email:string)
+  {
+    return this.httpClient.get<Management>("http://localhost:8080/mgmt/getMgmtByEmail/"+management_email);
   }
 }

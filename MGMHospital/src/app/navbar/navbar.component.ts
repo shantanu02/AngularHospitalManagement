@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Management } from '../management.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  objManagementSession:Management = new Management(null,null,null,null,null,null);
+
+  constructor(private router: Router) { }
+  secondMethod() { this.ngOnInit(); }
 
   ngOnInit(): void {
+    this.objManagementSession = JSON.parse(sessionStorage.getItem('mgmtLogin'));
+   this.secondMethod();
+  }
+
+  LogoutManagement()
+  {
+    sessionStorage.removeItem('mgmtLogin');
+    this.router.navigate(['/homepage']);
   }
 
 }
