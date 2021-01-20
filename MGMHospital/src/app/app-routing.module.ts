@@ -14,6 +14,10 @@ import { AboutComponent } from './about/about.component';
 import { ServicesComponent } from './services/services.component';
 import { DepartmentComponent } from './department/department.component';
 import { DoctorComponent } from './doctor/doctor.component';
+import { DoctorHomeComponent } from './doctor-home/doctor-home.component';
+import { Robot1Component } from './robot1/robot1.component';
+import { Robot2Component } from './robot2/robot2.component';
+
 
 const routes: Routes = [
    { path: 'login', component: LoginComponent },
@@ -27,6 +31,9 @@ const routes: Routes = [
   {path:'services', component:ServicesComponent},
   {path:'department', component:DepartmentComponent},
   {path:'doctor', component:DoctorComponent},
+  {path:'doctor-home', component:DoctorHomeComponent},
+  {path:'robot1', component:Robot1Component},
+  {path:'robot2', component:Robot2Component},
 
   {path:'', redirectTo:'homepage', pathMatch:'full'},
 

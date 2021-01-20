@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +21,9 @@ import { RegistrationNurseComponent } from './registration-nurse/registration-nu
 import { RegistrationPatientComponent } from './registration-patient/registration-patient.component';
 import { RegistrationAdminComponent } from './registration-admin/registration-admin.component';
 import { RegistrationMgmtComponent } from './registration-mgmt/registration-mgmt.component';
+import { DoctorHomeComponent } from './doctor-home/doctor-home.component';
+import { Robot1Component } from './robot1/robot1.component';
+import { Robot2Component } from './robot2/robot2.component';
 
 
 @NgModule({
@@ -37,12 +42,16 @@ import { RegistrationMgmtComponent } from './registration-mgmt/registration-mgmt
     RegistrationNurseComponent,
     RegistrationPatientComponent,
     RegistrationAdminComponent,
-    RegistrationMgmtComponent
+    RegistrationMgmtComponent,
+    DoctorHomeComponent,
+    Robot1Component,
+    Robot2Component
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
