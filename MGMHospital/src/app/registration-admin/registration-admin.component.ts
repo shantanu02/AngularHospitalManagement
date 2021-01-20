@@ -22,7 +22,8 @@ export class RegistrationAdminComponent implements OnInit {
         {
             alert("Registration SuccessFull");
             this.router.navigate(['homepage']);
-        }else
+        }
+        else
         {
             alert("Registration Failed");
             this.router.navigate(['registration-admin']);
