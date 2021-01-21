@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +26,10 @@ import { RegistrationMgmtComponent } from './registration-mgmt/registration-mgmt
 import { DoctorHomeComponent } from './doctor-home/doctor-home.component';
 import { Robot1Component } from './robot1/robot1.component';
 import { Robot2Component } from './robot2/robot2.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { PatientHomeComponent } from './patient-home/patient-home.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 @NgModule({
@@ -45,13 +51,19 @@ import { Robot2Component } from './robot2/robot2.component';
     RegistrationMgmtComponent,
     DoctorHomeComponent,
     Robot1Component,
-    Robot2Component
+    Robot2Component,
+    ForgetPasswordComponent,
+    PatientHomeComponent,
+    ContactUsComponent,
+    ErrorPageComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
