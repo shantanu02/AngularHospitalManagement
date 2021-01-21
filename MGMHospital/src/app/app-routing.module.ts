@@ -17,19 +17,21 @@ import { DoctorComponent } from './doctor/doctor.component';
 import { DoctorHomeComponent } from './doctor-home/doctor-home.component';
 import { Robot1Component } from './robot1/robot1.component';
 import { Robot2Component } from './robot2/robot2.component';
+
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { PatientHomeComponent } from './patient-home/patient-home.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ManagementHomepageComponent } from './management-homepage/management-homepage.component';
 
 const routes: Routes = [
-   { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   {path:'registration-doctor',component:RegistrationDoctorComponent},
   {path:'registration-nurse',component:RegistrationNurseComponent},
   {path:'registration-patient',component:RegistrationPatientComponent},
   {path:'registration-admin',component:RegistrationAdminComponent},
   {path:'registration-mgmt',component:RegistrationMgmtComponent},
-   {path:'homepage', component:HomepageComponent},
+  {path:'homepage', component:HomepageComponent},
   {path:'about', component:AboutComponent},
   {path:'services', component:ServicesComponent},
   {path:'department', component:DepartmentComponent},
@@ -37,10 +39,13 @@ const routes: Routes = [
   {path:'doctor-home', component:DoctorHomeComponent},
   {path:'robot1', component:Robot1Component},
   {path:'robot2', component:Robot2Component},
+
   {path:'forget-password', component:ForgetPasswordComponent},
   {path:'patient-home', component:PatientHomeComponent},
   {path:'contact-us', component:ContactUsComponent},
   {path:'error-page', component:ErrorPageComponent},
+
+  {path:'Management-Homepage', component:ManagementHomepageComponent},
 
   {path:'', redirectTo:'homepage', pathMatch:'full'},
 

@@ -33,8 +33,8 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="firstName" type="text" name="firstname" placeholder="First Name"
-                            class="form-control bg-white border-left-0 border-md">
+                        <input id="firstName" type="text" [(ngModel)]="objDoctor.doctorFName" name="firstname" placeholder="First Name"
+                          class="form-control bg-white border-left-0 border-md">
                     </div>
 
                     <!-- Last Name -->
@@ -44,7 +44,7 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="lastName" type="text" name="lastname" placeholder="Last Name"
+                        <input id="lastName" type="text" name="lastname" [(ngModel)]="objDoctor.doctorLName" placeholder="Last Name"
                             class="form-control bg-white border-left-0 border-md">
                     </div>
 
@@ -56,7 +56,7 @@
                               <i class="fa fa-envelope" aria-hidden="true"></i>
                             </span>
                         </div>
-                        <input id="UserName" type="text" name="UserName" placeholder="Email Address"
+                        <input id="UserName" type="text" name="UserName" [(ngModel)]="objDoctor.doctorEmail" placeholder="Email Address"
                             class="form-control bg-white border-left-0 border-md">
                     </div>
 
@@ -67,7 +67,7 @@
                               <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                             </span>
                         </div>
-                        <input id="Password" type="text" name="Password" placeholder="Password"
+                        <input id="Password" type="text" name="Password" [(ngModel)]="objDoctor.doctorPassword" placeholder="Password"
                             class="form-control bg-white border-left-0 border-md">
                     </div>
 
@@ -78,7 +78,7 @@
                               <i class="fa fa-phone" aria-hidden="true"></i>
                             </span>
                         </div>
-                        <input id="email" type="email" name="email" placeholder="Mobile Number"
+                        <input id="email" type="text" name="phone" [(ngModel)]="objDoctor.doctorPhone" placeholder="Mobile Number"
                             class="form-control bg-white border-left-0 border-md">
                     </div>
 
@@ -89,11 +89,11 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <select id="job" name="jobtitle"
+                        <select id="job" name="jobtitle" [(ngModel)]="objDoctor.doctorGender"
                             class="form-control custom-select bg-white border-left-0 border-md">
-                            <option value="">Please Select Gender </option>
-                            <option value="">Male</option>
-                            <option value="">Female</option>
+
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                         </select>
                     </div>
 
@@ -104,12 +104,11 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <select id="job" name="jobtitle"
+                        <select id="quali" name="jobtitle" [(ngModel)]="objDoctor.doctorQualification"
                             class="form-control custom-select bg-white border-left-0 border-md">
-                            <option value=""> Select Qualification</option>
-                            <option value="">ENT</option>
-                            <option value="">Dentist</option>
-                            <option value="">Dietician</option>
+                            <option value="MBBS">MBBS</option>
+                            <option value="Dentist">Dentist</option>
+                            <option value="MD">MD</option>
                         </select>
                     </div>
 
@@ -120,54 +119,67 @@
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="email" type="email" name="email" placeholder="Experience(In year)"
+                        <input id="experience" [(ngModel)]="objDoctor.doctorExperience" type="email" name="email" placeholder="Experience(In year)"
                             class="form-control bg-white border-left-0 border-md">
                     </div>
 
+                    <!-- DOB -->
+                    <div class="input-group col-lg-6 mb-4">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text bg-white px-4 border-md border-right-0">
+                              <i class="fa fa-user text-muted"></i>
+                          </span>
+                      </div>
+                      <input id="DOB" [(ngModel)]="objDoctor.doctorDOB" type="date" name="DOB" placeholder="DOB(YYYY/MM/DD)"
+                          class="form-control bg-white border-left-0 border-md">
+                  </div>
+                        <!-- zip code -->
 
-                    <!-- state
+                        <div class="input-group col-lg-6 mb-4">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                  <i class="fa fa-user text-muted"></i>
+                              </span>
+                          </div>
+                          <input id="email" [(ngModel)]="objDoctor.doctorZipCode" type="text" name="zip" placeholder="Zip Code"
+                              class="form-control bg-white border-left-0 border-md">
+                      </div>
+
+
+                    <!-- state -->
                     <div class="input-group col-lg-6 mb-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
+                            <input id="email" type="email" name="email" [(ngModel)]="objDoctor.doctorState" placeholder="State"
+                            class="form-control bg-white border-left-0 border-md">
                         </div>
-                        <select id="job" name="jobtitle"
-                            class="form-control custom-select bg-white border-left-0 border-md">
-                            <option value="">Please Select State </option>
-                            <option value="">Maharashatra</option>
-                            <option value="">Madhaya Pradesh</option>
-                        </select>
+
                     </div>
 
-                    City
+                    <!-- City -->
                     <div class="input-group col-lg-6 mb-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <select id="job" name="jobtitle"
-                            class="form-control custom-select bg-white border-left-0 border-md">
-                            <option value="">Please Select City </option>
-                            <option value="">Mumbai</option>
-                            <option value="">Jabalpur</option>
-                        </select>
-                    </div> -->
+                        <input id="email" type="text" name="City" [(ngModel)]="objDoctor.doctorCity" placeholder="City"
+                        class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+
                     <!--Specialist In-->
 
                     <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user text-muted"></i>
-                            </span>
-                        </div>
-                        <select id="job" name="jobtitle"
+                      <label for="job">Specialist</label>
+                        <select id="job" class="ml-2" name="jobtitle" [(ngModel)]="objDoctor.doctorSpecialization"
                             class="form-control custom-select bg-white border-left-0 border-md">
-                            <option value="">Please Select Specialist</option>
-                            <option value="">ENT</option>
-                            <option value="">Dentist</option>
-                            <option value="">Dietician</option>
+
+                            <option value="ENT">ENT</option>
+                            <option value="Dentist">Dentist</option>
+                            <option value="Dietician">Dietician</option>
                         </select>
                     </div>
 
@@ -178,15 +190,17 @@
                           <i class="fa fa-address-book" aria-hidden="true"></i>
                         </span>
                     </div>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                            placeholder="Address"></textarea>
+                    <input id="address" type="text" name="Address" [(ngModel)]="objDoctor.doctorAddress" placeholder="Address"
+                        class="form-control bg-white border-left-0 border-md">
                     </div>
 
                     <!-- Submit Button -->
                     <div class="form-group col-lg-12 mx-auto mb-0">
-                        <a href="#" class="btn btn-primary btn-block py-2">
-                            <span class="font-weight-bold">Create your account</span>
-                        </a>
+                       <button (click)="AddDoctor(objDoctor)" class="btn btn-primary btn-block py-2">
+                         <span class="font-weight-bold">Create your account</span>
+                       </button>
+
+
                     </div>
 
                     <!-- Divider Text -->
