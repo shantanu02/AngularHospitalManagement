@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Nurse } from '../nurse-service.service';
 import { PatientInformation, PatientService } from '../patient.service';
 
 @Component({
@@ -18,20 +19,29 @@ export class RegistrationPatientComponent implements OnInit {
         );
 
   constructor(private patientService: PatientService , private router: Router) { }
+        objNurseSession:Nurse = new Nurse(null,null,null,null,null,null,null,null,null,null,null,null,null,null);
 
-  ngOnInit(): void {
-  }
+        ngOnInit(): void {
+
+        }
+
 
   AddPatientInformation(patientInformation : PatientInformation){
     this.patientService.AddPatientInformation(patientInformation).subscribe(res=>{
-      alert(res);
       if(res){
         alert("Patient Added Successfully");
-         this.router.navigate(['homepage']);
+        this.objNurseSession = JSON.parse(sessionStorage.getItem('nurseLogin'));
+        if(sessionStorage.getItem('nurseLogin') != null)
+          {
+            this.router.navigate(['nurse-home']);
+          }
+        else
+         {
+           this.router.navigate(['homepage'])
+         }
       }else{
         alert("Patient already exists");
       }
     });
   }
-
 }

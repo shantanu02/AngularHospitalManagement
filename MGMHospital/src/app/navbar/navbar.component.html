@@ -28,7 +28,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto topnav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" (click)="HomePage()" routerLink="/homepage">Home <span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/about">About</a>
@@ -46,7 +46,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
             </li>
-            <div *ngIf="(objManagementSession == null)" style="display:flex">
+            <div *ngIf="(objManagementSession == null && objNurseSession == null)" style="display:flex">
                   <li class="nav-item dropdown mr-2" >
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -69,6 +69,12 @@
                   <button class="btn btn-primary text-white" (click)="LogoutManagement()">Logout</button>
               </li>
             </div>
+            <div *ngIf="(objNurseSession != null)">
+              <li class="nav-item">
+                <button class="btn btn-primary text-white ml-2" (click)="LogoutNurse()">Logout</button>
+            </li>
+          </div>
+
 
         </ul>
     </div>

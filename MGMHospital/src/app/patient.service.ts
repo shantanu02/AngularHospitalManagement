@@ -36,11 +36,12 @@ export class PatientInformation{
 
 export class PatientExamination{
   constructor(
-   
+
 
     public peId:number,
     public peDateTime :string,
     public peHead :string,
+    public peBack:string,
     public peNeck :string,
     public peChest:string,
     public peHeart:string,
@@ -68,10 +69,10 @@ export class PatientTreatment {
     public ptMDNote:string,
     public ptDoctorNote :string,
     public peId:number,
-  
+
 
   ){}
-  
+
 }
 export class PatientMedicines{
   constructor(
@@ -91,7 +92,7 @@ export class PatientTest{
     public medicalTestId:number,
     public ptId:number
   ){}
-  
+
 }
 
 
@@ -110,9 +111,11 @@ export class PatientService {
   }
 
   AddPatientExamination(patientExamination : PatientExamination){
+
+
     return this.httpClient.post<number>("http://localhost:8080/patient/addPatientExamination",patientExamination);
   }
- 
+
 
   AddPatientTreatment(patientTreatment : PatientTreatment){
     return this.httpClient.post<number>("http://localhost:8080/patient/addPatientTreatment",patientTreatment);
@@ -168,11 +171,14 @@ export class PatientService {
   }
 
   GetPatientInformation(patientId:number){
-    return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getPatientInformation/"+patientId);
+    return this.httpClient.get<PatientInformation>("http://localhost:8080/patient/getPatientInformation/"+patientId);
   }
 
-  
-  
+  getAllPatientInformation()
+  {
+    return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getAllPatientInformation")
+  }
+
 
 
 }

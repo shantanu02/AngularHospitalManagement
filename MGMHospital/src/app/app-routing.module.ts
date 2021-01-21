@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
-
 import { LoginComponent } from './login/login.component';
 import { RegistrationDoctorComponent } from './registration-doctor/registration-doctor.component';
 import { RegistrationNurseComponent } from './registration-nurse/registration-nurse.component';
@@ -18,6 +16,9 @@ import { DoctorHomeComponent } from './doctor-home/doctor-home.component';
 import { Robot1Component } from './robot1/robot1.component';
 import { Robot2Component } from './robot2/robot2.component';
 import { ManagementHomepageComponent } from './management-homepage/management-homepage.component';
+import { PatientComponent } from './patient/patient.component';
+import { HomeNurseComponent } from './home-nurse/home-nurse.component';
+
 
 
 const routes: Routes = [
@@ -36,9 +37,9 @@ const routes: Routes = [
   {path:'robot1', component:Robot1Component},
   {path:'robot2', component:Robot2Component},
   {path:'Management-Homepage', component:ManagementHomepageComponent},
+  {path:'patient-home',component:PatientComponent},
+  {path:'nurse-home',component:HomeNurseComponent},
   {path:'', redirectTo:'homepage', pathMatch:'full'},
-
-
 
 ];
 

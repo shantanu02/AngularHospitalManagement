@@ -20,7 +20,6 @@ export class Management
 })
 export class ManagementService {
 
-  objManagement:Management = new  Management(null,null,null,null,null,null);
   constructor(private httpClient: HttpClient) { }
 
   AddManagement(objManagement:Management)
