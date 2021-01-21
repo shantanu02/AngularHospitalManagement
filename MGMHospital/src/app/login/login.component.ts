@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService, UserLogin } from '../login.service';
 import { Management, ManagementService } from '../management.service';
+import { Nurse, NurseServiceService } from '../nurse-service.service';
 import { PatientService } from '../patient.service';
 @Component({
   selector: 'app-login',
@@ -17,13 +18,30 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private router: Router,
     private managementService: ManagementService,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private nurseServiceService: NurseServiceService
   ) {}
 
   ngOnInit(): void {}
 
   objUserLogin: UserLogin = new UserLogin(null, null, null);
   objManagementSession: Management = new Management(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+  objNurse: Nurse = new Nurse(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -52,11 +70,21 @@ export class LoginComponent implements OnInit {
           });
       } else if (res.userRole == 'Nurse') {
         alert('This is Nurse');
+        this.nurseServiceService
+          .getNurseByEmail(res.userEmail)
+          .subscribe((res) => {
+            this.objNurse = res;
+            sessionStorage.setItem(
+              'nurseLogin',
+              JSON.stringify(this.objNurse)
+            );
+            this.router.navigate(['nurse-home']);
+          });
       } else if (res.userRole == 'patient') {
         alert('This is Patient');
-        this.patientService.GetPatientInformationByEmail(res.userEmail).subscribe(result=>{
-
-        })
+        this.patientService
+          .GetPatientInformationByEmail(res.userEmail)
+          .subscribe((result) => {});
       } else {
         alert('Unknown');
       }

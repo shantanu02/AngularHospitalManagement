@@ -29,6 +29,7 @@ import { PatientHomeComponent } from './patient-home/patient-home.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ManagementHomepageComponent } from './management-homepage/management-homepage.component';
+import { HomeNurseComponent } from './home-nurse/home-nurse.component';
 
 
 
@@ -55,7 +56,8 @@ import { ManagementHomepageComponent } from './management-homepage/management-ho
     PatientHomeComponent,
     ContactUsComponent,
     ErrorPageComponent,
-    ManagementHomepageComponent
+    ManagementHomepageComponent,
+    HomeNurseComponent
   ],
   imports: [
     BrowserModule,
