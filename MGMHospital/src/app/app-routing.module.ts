@@ -39,7 +39,6 @@ const routes: Routes = [
   {path:'doctor-home', component:DoctorHomeComponent},
   {path:'robot1', component:Robot1Component},
   {path:'robot2', component:Robot2Component},
-
   {path:'forget-password', component:ForgetPasswordComponent},
   {path:'patient-home', component:PatientHomeComponent},
   {path:'contact-us', component:ContactUsComponent},
