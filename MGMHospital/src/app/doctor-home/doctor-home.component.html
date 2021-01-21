@@ -17,10 +17,17 @@
                         <th>Name</th>
                     </tr>
                 </thead>
-                <tbody class="tbody" *ngFor="let p of patient">
+
+                <tbody class="tbody" *ngFor ="let p of patientList">
+
                     <tr>
-                        <td>{{p.p_id}}</td>
-                        <td>{{p.p_name}}</td>
+                       
+                            <td> <button class="btn" (click)="getPatientInformationByPatientId(p.patientId)">{{p.patientId}}</button></td>
+                           
+                        
+                       <td> <button class="btn" (click)="getPatientInformationByPatientId(p.patientId)">{{p.patientFName + ' ' + p.patientLName}}</button></td>
+                        
+                       
                     </tr>
                 </tbody>
             </table>
@@ -35,15 +42,15 @@
                         <tbody>
                             <tr>
                                 <th scope="row">Patient id :</th>
-                                <td>P101</td>
-                                <th scope="row">Name :</th>
-                                <td>Tom</td>
+                                <td>{{objPatientInformation.patientId}}</td>
+                                <th scope="row">Name : </th>
+                                <td>{{objPatientInformation.patientFName + ' '+ objPatientInformation.patientLName}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Email:</th>
-                                <td>tom@gmail.com</td>
+                                <td>{{objPatientInformation.patientEmail}}</td>
                                 <th scope="row">Phone No :</th>
-                                <td>998787678</td>
+                                <td>{{objPatientInformation.patientPhone}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -52,48 +59,105 @@
             <div class="row  d-flex content11">
                 <div class="col-md-12"><i class="fa fa-stethoscope" aria-hidden="true"></i><b>Examine Report</b>
                     <form>
-                        <table class="table2 table-bordered table-sm">
-                            <tbody>
-                                <tr>
-                                    <th scope="col">Head</th>
-                                    <td></td>
+                        <table class="table2 table-bordered table-sm"  >
+                           
+                                <!-- <tr> -->
+                                    <!-- <th scope="col">Head</th>
+                                    <td>{{objPatientExamination.peHead}}</td>
                                     <th scope="col">Neck</th>
-                                    <td></td>
+                                    <td>{{objPatientExamination.peNeck}}</td>
                                     <th scope="col">Chest</th>
-                                    <td></td>
+                                    <td>{{objPatientExamination.peChest}}</td>
                                     <th scope="col">Back</th>
-                                    <td></td>
-                                </tr>
-                                <tr>
+                                    <td>{{objPatientExamination.peBack}}</td>
                                     <th scope="col">Heart</th>
-                                    <td></td>
+                                    <td>{{objPatientExamination.peHeart}}</td>
                                     <th scope="col">Neuro</th>
-                                    <td></td>
+                                    <td>{{objPatientExamination.peNeuro}}</td>
                                     <th scope="col">Adomen</th>
-                                    <td></td>
+                                    <td>{{objPatientExamination.peAbdomen}}</td>
                                     <th scope="col">Extremities</th>
-                                    <td></td>
-                                </tr>
-                                <tr>
+                                    <td>{{objPatientExamination.peExtermities}}</td>
                                     <th scope="col">Others</th>
-                                    <td></td>
-                                    <th scope="col">Pulse</th>
-                                    <td></td>
-                                    <th scope="col">Resp</th>
-                                    <td></td>
-                                    <th scope="col">BP</th>
-                                    <td></td>
-                                </tr>
+                                    <td>{{objPatientExamination.peOthers}}</td> -->
+                                <!-- </tr> -->
+                                <!-- <tr>
+                                   
+                                </tr> -->
+                                <thead>
+
+                                    <tr>
+                                        <th scope="col">Date</th>
+
+                                        <th scope="col">Pulse</th>
+                                       
+                                        <th scope="col">Resp</th>
+                                      
+                                        <th scope="col">BP</th>
+                                     
+                                        <th scope="col">Temp</th>
+                                    
+                                        <th scope="col">Pulse-Ox</th>
+                                      
+                                        <th scope="col">Fsbs</th>
+                                       
+                                        <th scope="col">Head</th>
+                                       
+                                        <th scope="col">Neck</th>
+                                       
+                                        <th scope="col">Chest</th>
+                                       
+                                        <th scope="col">Back</th>
+                                      
+                                        <th scope="col">Heart</th>
+                                      
+                                        <th scope="col">Neuro</th>
+                                      
+                                        <th scope="col">Adomen</th>
+                                     
+                                        <th scope="col">Extremities</th>
+                                      
+                                        <th scope="col">Others</th>
+                                      
+                                    </tr>
+                                </thead>
+                                <tbody class="tbody" *ngFor ="let p of patientExaminationList">
                                 <tr>
-                                    <th scope="col">Temp</th>
-                                    <td></td>
-                                    <th scope="col">Pulse_Oxygen</th>
-                                    <td></td>
-                                    <th scope="col">Fsbs</th>
-                                    <td></td>
-                                    <th scope="col">Head</th>
-                                    <td></td>
+                                 
+                                    <td>{{p.peDateTime}}</td>
+
+                                    <td>{{p.pePulse}}</td>
+                                   
+                                    <td>{{p.peResp}}</td>
+                                   
+                                    <td>{{p.peBp}}</td>
+                                 
+                                    <td>{{p.peTemp}}</td>
+                                  
+                                    <td>{{p.pePulseOx}}</td>
+                                
+                                    <td>{{p.peFSBS}}</td>
+
+                                    <td>{{p.peHead}}</td>
+                                   
+                                    <td>{{p.peNeck}}</td>
+                                       
+                                    <td>{{p.peChest}}</td>
+                                       
+                                    <td>{{p.peBack}}</td>
+                                       
+                                    <td>{{p.peHeart}}</td>
+                                       
+                                    <td>{{p.peNeuro}}</td>
+                                     
+                                    <td>{{p.peAbdomen}}</td>
+                                       
+                                    <td>{{p.peExtermities}}</td>
+                                      
+                                    <td>{{p.peOthers}}</td>
+                                    
                                 </tr>
+
                             </tbody>
                         </table>
                     </form>
@@ -102,40 +166,73 @@
         </div>
     </div>
 
+    <p class="h5">View Treatment</p>
     <!-- Row 2 -->
     <div class="row content2" style="border: 1px solid black;">
         <div class="col-md-4 col-sm-3" style="border: 1px solid black;">
-            <b>View Treatment</b>
-            <select class="form-control" searchable="Search here..">
-                <option disabled>Select Treatment</option>
-                <option class="btn" *ngFor="let item of treatment">{{item}}</option>
+            <b>Select Problem </b>
+
+            <select class="form-control" id="#" [(ngModel)]="medicineType" (change)="getMedicinesByType(medicineType)">
+                <option disabled>Select Problem</option>
+                <option *ngFor="let item of medicineTypeList" [value]="item">{{item}}</option>
             </select>
+
+
+            <!-- <select class="form-control" (change)="getMedicinesByType($event)" searchable="Search here..">
+                <option disabled>Select Problem</option>
+                <option class="btn"  *ngFor="let item of medicineTypeList" value="item" >
+                        {{item}}
+                </option>
+            </select> -->
         </div>
-        <div class="col-md-4 col-sm-3" style="border: 1px solid black;">
-            <b>Mediciens</b>
-            <table class="table1 table-sm sticky">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let m of mediciens">
-                    <tr>
-                        <td>{{m.m_id}}</td>
-                        <td>{{m.m_name}}</td>
-                        <td>{{m.m_type}}</td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <div class="col-md-8 col-sm-3" style="border: 1px solid black;">
+            <b>Medicines</b>
+            <div style="width:100%">
+                <table  class="table1 table-sm sticky ">
+                    <thead>
+                        <tr >
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Desc</th>
+                            <th>Time</th>
+                            <th>Dosage</th>
+                            <th>Doctor's Note</th>
+                            <th></th>
+    
+                        </tr>
+                    </thead>
+                    <tbody *ngFor ="let m of medicinesListByType">
+                        <tr >
+                            <!-- <td [(ngModel)] = "combinePatientTreatment.medicineId" [value]="m.medicineId" id="medicineId" name ="medicineId">{{m.medicineId}}</td> -->
+                            <td>
+                                <input [(ngModel)] = "m.medicineId" 
+                                type="hidden" id="medicineId" name="medicineId" [value]="m.medicineId" >
+                                {{m.medicineId}}
+                            </td>
+                            <td>{{m.medicineName}}</td>
+                            <td>{{m.medicineDesc}}</td>
+                            <td><input [(ngModel)] = "m.pmTime" (change)="setTime(m.pmTime)" type="time" id="appt" name="appt"></td>
+                            <td>
+                                <textarea [(ngModel)] = "m.pmDosage" (change)="setDosage(m.pmDosage)" 
+                                class="form-control " id="pmDosage" rows="1" placeholder="Dosage"></textarea>
+                            </td>
+                            <td>
+                                <textarea  [(ngModel)] = "m.ptDoctorNotes" (change)="setDoctorNotes(m.ptDoctorNotes)" 
+                                class="form-control " id="ptDoctorNotes" rows="1" placeholder="Doctors Note"></textarea>
+                            </td>
+                            <td><input class="btn btn-primary" (click)="AddPatientTreatmentAndMedicines(combinePatientTreatment,m.medicineId)" type="submit" value="Add"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+      
         </div>
-        <div class="col-md-4 col-sm-3">
-            <b><i class="fa fa-sticky-note" aria-hidden="true"></i>Mediciens Description</b>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                placeholder="Description here......."></textarea>
-            <input class="btn btn-primary" (click)="display()" type="submit" value="Add">
-        </div>
+        <!-- <div class="col-md-4 col-sm-3">
+            <b><i class="fa fa-sticky-note" aria-hidden="true"></i>Mediciens Description</b>   
+        </div> -->
+
+     
     </div>
 
     <!-- Row 3 -->
@@ -149,18 +246,22 @@
     <!-- Row 4 -->
 
     <div class="row  content3" *ngIf="uiAlert" style="border: 1px solid black;" style="background-color:whitesmoke">
-        <div class="col-md-3 col-sm-12">{{m_name}}</div>
-        <div class="col-md-4 col-sm-12">{{m_desc}}</div>
-        <div class="col-md-3 col-sm-12">{{m_type}}</div>
+        <div class="col-md-3 col-sm-12"></div>
+        <div class="col-md-4 col-sm-12"></div>
+        <div class="col-md-3 col-sm-12"></div>
         <div class="col-md-1 col-sm-6">
             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal1"
                 data-whatever="">Update</button>
         </div>
-        <div class="col-md-1 col-sm-6"><button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                data-target="#exampleModal2">
-                Remove
-            </button></div>
-        <!-- Model for Update Mediciens -->
+
+        <div class="col-md-1 col-sm-6"><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal2">
+           Remove
+          </button>
+        
+        
+    </div>
+      <!-- Model for Update Mediciens -->
+
 
         <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">

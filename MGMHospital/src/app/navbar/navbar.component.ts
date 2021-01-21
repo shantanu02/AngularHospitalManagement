@@ -9,6 +9,7 @@ import { Nurse } from '../nurse-service.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+
   objManagementSession: Management = new Management(
     null,
     null,
