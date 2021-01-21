@@ -23,6 +23,7 @@ import { PatientHomeComponent } from './patient-home/patient-home.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ManagementHomepageComponent } from './management-homepage/management-homepage.component';
+import { HomeNurseComponent } from './home-nurse/home-nurse.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -43,7 +44,7 @@ const routes: Routes = [
   {path:'patient-home', component:PatientHomeComponent},
   {path:'contact-us', component:ContactUsComponent},
   {path:'error-page', component:ErrorPageComponent},
-
+  {path:'nurse-home', component:HomeNurseComponent},
   {path:'Management-Homepage', component:ManagementHomepageComponent},
 
   {path:'', redirectTo:'homepage', pathMatch:'full'},

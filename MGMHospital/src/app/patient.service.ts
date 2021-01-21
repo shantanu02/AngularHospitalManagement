@@ -43,6 +43,7 @@ export class PatientExamination{
     public peHead :string,
     public peNeck :string,
     public peChest:string,
+    public peBack:string,
     public peHeart:string,
     public peNeuro:string,
     public peAbdomen:string,
@@ -174,7 +175,10 @@ export class PatientService {
     return this.httpClient.get<PatientInformation>("http://localhost:8080/patient/getPatientInformationByEmail/"+patient_email);
   }
 
-
+  getAllPatientInformation()
+  {
+    return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getAllPatientInformation");
+  }
 
 
 
