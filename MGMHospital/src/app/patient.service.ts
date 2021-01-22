@@ -268,14 +268,10 @@ getAllPatientInformationByNurseId(nurseId:number)
   GetAllPatientTreatment2ByPatientId(patientId:number){
     return this.httpClient.get<PatientTreatment2[]>("http://localhost:8080/patientTreatment2/getPatientTreatment2ById/"+patientId);
 
-  getAllMedicines()
-  {
-    return this.httpClient.get<Medicines[]>("http://localhost:8080/medicines/getAllMedicines");
   }
-  getAllMedicinesOfTypes(medicineType:string)
-  {
-    return this.httpClient.get<Medicines[]>("http://localhost:8080/medicines/getAllMedicinesByType/"+medicineType);
 
+  DeletePatientTreatment2ByPt2Id(pt2Id:number){
+    return this.httpClient.delete<number>("http://localhost:8080/patientTreatment2/deletePatientTreatment2ById/"+pt2Id)
   }
 
 
