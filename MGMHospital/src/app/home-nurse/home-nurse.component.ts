@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Medicine, MedicineService } from '../medicine.service';
 import { Nurse } from '../nurse-service.service';
 import {
 
@@ -7,6 +8,7 @@ import {
   PatientExamination,
   PatientInformation,
   PatientService,
+  PatientTreatment2,
 } from '../patient.service';
 
 @Component({
@@ -15,9 +17,9 @@ import {
   styleUrls: ['./home-nurse.component.css'],
 })
 export class HomeNurseComponent implements OnInit {
-  constructor(private router: Router, private patientService: PatientService) {}
-  objMedicinesList: Medicines[];
-  medicinesByTypeList: Medicines[];
+  constructor(private router: Router, private patientService: PatientService,private medicineService:MedicineService) {}
+  objMedicinesList: Medicine[];
+  medicinesByTypeList: Medicine[];
   objNurseSession: Nurse = new Nurse(
     null,
     null,
@@ -84,6 +86,22 @@ export class HomeNurseComponent implements OnInit {
     null
   );
 
+  objMedicine:Medicine = new Medicine(null,null,null,null);
+
+  objPatientTreatment2:PatientTreatment2 = new PatientTreatment2(null,null,null,null,null,null,null);
+  dosage:string = "";
+  time:string="";
+  nurseNote :string="";
+  viewTreatment:boolean = false;
+  medicineId:number;
+  medicineDesc:string="";
+  medicineType:string="";
+  medicineName:string="";
+
+  patientTreatment2:PatientTreatment2[];
+  AllMedicineList:Medicine[];
+
+
   medicineTypeList: string[] = [
     'Chest',
     'Back',
@@ -93,6 +111,7 @@ export class HomeNurseComponent implements OnInit {
     'Extermities',
   ];
 
+  medicineByType:Medicine[];
   examinationReportAlert: boolean = false;
   patientList: PatientInformation[];
   ngOnInit(): void {
@@ -100,7 +119,7 @@ export class HomeNurseComponent implements OnInit {
     if (this.objNurseSession == null) {
       this.router.navigate(['homepage']);
     }
-    this.patientService.getAllPatientInformation().subscribe((res) => {
+    this.patientService.getAllPatientInformationByNurseId(this.objNurseSession.nurseId).subscribe((res) => {
       this.patientList = res;
     });
   }
@@ -171,25 +190,68 @@ export class HomeNurseComponent implements OnInit {
       });
   }
 
-  // objMedicines()
-  // {
-  //   this.patientService.getAllMedicines().subscribe(res=>{
-  //     this.objMedicinesList = res;
-  //   })
-  // }
-  // ShowAllMedicinesOfType(medicineType:string)
-  // {
-  //   alert("ello");
-  //     // this.patientService.getAllMedicinesOfTypes(medicineType).subscribe(res=>{
-  //     //   alert(res[1].medicineName);
-  //     // })
-  // }
 
-  showMedicineType(item) {
-    alert(item);
+  showMedicineType(item:string) {
+      this.medicineService.GetMedicinesByType(item).subscribe(res=>{
+        this.medicineByType = res;
+      })
   }
 
   asd(item) {
     alert(item);
+  }
+  deletePatientInformation(patientid:number)
+  {
+      this.patientService.DeletePatientInformation(patientid).subscribe(res=>{
+        this.showdata = false;
+        this.ngOnInit();
+      })
+  }
+  addMedicine()
+  {
+    this.objPatientTreatment2.dosage = this.dosage;
+    this.objPatientTreatment2.medicineId = this.medicineId;
+    this.objPatientTreatment2.patientId = this.objPatientInformation.patientId;
+    this.objPatientTreatment2.time = this.time;
+    this.objPatientTreatment2.nurseNote = this.nurseNote;
+
+    this.patientService.AddPatientTreatment2(this.objPatientTreatment2).subscribe(res=>{
+      this.time = "";
+      this.dosage = "";
+      this.nurseNote = "";
+      this.ViewTreatment();
+    })
+  }
+  addMedicineFromList(item:Medicine)
+  {
+    this.medicineId = item.medicineId;
+    this.medicineName = item.medicineName;
+    this.medicineDesc = item.medicineDesc;
+    this.medicineType = item.medicineType;
+  }
+  ViewTreatment()
+  {
+    this.viewTreatment = true;
+    this.patientService.GetAllPatientTreatment2ByPatientId(this.objPatientInformation.patientId).subscribe(res=>{
+      this.patientTreatment2 = res;
+    })
+
+    this.medicineService.GetAllMedicines().subscribe(res=>{
+      this.AllMedicineList = res;
+    })
+  }
+  CloseViewTreatment()
+  {
+    this.viewTreatment = false;
+
+  }
+
+  deleteTreatment(patientTreatmentId:number)
+  {
+    alert(patientTreatmentId);
+    this.patientService.DeletePatientTreatment2(patientTreatmentId).subscribe(res=>{
+      alert("deleted");
+      this.ViewTreatment();
+    })
   }
 }

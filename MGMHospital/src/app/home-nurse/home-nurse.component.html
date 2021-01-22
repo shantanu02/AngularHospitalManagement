@@ -1,3 +1,10 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+</head>
+
 <div
   *ngIf="examinationReportAlert"
   class="alert alert-danger alert-dismissible fade show"
@@ -70,8 +77,8 @@
             <thead>
               <tr>
                 <!-- <th class="th1" style="width: 20%;">Srno</th>
-                            <th style="width: 30%; text-align: center;">Patient No.</th>
-                            <th style="width: 40%; text-align: center;">Patient First Name</th> -->
+                          <th style="width: 30%; text-align: center;">Patient No.</th>
+                          <th style="width: 40%; text-align: center;">Patient First Name</th> -->
 
                 <th scope="col">Sr no</th>
                 <th scope="col">First Name</th>
@@ -355,7 +362,16 @@
                   >
                     Cancel
                   </button>
-                  <button type="button" class="btn btn-danger">Delete</button>
+                  <button
+                    type="button"
+                    data-dismiss="modal"
+                    class="btn btn-danger"
+                    (click)="
+                      deletePatientInformation(objPatientInformation.patientId)
+                    "
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>
@@ -401,13 +417,13 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
+                  <div class="modal-body modal-lg">
                     <form>
                       <div class="col-12 ppdetails" style="border: none">
                         <div class="row">
                           <div class="col-5 col-sm-6 col-md-6">
                             <span class="ppdtitle"
-                              ><i class="fa fa-user-circle"></i> Patient Name :
+                              ><i class="fa fa-user-circle"></i> Name :
                             </span>
                             <span
                               >{{ objPatientInformation.patientFName }}
@@ -616,18 +632,7 @@
             <!-- Patient Examine Model section End-->
             <br />
             <!-- Patient Give Treatment button -->
-            <div class="resbtn1">
-              <button
-                type="button"
-                class="btn btn-warning"
-                style="width: 22vh"
-                data-toggle="modal"
-                data-target="#exampleModal3"
-
-              >
-                Give Treatment
-              </button>
-            </div>
+            <div class="resbtn1"></div>
             <!-- Patient Give Treatment Model Section start -->
             <div
               class="modal fade"
@@ -658,15 +663,13 @@
                         <div class="col-12 mb-3 ppdetails" style="border: none">
                           <div class="row d-flex justify-content-center">
                             <!-- <select class="form-control">
-                              <option value="" selected disabled>Select Treatment</option>
-                                                            <option value="chest">Chest</option>
-                                                            <option value="head">Head</option>
-                                                            <option value="back">Back</option>
-
-
-                            </select> -->
+                            <option value="" selected disabled>Select Treatment</option>
+                                                          <option value="chest">Chest</option>
+                                                          <option value="head">Head</option>
+                                                          <option value="back">Back</option>
+                          </select> -->
                             <label for="med">Select Type</label>
-                            <table class="table" id="med">
+                            <table class="table fixed_header" id="med ">
                               <thead class="thead-dark">
                                 <tr>
                                   <th scope="col">Sr No</th>
@@ -674,30 +677,66 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr (click)="showMedicineType(item)" *ngFor="let item of medicineTypeList;let i = index">
-                                  <td>{{i+1}}</td>
-                                  <td>{{item}}</td>
+                                <tr
+                                  (click)="showMedicineType(item)"
+                                  *ngFor="
+                                    let item of medicineTypeList;
+                                    let i = index
+                                  "
+                                >
+                                  <td>{{ i + 1 }}</td>
+                                  <td>{{ item }}</td>
                                 </tr>
-                                <hr>
+                                <hr />
                               </tbody>
                             </table>
                           </div>
-                          <div class="row d-flex justify-content-center mt-2">
-                            <select class="form-control" >
-                              <option value=""></option>
 
-                            </select>
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col" hidden>Medicine Id</th>
+                                <th scope="col">Medicine Name</th>
+                                <th scope="col">Medicine Desc</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="let item of medicineByType"
+                                (click)="addMedicineFromList(item)"
+                              >
+                                <td>{{ item.medicineName }}</td>
+                                <td>{{ item.medicineDesc }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                          <div class="row d-flex mt-2">
+                            <span class="ppdtitle mr-2">Time : </span>
+                            <input
+                              type="time"
+                              class="form-control"
+                              name="time"
+                              [(ngModel)]="time"
+                            />
                           </div>
                           <div class="row d-flex mt-2">
-                            <span class="ppdtitle mr-2">Discription : </span>
-                            <textarea
+                            <span class="ppdtitle mr-2">Dosage : </span>
+                            <input
+                              type="text"
                               class="form-control"
-                              name="Deacription"
-                              id=""
-                              cols="30"
-                              rows="10"
-                              style="width: auto"
-                            ></textarea>
+                              name="dosage"
+                              [(ngModel)]="dosage"
+                            />
+                          </div>
+                          <div class="row d-flex mt-2">
+                            <span class="ppdtitle mr-2">Nurse Notes : </span>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="nurseNote"
+                              [(ngModel)]="nurseNote"
+                            />
                           </div>
                         </div>
                         <div class="modal-footer">
@@ -708,7 +747,12 @@
                           >
                             Cancel
                           </button>
-                          <button type="button" class="btn btn-primary">
+                          <button
+                            type="button"
+                            data-dismiss="modal"
+                            class="btn btn-primary"
+                            (click)="addMedicine()"
+                          >
                             Add
                           </button>
                         </div>
@@ -719,6 +763,43 @@
               </div>
             </div>
             <!-- Patient Give Treatment Model Section End -->
+
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Treatment
+              </button>
+              <div
+                class="dropdown-menu"
+                style="justify-content: center; align-items: center"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <button
+                  type="button"
+                  class="btn btn-light ml-3"
+                  style="width: 22vh"
+                  data-toggle="modal"
+                  data-target="#exampleModal3"
+                >
+                  Give Treatment
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-light mt-2 ml-3"
+                  style="width: 22vh"
+                  (click)="ViewTreatment()"
+                >
+                  View Treatment
+                </button>
+              </div>
+            </div>
           </div>
 
           <!-- Patient Personal Details section start -->
@@ -818,8 +899,7 @@
           <div class="col-6 col-sm-4 d-flex justify-content-end">
             <button
               type="button"
-              class="btn btn-success"
-              style="width: 22vh"
+              class="btn btn-success btn-md"
               data-toggle="modal"
               data-target="#exampleModal2"
             >
@@ -829,15 +909,7 @@
           <br />
           <div class="col-6 col-sm-4">
             <!-- Patient 2nd Give Treatment Model section-->
-            <button
-              type="button"
-              class="btn btn-warning"
-              style="width: 22vh"
-              data-toggle="modal"
-              data-target="#exampleModal3"
-            >
-              Give Treatment
-            </button>
+
           </div>
           <div class="col-sm-2"></div>
         </div>
@@ -845,3 +917,54 @@
     </div>
   </div>
 </div>
+<!--
+  <table class="table" style="
+  border: 1px solid black;
+">
+    <thead class="thead-dark"></thead>
+    <tbody>
+      <div *ngFor="let patientTreatment of patientTreatment2">
+        <div *ngFor="let medicine of AllMedicineList">
+          <tr *ngIf="patientTreatment.medicineId == medicine.medicineId">
+            <th scope="col">Medicine Name:</th>
+            <td>{{ medicine.medicineName }}</td>
+            <th scope="col">Dosage:</th>
+            <td>{{ patientTreatment.dosage }}</td>
+            <th scope="col">Time:</th>
+            <td>{{ patientTreatment.time }}</td>
+            <th scope="col">Nurse Notes:</th>
+            <td>{{ patientTreatment.nurseNote }}</td>
+           <button class="btn btn-danger btn-sm" (click)="deleteTreatment(patientTreatment.medicineId)">
+             Delete
+           </button>
+          </tr>
+        </div>
+      </div>
+    </tbody>
+  </table>
+  <button  class="close mr-2" (click)="CloseViewTreatment()">
+    <span aria-hidden="true">&times;</span>
+  </button> -->
+
+  <table class="table">
+
+    <tbody>
+      <div *ngFor="let patientTreatment of patientTreatment2">
+        <div *ngFor="let medicine of AllMedicineList">
+          <tr *ngIf="patientTreatment.medicineId == medicine.medicineId">
+            <!-- <th scope="col">Medicine Name:</th> -->
+            <td>{{ medicine.medicineName }}</td>
+            <!-- <th scope="col">Dosage:</th> -->
+            <td>{{ patientTreatment.dosage }}</td>
+            <!-- <th scope="col">Time:</th> -->
+            <td>{{ patientTreatment.time }}</td>
+            <!-- <th scope="col">Nurse Notes:</th> -->
+            <td>{{ patientTreatment.nurseNote }}</td>
+           <button class="btn btn-danger btn-sm" (click)="deleteTreatment(patientTreatment.pt2Id)">
+             Delete
+           </button>
+          </tr>
+        </div>
+      </div>
+    </tbody>
+  </table>

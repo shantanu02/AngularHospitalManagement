@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-
 export class PatientInformation{
   constructor(
     public patientId:number,
@@ -128,8 +126,6 @@ export class PatientTreatment2{
 }
 
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -138,108 +134,127 @@ export class PatientService {
 
   constructor(private httpClient: HttpClient) { }
 
-
   AddPatientInformation(patientInformation : PatientInformation){
-      return this.httpClient.post<number>("http://localhost:8080/patient/addPatientInformation",patientInformation);
+    return this.httpClient.post<number>("http://localhost:8080/patient/addPatientInformation",patientInformation);
 
-  }
+}
 
-  AddPatientExamination(patientExamination : PatientExamination){
-    return this.httpClient.post<number>("http://localhost:8080/patient/addPatientExamination",patientExamination);
-  }
-
-
-  AddPatientTreatment(patientTreatment : PatientTreatment){
-    return this.httpClient.post<number>("http://localhost:8080/patient/addPatientTreatment",patientTreatment);
-  }
-
-  AddPatientMedicines(patientMedicines: PatientMedicines){
-    return this.httpClient.post<number>("http://localhost:8080/patient/addPatientMedicines",patientMedicines);
-  }
-
-  AddPatientTest(patientTest : PatientTest){
-    return this.httpClient.post<number>("http://localhost:8080/patient/addPatientTest",patientTest);
-  }
-
-  DeletePatientInformation(patientId : number){
-    return this.httpClient.delete<number>("http://localhost:8080/patient/deletePatientInformation/"+patientId);
-
-  }
-
-  DeletePatientExamination(peId:number){
-    return this.httpClient.delete<number>("http://localhost:8080/patient/deletePatientExamination/"+peId);
-  }
-
-  DeletePatientTreatment(ptId:number){
-    return this.httpClient.delete<number>("http://localhost:8080/patient/deletePatientTreatment/"+ptId);
-  }
-
-  DeletePatientMedicines(pmId:number){
-    return this.httpClient.delete<number>("http://localhost:8080/patient/deletePatientMedicines/"+pmId);
-  }
-
-  DeletePatientTest(pTestId:number){
-    return this.httpClient.delete<number>("http://localhost:8080/patient/deletePatientTest/"+pTestId);
-  }
-
-  UpdatePatientInformation(patientInformation:PatientInformation){
-    return this.httpClient.put<number>("http://localhost:8080/patient/updatePatientInformation",patientInformation);
-  }
-
-  UpdatePatientExamination(patientExamination:PatientExamination){
-    return this.httpClient.put<number>("http://localhost:8080/patient/updatePatientExamination",patientExamination);
-  }
-
-  UpdatePatientTreatment(patientTreatment:PatientTreatment){
-    return this.httpClient.put<number>("http://localhost:8080/patient/updatePatientTreatment",patientTreatment);
-  }
-
-  UpdatePatientMedicines(patientMedicines:PatientMedicines){
-    return this.httpClient.put<number>("http://localhost:8080/patient/updatePatientMedicines",patientMedicines);
-  }
-
-  UpdatePatientTest(patientTest:PatientTest){
-    return this.httpClient.put<number>("http://localhost:8080/patient/updatePatientTest",patientTest);
-  }
-
-  GetPatientInformation(patientId:number){
-    return this.httpClient.get<PatientInformation>("http://localhost:8080/patient/getPatientInformation/"+patientId);
-  }
-  GetPatientInformationByEmail(patient_email:string){
-    return this.httpClient.get<PatientInformation>("http://localhost:8080/patient/getPatientInformationByEmail/"+patient_email);
-  }
-
-  getAllPatientInformation()
-  {
-    return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getAllPatientInformation");
-  }
+AddPatientExamination(patientExamination : PatientExamination){
+  return this.httpClient.post<number>("http://localhost:8080/patient/addPatientExamination",patientExamination);
+}
 
 
-  GetAllPatientsByDoctorId(doctorId:number){
-    return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getPatientInformationByDoctorId/"+doctorId);
+AddPatientTreatment(patientTreatment : PatientTreatment){
+  return this.httpClient.post<number>("http://localhost:8080/patient/addPatientTreatment",patientTreatment);
+}
 
-  }
+AddPatientMedicines(patientMedicines: PatientMedicines){
+  return this.httpClient.post<number>("http://localhost:8080/patient/addPatientMedicines",patientMedicines);
+}
 
-  GetPatientInformationByPatientId(patientId : number){
-    return this.httpClient.get<PatientInformation>("http://localhost:8080/patient/getPatientInformation/"+patientId);
-  }
+AddPatientTest(patientTest : PatientTest){
+  return this.httpClient.post<number>("http://localhost:8080/patient/addPatientTest",patientTest);
+}
 
-  GetPatientExaminationByPatientId(patientId : number){
-    return this.httpClient.get<PatientExamination[]>("http://localhost:8080/patient/getPatientExaminationByPatientId/"+patientId);
-  }
+DeletePatientInformation(patientId : number){
+  return this.httpClient.delete<number>("http://localhost:8080/patient/deletePatientInformation/"+patientId);
 
-  GetPtIdByPatientId(patientId: number){
-    return this.httpClient.get<number[]>("http://localhost:8080/patient/getPtIdByPatientId/"+patientId);
-  }
+}
+
+DeletePatientExamination(peId:number){
+  return this.httpClient.delete<number>("http://localhost:8080/patient/deletePatientExamination/"+peId);
+}
+
+DeletePatientTreatment(ptId:number){
+  return this.httpClient.delete<number>("http://localhost:8080/patient/deletePatientTreatment/"+ptId);
+}
+
+DeletePatientMedicines(pmId:number){
+  return this.httpClient.delete<number>("http://localhost:8080/patient/deletePatientMedicines/"+pmId);
+}
+
+DeletePatientTest(pTestId:number){
+  return this.httpClient.delete<number>("http://localhost:8080/patient/deletePatientTest/"+pTestId);
+}
+
+UpdatePatientInformation(patientInformation:PatientInformation){
+  return this.httpClient.put<number>("http://localhost:8080/patient/updatePatientInformation",patientInformation);
+}
+
+UpdatePatientExamination(patientExamination:PatientExamination){
+  return this.httpClient.put<number>("http://localhost:8080/patient/updatePatientExamination",patientExamination);
+}
+
+UpdatePatientTreatment(patientTreatment:PatientTreatment){
+  return this.httpClient.put<number>("http://localhost:8080/patient/updatePatientTreatment",patientTreatment);
+}
+
+UpdatePatientMedicines(patientMedicines:PatientMedicines){
+  return this.httpClient.put<number>("http://localhost:8080/patient/updatePatientMedicines",patientMedicines);
+}
+
+UpdatePatientTest(patientTest:PatientTest){
+  return this.httpClient.put<number>("http://localhost:8080/patient/updatePatientTest",patientTest);
+}
+
+GetPatientInformation(patientId:number){
+  return this.httpClient.get<PatientInformation>("http://localhost:8080/patient/getPatientInformation/"+patientId);
+}
+GetPatientInformationByEmail(patient_email:string){
+  return this.httpClient.get<PatientInformation>("http://localhost:8080/patient/getPatientInformationByEmail/"+patient_email);
+}
+
+getAllPatientInformation()
+{
+  return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getAllPatientInformation");
+}
 
 
-  GetPatientMedicineByPtId(ptId: number){
-    return this.httpClient.get<PatientMedicines[]>("http://localhost:8080/patient/getPatientMedicinesByPtId/"+ptId);
-  }
+GetAllPatientsByDoctorId(doctorId:number){
+  return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getPatientInformationByDoctorId/"+doctorId);
 
-  GetAllPAtientMedicines(){
-    return this.httpClient.get<PatientMedicines[]>("http://localhost:8080/patient/getAllPatientMedicines");
-  }
+}
+
+GetPatientInformationByPatientId(patientId : number){
+  return this.httpClient.get<PatientInformation>("http://localhost:8080/patient/getPatientInformation/"+patientId);
+}
+
+GetPatientExaminationByPatientId(patientId : number){
+  return this.httpClient.get<PatientExamination[]>("http://localhost:8080/patient/getPatientExaminationByPatientId/"+patientId);
+}
+
+GetPtIdByPatientId(patientId: number){
+  return this.httpClient.get<number[]>("http://localhost:8080/patient/getPtIdByPatientId/"+patientId);
+}
+
+
+GetPatientMedicineByPtId(ptId: number){
+  return this.httpClient.get<PatientMedicines[]>("http://localhost:8080/patient/getPatientMedicinesByPtId/"+ptId);
+}
+
+GetAllPAtientMedicines(){
+  return this.httpClient.get<PatientMedicines[]>("http://localhost:8080/patient/getAllPatientMedicines");
+}
+
+
+AddPatientTreatment2(patientTreatment2 : PatientTreatment2){
+  return this.httpClient.post<number>("http://localhost:8080/patientTreatment2/addPatintTreatment2",patientTreatment2);
+}
+
+DeletePatientTreatment2(pt2Id : number){
+  return this.httpClient.delete<number>("http://localhost:8080/patientTreatment2/deletePatientTreatment2ById/"+pt2Id);
+}
+
+GetAllPatientTreatment2ByPatientId(patientId:number){
+  return this.httpClient.get<PatientTreatment2[]>("http://localhost:8080/patientTreatment2/getPatientTreatment2ById/"+patientId);
+
+}
+
+
+getAllPatientInformationByNurseId(nurseId:number)
+{
+  return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getPatientByNurse/"+nurseId);
+}
 
 
   AddPatientTreatment2(patientTreatment2 : PatientTreatment2){
@@ -262,5 +277,6 @@ export class PatientService {
     return this.httpClient.get<Medicines[]>("http://localhost:8080/medicines/getAllMedicinesByType/"+medicineType);
 
   }
+
 
 }

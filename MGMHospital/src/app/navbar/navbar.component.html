@@ -1,8 +1,9 @@
-<div >
+<div>
   <div id="topbar" class="d-none d-lg-flex align-items-center">
     <div class="container-fluid d-flex">
       <div class="contact-info mr-auto">
-        <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">mgm@gmail.com</a>
+        <i class="icofont-envelope"></i>
+        <a href="mailto:contact@example.com">mgm@gmail.com</a>
         <i class="icofont-phone"></i> +1 5589 55488 55
         <i class="icofont-google-map"></i> New Mumbai, NP
       </div>
@@ -16,75 +17,128 @@
     </div>
   </div>
 
-
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand"  href="#"><img src="assets/img/logo1.png" id="photo" alt="logo" class="responsive" style="width: auto;
-      height: auto;"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <a class="navbar-brand" href="#"
+      ><img
+        src="assets/img/logo1.png"
+        id="photo"
+        alt="logo"
+        class="responsive"
+        style="width: auto; height: auto"
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto topnav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#" (click)="Homepage()">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/about">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/services">Services</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/department">Departments</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/doctor">Doctors</a>
-            </li>
+      <ul class="navbar-nav ml-auto topnav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#" (click)="Homepage()"
+            >Home <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/department">Departments</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/doctor">Doctors</a>
+        </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-            </li>
-            <div *ngIf="(objManagementSession == null && objNurse ==null && objDoctorSession == null)" style="display:flex">
-                  <li class="nav-item dropdown mr-2" >
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Register
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" routerLink="/registration-doctor">Doctor</a>
-                        <a class="dropdown-item" routerLink="/registration-patient">Patient</a>
-                        <a class="dropdown-item" routerLink="/registration-nurse">Nurse</a>
-                        <a class="dropdown-item" routerLink="/registration-admin">Admin</a>
-                    </div>
-                </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <div
+          *ngIf="
+            objManagementSession == null &&
+            objNurse == null &&
+            objDoctorSession == null &&
+            objPatientInformation == null
+          "
+          style="display: flex"
+        >
+          <li class="nav-item dropdown mr-2">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Register
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" routerLink="/registration-doctor"
+                >Doctor</a
+              >
+              <a class="dropdown-item" routerLink="/registration-patient"
+                >Patient</a
+              >
+              <a class="dropdown-item" routerLink="/registration-nurse"
+                >Nurse</a
+              >
+              <a class="dropdown-item" routerLink="/registration-admin"
+                >Admin</a
+              >
+            </div>
+          </li>
 
-                <li class="nav-item">
-                    <a class="nav-link btn btn-primary text-white" type="button" routerLink="/login">Sign In</a>
-                </li>
-            </div>
-            <div *ngIf="(objManagementSession != null)">
-                <li class="nav-item">
-                  <button class="btn btn-primary text-white" (click)="LogoutManagement()">Logout</button>
-              </li>
-            </div>
-            <div *ngIf="(objNurse != null)">
-              <li class="nav-item">
-                <button class="btn btn-primary text-white" (click)="LogoutNurse()">Logout</button>
-            </li>
-          </div>
-          <div *ngIf="(objDoctorSession != null)">
-            <li class="nav-item">
-              <button class="btn btn-primary text-white" (click)="LogoutDoctor()">Logout</button>
+          <li class="nav-item">
+            <a
+              class="nav-link btn btn-primary text-white"
+              type="button"
+              routerLink="/login"
+              >Sign In</a
+            >
           </li>
         </div>
-
-
-        </ul>
+        <div *ngIf="objManagementSession != null">
+          <li class="nav-item">
+            <button
+              class="btn btn-primary text-white"
+              (click)="LogoutManagement()"
+            >
+              Logout
+            </button>
+          </li>
+        </div>
+        <div *ngIf="objNurse != null">
+          <li class="nav-item">
+            <button class="btn btn-primary text-white" (click)="LogoutNurse()">
+              Logout
+            </button>
+          </li>
+        </div>
+        <div *ngIf="objDoctorSession != null">
+          <li class="nav-item">
+            <button class="btn btn-primary text-white" (click)="LogoutDoctor()">
+              Logout
+            </button>
+          </li>
+        </div>
+        <div *ngIf="objPatientInformation != null">
+          <li class="nav-item">
+            <button class="btn btn-primary text-white" (click)="LogoutPatient()">
+              Logout
+            </button>
+          </li>
+        </div>
+      </ul>
     </div>
-
   </nav>
-
-
 </div>
