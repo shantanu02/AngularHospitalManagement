@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MedicineService , Medicine } from '../medicine.service';
-import { CombinePatientTreatment, PatientExamination, PatientInformation, PatientMedicines, PatientService, PatientTreatment } from '../patient.service';
+import { CombinePatientTreatment, PatientExamination, PatientInformation, PatientMedicines, PatientService, PatientTreatment, PatientTreatment2 } from '../patient.service';
 
 @Component({
   selector: 'app-doctor-home',
@@ -17,7 +17,7 @@ export class DoctorHomeComponent implements OnInit {
   patientList : PatientInformation[] = [];
   patientExaminationList : PatientExamination[] = [];
 
-  docSessId: number = 1;
+  docSessId: number = 1 ;
 
   objPatientInformation: PatientInformation = new PatientInformation(null,null,null,null,
     null,null,null,null,null,null,
@@ -39,7 +39,9 @@ export class DoctorHomeComponent implements OnInit {
 
     ptIdList: number[];
 
-
+    patientTreatment2 : PatientTreatment2;
+    
+    patientTreatment2List : PatientTreatment2[];
 
    SearchPatient(){
     if(this.patient_name != ""){
@@ -115,59 +117,17 @@ getMedicinesByType(medicineType:String){
 }
 
 AddPatientTreatmentAndMedicines(combinePatientTreatment:CombinePatientTreatment,medicineId : number){
-  
-   this.patientMedicines.medicineId = medicineId;
-  
-   this.patientMedicines.pmDosage =  this.dosage ;
-   this.patientMedicines.pmTime = this.time ;
-  
 
-   this.patientTreatment.ptDoctorNote =this.docNote ;
-   
-   this.patientTreatment.patientId =  this.objPatientInformation.patientId ;
-   //alert(this.patientTreatment.patientId);
+  this.patientTreatment2.medicineId = medicineId;
+  this.patientTreatment2.dosage = this.dosage;
+  this.patientTreatment2.time = this.time;
+  this.patientTreatment2.patientId =  this.objPatientInformation.patientId ;
+  this.patientTreatment2.doctorNote = this.docNote;
+ 
+  this.patientService.AddPatientTreatment2(this.patientTreatment2).subscribe(res =>{
+      alert(res+" added");
+  });
 
-  //alert(this.patientMedicines.medicineId);
-  //alert( this.combinePatientTreatment.medicineId);
-   this.patientService.AddPatientTreatment(this.patientTreatment).subscribe(res=>{
-     this.patientMedicines.ptId = res;
-     this.patientService.AddPatientMedicines(this.patientMedicines).subscribe(res=>{
-      this.uiAlert = true;
-      //alert(res);
-        // this.time="";
-        // this.docNote="";
-        // this.dosage="";
-
-        this.patientService.GetPtIdByPatientId(this.objPatientInformation.patientId).subscribe(res=>{
-          this.ptIdList = res;
-          //alert(this.ptIdList[0]);
-
-          this.patientService.GetAllPAtientMedicines().subscribe(res=>{
-          
-            this.allPatientMedicinesList = res;
-            alert(this.allPatientMedicinesList.length);
-          });
-
-          let k = 0 ;
-          for (let i = 0; i < this.ptIdList.length; i++) {
-            for(let j = 0 ; j < this.allPatientMedicinesList.length ; j++){
-              if (this.ptIdList[i] == this.allPatientMedicinesList[j].ptId ){
-               
-                this.patientMedicinesList[k] =this.patientMedicinesList[j]; 
-                alert(this.patientMedicinesList[k]);
-              }
-              k++;
-            }
-
-          }
-
-
-        });
-
-
-
-     });
-   });
 
 }
 
