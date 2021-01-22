@@ -14,7 +14,7 @@ export class ManagementHomepageComponent implements OnInit {
 
   ngOnInit(): void {
     this.objManagementSession = JSON.parse(sessionStorage.getItem('mgmtLogin'));
-
+    //window.location.reload();
   }
 
 

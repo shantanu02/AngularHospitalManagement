@@ -12,11 +12,11 @@ export class NavbarComponent implements OnInit {
   objManagementSession:Management = new Management(null,null,null,null,null,null);
 
   constructor(private router: Router) { }
-  secondMethod() { this.ngOnInit(); }
+ 
 
   ngOnInit(): void {
     this.objManagementSession = JSON.parse(sessionStorage.getItem('mgmtLogin'));
-   this.secondMethod();
+  
   }
 
   LogoutManagement()

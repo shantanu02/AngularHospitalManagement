@@ -45,6 +45,7 @@ export class PatientExamination{
     public peChest:string,
     public peHeart:string,
     public peNeuro:string,
+    public peBack:string,
     public peAbdomen:string,
     public peExtermities:string,
     public peOthers:string,
@@ -67,7 +68,7 @@ export class PatientTreatment {
     public ptNurseNote :string,
     public ptMDNote:string,
     public ptDoctorNote :string,
-    public peId:number,
+    public patientId:number,
   
 
   ){}
@@ -92,6 +93,20 @@ export class PatientTest{
     public ptId:number
   ){}
   
+}
+
+export class CombinePatientTreatment{
+  constructor(
+   
+    public ptNurseNote :string,
+    public ptMDNote:string,
+    public ptDoctorNote :string,
+    public patientId:number,
+    public pmId:number,
+    public pmDosage:string,
+    public pmTime:string,
+    public medicineId:number
+  ){}
 }
 
 
@@ -171,8 +186,31 @@ export class PatientService {
     return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getPatientInformation/"+patientId);
   }
 
+  GetAllPatientsByDoctorId(doctorId:number){
+    return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getPatientInformationByDoctorId/"+doctorId);
+
+  }
   
+  GetPatientInformationByPatientId(patientId : number){
+    return this.httpClient.get<PatientInformation>("http://localhost:8080/patient/getPatientInformation/"+patientId);
+  }
   
+  GetPatientExaminationByPatientId(patientId : number){
+    return this.httpClient.get<PatientExamination[]>("http://localhost:8080/patient/getPatientExaminationByPatientId/"+patientId);
+  }
+
+  GetPtIdByPatientId(patientId: number){
+    return this.httpClient.get<number[]>("http://localhost:8080/patient/getPtIdByPatientId/"+patientId);
+  }
+
+
+  GetPatientMedicineByPtId(ptId: number){
+    return this.httpClient.get<PatientMedicines[]>("http://localhost:8080/patient/getPatientMedicinesByPtId/"+ptId);
+  }
+
+  GetAllPAtientMedicines(){
+    return this.httpClient.get<PatientMedicines[]>("http://localhost:8080/patient/getAllPatientMedicines");
+  }
 
 
 }
