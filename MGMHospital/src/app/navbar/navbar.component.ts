@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Doctor } from '../doctor-service.service';
 import { Management } from '../management.service';
 import { Nurse } from '../nurse-service.service';
+import { PatientInformation } from '../patient.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,6 @@ import { Nurse } from '../nurse-service.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-
   objManagementSession: Management = new Management(
     null,
     null,
@@ -51,48 +51,75 @@ export class NavbarComponent implements OnInit {
     null,
     null,null
   );
+  objPatientInformation: PatientInformation = new PatientInformation(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.objManagementSession = JSON.parse(sessionStorage.getItem('mgmtLogin'));
     this.objNurse = JSON.parse(sessionStorage.getItem('nurseLogin'));
     this.objDoctorSession = JSON.parse(sessionStorage.getItem('doctorLogin'));
+    this.objPatientInformation = JSON.parse(sessionStorage.getItem('patientLogin')
+    );
   }
 
   LogoutManagement() {
     sessionStorage.removeItem('mgmtLogin');
     this.router.navigate(['/homepage']);
   }
-  LogoutNurse()
-  {
+  LogoutNurse() {
     sessionStorage.removeItem('nurseLogin');
     this.router.navigate(['/homepage']);
   }
 
-  LogoutDoctor()
-  {
+  LogoutDoctor() {
     sessionStorage.removeItem('doctorLogin');
     this.router.navigate(['/homepage']);
   }
-
-  Homepage()
+  LogoutPatient()
   {
-    if(this.objNurse != null)
-    {
-        this.router.navigate(['nurse-home']);
+    sessionStorage.removeItem('patientLogin');
+    this.router.navigate(['/homepage']);
+  }
+
+  Homepage() {
+    if (this.objNurse != null) {
+      this.router.navigate(['nurse-home']);
     }
-    else if(this.objDoctorSession != null)
-    {
-        this.router.navigate(['doctor-home']);
+    else if (this.objDoctorSession != null) {
+      this.router.navigate(['doctor-home']);
     }
-    else if(this.objManagementSession != null)
-    {
-        this.router.navigate(['Management-Homepage']);
-    }
-    else
-    {
+    else if (this.objManagementSession != null) {
+      this.router.navigate(['Management-Homepage']);
+    } else {
       this.router.navigate(['homepage']);
     }
   }
-
 }

@@ -1,80 +1,29 @@
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <div class="container-fluid">
     <div class="container">
-        <div class="jumbotron bg-primary align-items-center" style="height:20px;display: flex;justify-content: center;color:white;">
+        <div class="jumbotron bg-primary align-items-center"
+            style="height:20px;display: flex;justify-content: center;color:white;">
             <h1>Patient's Registration Form</h1>
         </div>
         <div class="row py-5 mt-4 align-items-center">
+
             <!-- For Demo Purpose -->
             <!-- Registeration Form -->
-            <div class="col-md-7 col-lg-6 ml-auto">
-                <form >
+            <div class="col-md-7 col-lg-12 ml-auto">
+                <form>
                     <div class="row">
 
                         <!-- Patient's Name -->
-                        <div class="input-group col-lg-12 mb-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                    <i class="fa fa-user text-muted"></i>
-                                </span>
-                            </div>
-                            <input id="patientFName" [(ngModel)]="patientInformation.patientFName" type="text" name="name" placeholder="Patient's First Name"
-                                class="form-control bg-white border-left-0 border-md">
-                        </div>
-
-                        <div class="input-group col-lg-12 mb-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                    <i class="fa fa-user text-muted"></i>
-                                </span>
-                            </div>
-                            <input id="patientLName" [(ngModel)]="patientInformation.patientLName" type="text" name="name" placeholder="Patient's Last Name"
-                                class="form-control bg-white border-left-0 border-md">
-                        </div>
-
-                        <!-- Patient's Address-->
-                        <div class="input-group col-lg-12 mb-4">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text bg-white px-4 border-md border-right-0">
-                              <i class="fa fa-address-book" aria-hidden="true"></i>
-                               </span>
-                           </div>
-
-                            <input type="text" id="patientAddress" [(ngModel)]="patientInformation.patientAddress" name="patient Address" 
-                                placeholder="Permanent Address">
-                        </div>
-                         <!-- Patient's Temp Address-->
-                        <div class="input-group col-lg-12 mb-4">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-address-book" aria-hidden="true"></i>
-                              </span>
-                          </div>
-                              <input type="text" id="patientTempAddress" [(ngModel)]="patientInformation.patientTempAddress" name ="patient temp address" 
-                                  placeholder="Temporary Address">
-                        </div>
-
-                        <!-- petient's City-->
                         <div class="input-group col-lg-6 mb-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
                                     <i class="fa fa-user text-muted"></i>
                                 </span>
                             </div>
-                            <input id="patientCity" [(ngModel)]="patientInformation.patientCity" type="text" name="city" placeholder="City"
-                                class="form-control bg-white border-left-0 border-md">
-                        </div>
-
-                        <!-- petient Zipcode-->
-                        <div class="input-group col-lg-6 mb-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                    <i class="fa fa-user text-muted"></i>
-                                </span>
-                            </div>
-                            <input id="patientZipCode" [(ngModel)]="patientInformation.patientZipCode" type="text" name="zipcode" placeholder="Zip Code"
+                            <input id="patientFName" [(ngModel)]="patientInformation.patientFName" type="text"
+                                name="name" placeholder="Patient's First Name"
                                 class="form-control bg-white border-left-0 border-md">
                         </div>
 
@@ -84,44 +33,8 @@
                                     <i class="fa fa-user text-muted"></i>
                                 </span>
                             </div>
-                            <input id="patientState" [(ngModel)]="patientInformation.patientState" type="text" name="state" placeholder="State"
-                                class="form-control bg-white border-left-0 border-md">
-                        </div>
-
-                        
-                        <!-- Email Address -->
-                        <div class="input-group col-lg-8 mb-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                  <i class="fa fa-envelope" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <input id="patientEmail" [(ngModel)]="patientInformation.patientEmail" type="email" name="email" placeholder="Email Address"
-                                class="form-control bg-white border-left-0 border-md">
-                        </div>
-
-                        <!-- Password-->
-                        <div class="input-group col-lg-4 mb-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                  <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-
-                                </span>
-                            </div>
-                            <input id="patientPassword" [(ngModel)]="patientInformation.patientPassword" type="password" name="password" placeholder="Password"
-                                class="form-control bg-white border-left-0 border-md">
-                        </div>
-
-                      
-
-                        <!-- petient's Phone Number-->
-                        <div class="input-group col-lg-12 mb-4">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                  <i class="fa fa-phone" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <input id="patientPhone" [(ngModel)]="patientInformation.patientPhone" type="text" name="phonenumber" placeholder="Phone Number"
+                            <input id="patientLName" [(ngModel)]="patientInformation.patientLName" type="text"
+                                name="name" placeholder="Patient's Last Name"
                                 class="form-control bg-white border-left-0 border-md">
                         </div>
 
@@ -133,14 +46,15 @@
                                 </span>
                             </div>
                             <select id="patientGender" [(ngModel)]="patientInformation.patientGender" name="gender"
-                                class="form-control custom-select bg-white border-left-0 border-md" placeholder="Gender">
-                                <option value="">Select your Gender</option>
+                                class="form-control custom-select bg-white border-left-0 border-md"
+                                placeholder="Gender">
+                                <option default>Open this select menu</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                                 <option value="other">Others</option>
-
                             </select>
                         </div>
+
 
                         <!-- petient DOB-->
                         <div class="input-group col-lg-6 mb-4">
@@ -149,9 +63,107 @@
                                     <i class="fa fa-user text-muted"></i>
                                 </span>
                             </div>
-                            <input id="patientDOB" [(ngModel)]="patientInformation.patientDOB" type="date" name="dob" placeholder="Date of Birth"
+                            <input id="patientDOB" [(ngModel)]="patientInformation.patientDOB" type="date" name="dob"
+                                placeholder="Date of Birth" class="form-control bg-white border-left-0 border-md">
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="input-group col-lg-4 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <input id="patientEmail" [(ngModel)]="patientInformation.patientEmail" type="email"
+                                name="email" placeholder="Email Address"
                                 class="form-control bg-white border-left-0 border-md">
                         </div>
+
+                        <!-- Password-->
+                        <div class="input-group col-lg-4 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+
+                                </span>
+                            </div>
+                            <input id="patientPassword" [(ngModel)]="patientInformation.patientPassword" type="password"
+                                name="password" placeholder="Password"
+                                class="form-control bg-white border-left-0 border-md">
+                        </div>
+
+
+
+                        <!-- petient's Phone Number-->
+                        <div class="input-group col-lg-4 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <input id="patientPhone" [(ngModel)]="patientInformation.patientPhone" type="text"
+                                name="phonenumber" placeholder="Phone Number"
+                                class="form-control bg-white border-left-0 border-md">
+                        </div>
+
+                        <!-- Patient's Address-->
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-address-book" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <input type="text" id="patientAddress" [(ngModel)]="patientInformation.patientAddress"
+                                name="patient Address" placeholder="Permanent Address" rows="3">
+
+                        </div>
+
+                        <!-- Patient's Temp Address-->
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-address-book" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <input id="patientTempAddress" [(ngModel)]="patientInformation.patientTempAddress"
+                                name="patient temp address" placeholder="Temporary Address" rows="3">
+                        </div>
+
+                        <!-- petient's City-->
+                        <div class="input-group col-lg-4 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <input id="patientCity" [(ngModel)]="patientInformation.patientCity" type="text" name="city"
+                                placeholder="City" class="form-control bg-white border-left-0 border-md">
+                        </div>
+
+                        <!-- patient Zipcode-->
+                        <div class="input-group col-lg-4 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <input id="patientZipCode" [(ngModel)]="patientInformation.patientZipCode" type="text"
+                                name="zipcode" placeholder="Zip Code"
+                                class="form-control bg-white border-left-0 border-md">
+                        </div>
+
+                        <div class="input-group col-lg-4 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <input id="patientState" [(ngModel)]="patientInformation.patientState" type="text"
+                                name="state" placeholder="State" class="form-control bg-white border-left-0 border-md">
+                        </div>
+
+
 
                         <!-- Weight-->
                         <div class="input-group col-lg-6 mb-4">
@@ -160,7 +172,8 @@
                                     <i class="fa fa-user text-muted"></i>
                                 </span>
                             </div>
-                            <input id="patientWeight" [(ngModel)]="patientInformation.patientWeight" type="text" name="weight" placeholder="Weight"
+                            <input id="patientWeight" [(ngModel)]="patientInformation.patientWeight" type="text"
+                                name="weight" placeholder="Weight"
                                 class="form-control bg-white border-left-0 border-md">
                         </div>
 
@@ -172,7 +185,8 @@
                                 </span>
                             </div>
                             <select id="patientTriage" [(ngModel)]="patientInformation.patientTriage" name="tirage"
-                                class="form-control custom-select bg-white border-left-0 border-md" placeholder="Triage">
+                                class="form-control custom-select bg-white border-left-0 border-md"
+                                placeholder="Triage">
                                 <option value="">Select Degree of urgency</option>
                                 <option value="green">Green</option>
                                 <option value="yellow">Yellow</option>
@@ -183,7 +197,7 @@
                             </select>
                         </div>
 
-                        
+
                         <!--petient's Complaint -->
                         <div class="input-group col-lg-6 mb-4">
                             <div class="input-group-prepend">
@@ -191,7 +205,8 @@
                                     <i class="fa fa-user text-muted"></i>
                                 </span>
                             </div>
-                            <input id="patientComplaint" [(ngModel)]="patientInformation.patientComplaint" type="text" name="complaint" placeholder="Complaint"
+                            <input id="patientComplaint" [(ngModel)]="patientInformation.patientComplaint" type="text"
+                                name="complaint" placeholder="Complaint"
                                 class="form-control bg-white border-left-0 border-md">
                         </div>
 
@@ -202,7 +217,8 @@
                                     <i class="fa fa-user text-muted"></i>
                                 </span>
                             </div>
-                            <input id="patientAllergies" [(ngModel)]="patientInformation.patientAllergies" type="text" name="allergies" placeholder="Allergies"
+                            <input id="patientAllergies" [(ngModel)]="patientInformation.patientAllergies" type="text"
+                                name="allergies" placeholder="Allergies"
                                 class="form-control bg-white border-left-0 border-md">
                         </div>
 
@@ -210,25 +226,26 @@
 
 
                         <!-- Medical History -->
-                        <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group col-lg-6 mb-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
                                     <i class="fa fa-envelope text-muted"></i>
                                 </span>
                             </div>
-                            <input id="patientMedicalHistory" [(ngModel)]="patientInformation.patientMedicalHistory"  type="text" name="medicalhistory" placeholder="Medical History"
+                            <input id="patientMedicalHistory" [(ngModel)]="patientInformation.patientMedicalHistory"
+                                type="text" name="medicalhistory" placeholder="Medical History"
                                 class="form-control bg-white border-left-0 border-md">
                         </div>
-                        
-                          <!--patient's SID-->
-                          <div class="input-group col-lg-6 mb-4">
+
+                        <!--patient's SID-->
+                        <div class="input-group col-lg-6 mb-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
                                     <i class="fa fa-envelope text-muted"></i>
                                 </span>
                             </div>
-                            <input id="patientSID" [(ngModel)]="patientInformation.patientSID" type="text" name="sid" placeholder="SID"
-                                class="form-control bg-white border-left-0 border-md">
+                            <input id="patientSID" [(ngModel)]="patientInformation.patientSID" type="text" name="sid"
+                                placeholder="SID" class="form-control bg-white border-left-0 border-md">
                         </div>
 
                         <!--patient's  OPD-->
@@ -238,8 +255,8 @@
                                     <i class="fa fa-envelope text-muted"></i>
                                 </span>
                             </div>
-                            <input id="patientOPD" [(ngModel)]="patientInformation.patientOPD" type="text" name="opd" placeholder="OPD"
-                                class="form-control bg-white border-left-0 border-md">
+                            <input id="patientOPD" [(ngModel)]="patientInformation.patientOPD" type="text" name="opd"
+                                placeholder="OPD" class="form-control bg-white border-left-0 border-md">
                         </div>
 
 
@@ -250,8 +267,8 @@
                                     <i class="fa fa-envelope text-muted"></i>
                                 </span>
                             </div>
-                            <input id="patientIPD" [(ngModel)]="patientInformation.patientIPD" type="text" name="ipd" placeholder="IPD"
-                                class="form-control bg-white border-left-0 border-md">
+                            <input id="patientIPD" [(ngModel)]="patientInformation.patientIPD" type="text" name="ipd"
+                                placeholder="IPD" class="form-control bg-white border-left-0 border-md">
                         </div>
 
                         <!-- Patient's ward Number-->
@@ -262,19 +279,18 @@
                                 </span>
                             </div>
                             <input id="patientWard" [(ngModel)]="patientInformation.patientWard" type="text" name="ward"
-                                placeholder="Patient Ward"
-                                class="form-control bg-white border-left-0 border-md">
+                                placeholder="Patient Ward" class="form-control bg-white border-left-0 border-md">
                         </div>
 
-                         <!--patient's  Bed Number-->
-                         <div class="input-group col-lg-12 mb-4">
+                        <!--patient's  Bed Number-->
+                        <div class="input-group col-lg-6 mb-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
                                     <i class="fa fa-envelope text-muted"></i>
                                 </span>
                             </div>
-                            <input id="patientBedNo" [(ngModel)]="patientInformation.patientBedNo" type="text" name="bednumber"
-                                placeholder="Patient's Bed Number"
+                            <input id="patientBedNo" [(ngModel)]="patientInformation.patientBedNo" type="text"
+                                name="bednumber" placeholder="Patient's Bed Number"
                                 class="form-control bg-white border-left-0 border-md">
                         </div>
 
@@ -282,12 +298,12 @@
                 </form>
             </div>
 
-           
+
             <!-- Submit Button -->
             <div class="form-group col-lg-12 mx-auto mb-0">
                 <button (click)="AddPatientInformation(patientInformation)" class="btn btn-primary btn-block py-2">
                     <span class="font-weight-bold">Register Patient</span>
-                  </button>
+                </button>
             </div>
 
             <!-- Divider Text -->
@@ -306,4 +322,3 @@
         </div>
     </div>
 </div>
-

@@ -4,7 +4,7 @@ import { Doctor, DoctorServiceService } from '../doctor-service.service';
 import { LoginService, UserLogin } from '../login.service';
 import { Management, ManagementService } from '../management.service';
 import { Nurse, NurseServiceService } from '../nurse-service.service';
-import { PatientService } from '../patient.service';
+import { PatientInformation, PatientService } from '../patient.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -67,6 +67,34 @@ export class LoginComponent implements OnInit {
     null,
     null,null
   );
+  objPatientInformation: PatientInformation = new PatientInformation(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
 
   Validate(objUserLogin: UserLogin) {
     this.loginService.CheckLogin(objUserLogin).subscribe((res) => {
@@ -74,14 +102,16 @@ export class LoginComponent implements OnInit {
         alert('This is admin');
       } else if (res.userRole == 'doctor') {
         alert('This is doctor');
-        this.doctorServiceService.getDoctorByEmail(res.userEmail).subscribe(result=>{
-          this.objDoctor = result;
-          sessionStorage.setItem(
-            'doctorLogin',
-            JSON.stringify(this.objDoctor)
-          );
-          this.router.navigate(['doctor-home']);
-        })
+        this.doctorServiceService
+          .getDoctorByEmail(res.userEmail)
+          .subscribe((result) => {
+            this.objDoctor = result;
+            sessionStorage.setItem(
+              'doctorLogin',
+              JSON.stringify(this.objDoctor)
+            );
+            this.router.navigate(['doctor-home']);
+          });
       } else if (res.userRole == 'management') {
         alert('This is Management');
         this.managementService
@@ -107,7 +137,11 @@ export class LoginComponent implements OnInit {
         alert('This is Patient');
         this.patientService
           .GetPatientInformationByEmail(res.userEmail)
-          .subscribe((result) => {});
+          .subscribe((result) => {
+            this.objPatientInformation = result;
+            sessionStorage.setItem('patientLogin', JSON.stringify(this.objPatientInformation));
+            this.router.navigate(['patient-home']);
+          });
       } else {
         alert('Unknown');
       }
