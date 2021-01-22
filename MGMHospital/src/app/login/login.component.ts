@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Doctor, DoctorServiceService } from '../doctor-service.service';
 import { LoginService, UserLogin } from '../login.service';
 import { Management, ManagementService } from '../management.service';
 import { Nurse, NurseServiceService } from '../nurse-service.service';
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private managementService: ManagementService,
     private patientService: PatientService,
-    private nurseServiceService: NurseServiceService
+    private nurseServiceService: NurseServiceService,
+    private doctorServiceService: DoctorServiceService
   ) {}
 
   ngOnInit(): void {}
@@ -49,6 +51,22 @@ export class LoginComponent implements OnInit {
     null,
     null
   );
+  objDoctor: Doctor = new Doctor(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
 
   Validate(objUserLogin: UserLogin) {
     this.loginService.CheckLogin(objUserLogin).subscribe((res) => {
@@ -56,6 +74,14 @@ export class LoginComponent implements OnInit {
         alert('This is admin');
       } else if (res.userRole == 'doctor') {
         alert('This is doctor');
+        this.doctorServiceService.getDoctorByEmail(res.userEmail).subscribe(result=>{
+          this.objDoctor = result;
+          sessionStorage.setItem(
+            'doctorLogin',
+            JSON.stringify(this.objDoctor)
+          );
+          this.router.navigate(['doctor-home']);
+        })
       } else if (res.userRole == 'management') {
         alert('This is Management');
         this.managementService
@@ -74,10 +100,7 @@ export class LoginComponent implements OnInit {
           .getNurseByEmail(res.userEmail)
           .subscribe((res) => {
             this.objNurse = res;
-            sessionStorage.setItem(
-              'nurseLogin',
-              JSON.stringify(this.objNurse)
-            );
+            sessionStorage.setItem('nurseLogin', JSON.stringify(this.objNurse));
             this.router.navigate(['nurse-home']);
           });
       } else if (res.userRole == 'patient') {

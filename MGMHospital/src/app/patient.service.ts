@@ -46,7 +46,6 @@ export class PatientExamination{
     public peBack:string,
     public peHeart:string,
     public peNeuro:string,
-    public peBack:string,
     public peAbdomen:string,
     public peExtermities:string,
     public peOthers:string,
@@ -69,7 +68,6 @@ export class PatientTreatment {
     public ptNurseNote :string,
     public ptMDNote:string,
     public ptDoctorNote :string,
-
     public patientId:number,
 
 
@@ -85,7 +83,14 @@ export class PatientMedicines{
     public medicineId:number
   ){}
 }
-
+export class Medicines{
+  constructor(
+    public medicineId:number,
+    public medicineName:string,
+    public medicineDesc:string,
+    public medicineType:string,
+  ){}
+}
 export class PatientTest{
   constructor(
     public pTestId:number,
@@ -99,7 +104,7 @@ export class PatientTest{
 
 export class CombinePatientTreatment{
   constructor(
-   
+
     public ptNurseNote :string,
     public ptMDNote:string,
     public ptDoctorNote :string,
@@ -110,6 +115,8 @@ export class CombinePatientTreatment{
     public medicineId:number
   ){}
 }
+
+
 
 
 @Injectable({
@@ -201,11 +208,11 @@ export class PatientService {
     return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getPatientInformationByDoctorId/"+doctorId);
 
   }
-  
+
   GetPatientInformationByPatientId(patientId : number){
     return this.httpClient.get<PatientInformation>("http://localhost:8080/patient/getPatientInformation/"+patientId);
   }
-  
+
   GetPatientExaminationByPatientId(patientId : number){
     return this.httpClient.get<PatientExamination[]>("http://localhost:8080/patient/getPatientExaminationByPatientId/"+patientId);
   }
@@ -223,6 +230,13 @@ export class PatientService {
     return this.httpClient.get<PatientMedicines[]>("http://localhost:8080/patient/getAllPatientMedicines");
   }
 
-
+  getAllMedicines()
+  {
+    return this.httpClient.get<Medicines[]>("http://localhost:8080/medicines/getAllMedicines");
+  }
+  getAllMedicinesOfTypes(medicineType:string)
+  {
+    return this.httpClient.get<Medicines[]>("http://localhost:8080/medicines/getAllMedicinesByType/"+medicineType);
+  }
 
 }
