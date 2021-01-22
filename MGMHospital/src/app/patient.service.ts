@@ -46,7 +46,6 @@ export class PatientExamination{
     public peBack:string,
     public peHeart:string,
     public peNeuro:string,
-   
     public peAbdomen:string,
     public peExtermities:string,
     public peOthers:string,
@@ -84,7 +83,14 @@ export class PatientMedicines{
     public medicineId:number
   ){}
 }
-
+export class Medicines{
+  constructor(
+    public medicineId:number,
+    public medicineName:string,
+    public medicineDesc:string,
+    public medicineType:string,
+  ){}
+}
 export class PatientTest{
   constructor(
     public pTestId:number,
@@ -98,7 +104,7 @@ export class PatientTest{
 
 export class CombinePatientTreatment{
   constructor(
-   
+
     public ptNurseNote :string,
     public ptMDNote:string,
     public ptDoctorNote :string,
@@ -120,6 +126,8 @@ export class PatientTreatment2{
     public nurseNote:string
   ){}
 }
+
+
 
 
 @Injectable({
@@ -211,11 +219,11 @@ export class PatientService {
     return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getPatientInformationByDoctorId/"+doctorId);
 
   }
-  
+
   GetPatientInformationByPatientId(patientId : number){
     return this.httpClient.get<PatientInformation>("http://localhost:8080/patient/getPatientInformation/"+patientId);
   }
-  
+
   GetPatientExaminationByPatientId(patientId : number){
     return this.httpClient.get<PatientExamination[]>("http://localhost:8080/patient/getPatientExaminationByPatientId/"+patientId);
   }
@@ -233,6 +241,7 @@ export class PatientService {
     return this.httpClient.get<PatientMedicines[]>("http://localhost:8080/patient/getAllPatientMedicines");
   }
 
+
   AddPatientTreatment2(patientTreatment2 : PatientTreatment2){
     return this.httpClient.post<number>("http://localhost:8080/patientTreatment2/addPatintTreatment2",patientTreatment2);
   }
@@ -243,6 +252,15 @@ export class PatientService {
 
   GetAllPatientTreatment2ByPatientId(patientId:number){
     return this.httpClient.get<PatientTreatment2[]>("http://localhost:8080/patientTreatment2/getPatientTreatment2ById/"+patientId);
+
+  getAllMedicines()
+  {
+    return this.httpClient.get<Medicines[]>("http://localhost:8080/medicines/getAllMedicines");
+  }
+  getAllMedicinesOfTypes(medicineType:string)
+  {
+    return this.httpClient.get<Medicines[]>("http://localhost:8080/medicines/getAllMedicinesByType/"+medicineType);
+
   }
 
 }

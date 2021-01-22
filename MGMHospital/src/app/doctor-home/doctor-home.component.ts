@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Doctor } from '../doctor-service.service';
 import { MedicineService , Medicine } from '../medicine.service';
 import { CombinePatientTreatment, PatientExamination, PatientInformation, PatientMedicines, PatientService, PatientTreatment, PatientTreatment2 } from '../patient.service';
 
@@ -9,11 +10,11 @@ import { CombinePatientTreatment, PatientExamination, PatientInformation, Patien
   styleUrls: ['./doctor-home.component.css']
 })
 export class DoctorHomeComponent implements OnInit {
- 
+
   public imgsrc = 'assets/patientpic.svg';
   public showdata = false;
   patient_name : string= "";
- 
+
   patientList : PatientInformation[] = [];
   patientExaminationList : PatientExamination[] = [];
 
@@ -25,9 +26,25 @@ export class DoctorHomeComponent implements OnInit {
     null,null,null,null,null,null,null,null,null);
   objPatientExamination: PatientExamination = new PatientExamination(null,null,null,null,null,null
     ,null,null,null,null,null,null,null,null,null,null,null,null);
-    
+
+    objDoctor: Doctor = new Doctor(
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    );
     medicineType : String = "";
-    
+
     combinePatientTreatment : CombinePatientTreatment = new CombinePatientTreatment(null,null,null,null,null,null,null,null);
 
     patientTreatment : PatientTreatment = new PatientTreatment(null,null,null,null,null);
@@ -52,20 +69,20 @@ export class DoctorHomeComponent implements OnInit {
     else if(this.patient_name == ""){
       this.ngOnInit();
     }
-    
+
   }
   showdetails(){
     this.showdata = true;
   }
 
   //for medicines
-   
+
    medicineTypeList :String[] = [];
-  
+
     medicinesListByType:Medicine[] = [];
 
    stringfyData : string = JSON.stringify(this.medicinesListByType);
-  
+
    time :string="";
    dosage :string="";
    docNote :string="";
@@ -77,14 +94,16 @@ export class DoctorHomeComponent implements OnInit {
   constructor(private patientService: PatientService , private router: Router , private medicineService:MedicineService) { }
 
   ngOnInit(): void {
-
+    this.objDoctor = JSON.parse(sessionStorage.getItem('doctorLogin'));
+    if (this.objDoctor == null) {
+      this.router.navigate(['homepage']);
+    }
     this.patientService.GetAllPatientsByDoctorId(this.docSessId).subscribe(res =>{
-     
+
       this.patientList = res;
     });
 
     this.medicineService.GetMedicineType().subscribe(res =>{
-     
       this.medicineTypeList = res;
     })
 
@@ -99,7 +118,7 @@ getPatientInformationByPatientId(patientId:number){
     this.patientService.GetPatientExaminationByPatientId(this.objPatientInformation.patientId).subscribe(result =>{
       //alert(result.patientId);
      this.patientExaminationList = result;
-    
+
     });
   });
 }
@@ -111,12 +130,13 @@ getPatientInformationByPatientId(patientId:number){
 
 getMedicinesByType(medicineType:String){
   this.medicineService.GetMedicinesByType(medicineType).subscribe(res =>{
-  
+
     this.medicinesListByType = res;
   });
 }
 
 AddPatientTreatmentAndMedicines(combinePatientTreatment:CombinePatientTreatment,medicineId : number){
+
 
   this.patientTreatment2.medicineId = medicineId;
   this.patientTreatment2.dosage = this.dosage;
@@ -127,6 +147,7 @@ AddPatientTreatmentAndMedicines(combinePatientTreatment:CombinePatientTreatment,
   this.patientService.AddPatientTreatment2(this.patientTreatment2).subscribe(res =>{
       alert(res+" added");
   });
+
 
 
 }
