@@ -115,6 +115,17 @@ export class CombinePatientTreatment{
     public medicineId:number
   ){}
 }
+export class PatientTreatment2{
+  constructor (
+    public pt2Id :number,
+    public dosage:string,
+    public medicineId:number,
+    public patientId:number,
+    public time : string,
+    public doctorNote :string,
+    public nurseNote:string
+  ){}
+}
 
 
 
@@ -230,6 +241,18 @@ export class PatientService {
     return this.httpClient.get<PatientMedicines[]>("http://localhost:8080/patient/getAllPatientMedicines");
   }
 
+
+  AddPatientTreatment2(patientTreatment2 : PatientTreatment2){
+    return this.httpClient.post<number>("http://localhost:8080/patientTreatment2/addPatintTreatment2",patientTreatment2);
+  }
+
+  DeletePatientTreatment2(pt2Id : number){
+    return this.httpClient.delete<number>("http://localhost:8080/patientTreatment2/deletePatientTreatment2ById/"+pt2Id);
+  }
+
+  GetAllPatientTreatment2ByPatientId(patientId:number){
+    return this.httpClient.get<PatientTreatment2[]>("http://localhost:8080/patientTreatment2/getPatientTreatment2ById/"+patientId);
+
   getAllMedicines()
   {
     return this.httpClient.get<Medicines[]>("http://localhost:8080/medicines/getAllMedicines");
@@ -237,6 +260,7 @@ export class PatientService {
   getAllMedicinesOfTypes(medicineType:string)
   {
     return this.httpClient.get<Medicines[]>("http://localhost:8080/medicines/getAllMedicinesByType/"+medicineType);
+
   }
 
 }
