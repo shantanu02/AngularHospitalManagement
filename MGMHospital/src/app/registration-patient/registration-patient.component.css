@@ -2,8 +2,8 @@
 {
   width: 100%;
   height: 100%;
-  background-image: url('/assets/doctor1.jpg');
-  background-size: cover;
+  background-color: rgb(252, 245, 236);
+  
 }
 
 .border-md {
@@ -51,11 +51,20 @@ select.form-control {
     padding-left: 0.5rem;
 }
 
-.form-control::placeholder {
-    color: #ccc;
-    font-weight: bold;
-    font-size: 0.9rem;
+/*------------------Validation-------------------*/
+@media(max-width:1000px){
+    .valid2{
+        display: none;
+    }
+
+    .llm{
+        margin-top: 18px;
+    }
 }
-.form-control:focus {
-    box-shadow: none;
+
+@media(min-width:1000px){
+    .valid1{
+        display: none;
+    }
+
 }

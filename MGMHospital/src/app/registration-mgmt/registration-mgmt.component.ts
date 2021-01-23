@@ -8,26 +8,23 @@ import { Management, ManagementService } from '../management.service';
   styleUrls: ['./registration-mgmt.component.css']
 })
 export class RegistrationMgmtComponent implements OnInit {
-  objManagement:Management = new Management(null,null,null,null,null,null);
+  objManagement: Management = new Management(null, null, null, null, null, null);
 
-  constructor(private managementService: ManagementService,private router: Router) { }
+  constructor(private managementService: ManagementService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  AddManagement(objManagement:Management)
-  {
-      this.managementService.AddManagement(objManagement).subscribe(res=>{
-          if(res)
-          {
-                alert("Registration SuccessFull");
-                this.router.navigate(['homepage']);
-          }
-          else
-          {
-              alert("Registration Failed");
-          }
-      })
+  AddManagement(objManagement: Management) {
+    this.managementService.AddManagement(objManagement).subscribe(res => {
+      if (res) {
+        alert("Registration SuccessFull");
+        this.router.navigate(['homepage']);
+      }
+      else {
+        alert("Registration Failed");
+      }
+    })
   }
 
 }
