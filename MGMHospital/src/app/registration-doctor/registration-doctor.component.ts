@@ -24,7 +24,7 @@ export class RegistrationDoctorComponent implements OnInit {
         if(res)
         {
             alert("Registration SuccessFull");
-            this.router.navigate(['homepage']);
+            this.router.navigate(['login']);
         }else
         {
             alert("Registration Failed");
@@ -32,4 +32,5 @@ export class RegistrationDoctorComponent implements OnInit {
         }
       })
   }
+
 }

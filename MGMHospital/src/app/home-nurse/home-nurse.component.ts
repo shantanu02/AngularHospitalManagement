@@ -229,6 +229,9 @@ export class HomeNurseComponent implements OnInit {
     this.medicineDesc = item.medicineDesc;
     this.medicineType = item.medicineType;
   }
+
+  ViewTreatmentP = [];
+
   ViewTreatment()
   {
     this.viewTreatment = true;
