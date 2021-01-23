@@ -15,6 +15,9 @@ import {
   styleUrls: ['./patient-home.component.css'],
 })
 export class PatientHomeComponent implements OnInit {
+
+
+  
   objPatientInformation: PatientInformation = new PatientInformation(
     null,
     null,
@@ -51,7 +54,9 @@ export class PatientHomeComponent implements OnInit {
   public imgsrc2 = 'assets/nurnotes.jpg';
 
   public showdata = false;
+
   patient_name: string = '';
+
   public uiAlert = false;
 
   constructor(private patientService: PatientService, private router: Router

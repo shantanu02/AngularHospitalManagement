@@ -376,12 +376,14 @@
                             ZipCode is Required
                         </span>
                         <span class="text-danger" *ngIf="nzipcode.errors.pattern">
+
                             ZipCode must be digit Only (Maximum 6 digit)
                         </span>
                     </div>
                     <div class="col-12" *ngIf="nzipcode.valid">
                         <span class="text-success">
                             Good..!!
+
                         </span>
                     </div>
 
