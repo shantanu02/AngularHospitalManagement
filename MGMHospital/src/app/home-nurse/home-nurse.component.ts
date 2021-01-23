@@ -20,6 +20,11 @@ export class HomeNurseComponent implements OnInit {
   constructor(private router: Router, private patientService: PatientService,private medicineService:MedicineService) {}
   objMedicinesList: Medicine[];
   medicinesByTypeList: Medicine[];
+  tableMedicineName:string="Medicine Name"
+  tableMedicineDosage:string = "Dosage";
+  tableMedicineTime:string="Time";
+  tableMedicineNurseNotes="Nurse Notes"
+  tableAction:string="Action";
   objNurseSession: Nurse = new Nurse(
     null,
     null,
@@ -115,10 +120,16 @@ export class HomeNurseComponent implements OnInit {
   examinationReportAlert: boolean = false;
   patientList: PatientInformation[];
   ngOnInit(): void {
+
+    if(sessionStorage.length === 0){
+      this.router.navigate(['/login']);
+    }
+
     this.objNurseSession = JSON.parse(sessionStorage.getItem('nurseLogin'));
     if (this.objNurseSession == null) {
       this.router.navigate(['homepage']);
     }
+
     this.patientService.getAllPatientInformationByNurseId(this.objNurseSession.nurseId).subscribe((res) => {
       this.patientList = res;
     });
@@ -224,10 +235,13 @@ export class HomeNurseComponent implements OnInit {
   }
   addMedicineFromList(item:Medicine)
   {
-    this.medicineId = item.medicineId;
-    this.medicineName = item.medicineName;
-    this.medicineDesc = item.medicineDesc;
-    this.medicineType = item.medicineType;
+    item.rowColor = !item.rowColor;
+    if(item.rowColor == true){
+      this.medicineId = item.medicineId;
+      this.medicineName = item.medicineName;
+      this.medicineDesc = item.medicineDesc;
+      this.medicineType = item.medicineType;
+    }
   }
 
   ViewTreatmentP = [];
@@ -251,10 +265,13 @@ export class HomeNurseComponent implements OnInit {
 
   deleteTreatment(patientTreatmentId:number)
   {
-    alert(patientTreatmentId);
     this.patientService.DeletePatientTreatment2(patientTreatmentId).subscribe(res=>{
-      alert("deleted");
       this.ViewTreatment();
     })
+  }
+
+  SendRobot()
+  {
+    this.router.navigate(['robot1']);
   }
 }

@@ -130,7 +130,9 @@
                                 name="Password" placeholder="Password" #pass="ngModel"
                                 class="form-control bg-white border-left-1 border-md"
                                 [class.is-invalid]="pass.invalid && pass.touched" required
+
                                 pattern="^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$">
+
 
                         </div>
                         <div class="valid1" *ngIf="(pass.errors && (pass.invalid && pass.touched ))">

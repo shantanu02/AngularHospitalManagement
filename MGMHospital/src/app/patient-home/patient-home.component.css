@@ -1,9 +1,4 @@
-.container-fluid{
-    background: url('/assets/bac3.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
+
 .row.content1{
     height: auto;
 }
@@ -31,12 +26,12 @@
    }
 
    /*Tbale css */
- 
+
   .table1{
       display: block;
       height: 200px;
       overflow-y: scroll;
-      
+
   }
   .table2{
     display: block;
@@ -60,5 +55,4 @@
     height: 200px;
     overflow: auto;
     }
-   
-    
+

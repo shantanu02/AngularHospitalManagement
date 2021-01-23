@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Doctor, DoctorServiceService } from '../doctor-service.service';
+import { HeaderService } from '../header.service';
 import { LoginService, UserLogin } from '../login.service';
 import { Management, ManagementService } from '../management.service';
 import { Nurse, NurseServiceService } from '../nurse-service.service';
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     private managementService: ManagementService,
     private patientService: PatientService,
     private nurseServiceService: NurseServiceService,
-    private doctorServiceService: DoctorServiceService
+    private doctorServiceService: DoctorServiceService, private headerService: HeaderService
   ) {}
 
   ngOnInit(): void {}
@@ -98,10 +99,18 @@ export class LoginComponent implements OnInit {
 
   Validate(objUserLogin: UserLogin) {
     this.loginService.CheckLogin(objUserLogin).subscribe((res) => {
+
+      sessionStorage.setItem(
+        'role',
+        res.userRole
+      );
+
+      
       if (res.userRole == 'admin') {
-        alert('This is admin');
+        //alert('This is admin');
       } else if (res.userRole == 'doctor') {
-        alert('This is doctor');
+        //alert('This is doctor');
+        this.headerService.hide.next(true);
         this.doctorServiceService
           .getDoctorByEmail(res.userEmail)
           .subscribe((result) => {
@@ -110,10 +119,11 @@ export class LoginComponent implements OnInit {
               'doctorLogin',
               JSON.stringify(this.objDoctor)
             );
+            
             this.router.navigate(['doctor-home']);
           });
       } else if (res.userRole == 'management') {
-        alert('This is Management');
+        //alert('This is Management');
         this.managementService
           .GetManagement(res.userEmail)
           .subscribe((result) => {
@@ -125,7 +135,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['Management-Homepage']);
           });
       } else if (res.userRole == 'Nurse') {
-        alert('This is Nurse');
+        //alert('This is Nurse');
         this.nurseServiceService
           .getNurseByEmail(res.userEmail)
           .subscribe((res) => {
@@ -134,7 +144,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['nurse-home']);
           });
       } else if (res.userRole == 'patient') {
-        alert('This is Patient');
+        //alert('This is Patient');
         this.patientService
           .GetPatientInformationByEmail(res.userEmail)
           .subscribe((result) => {

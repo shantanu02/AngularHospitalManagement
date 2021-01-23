@@ -27,7 +27,7 @@
   <div class="row mt-1">
     <div
       class="col-12 col-sm-12 col-md-12 col-lg-5"
-      
+      style="border-right: 1px solid rgb(255, 255, 255)"
     >
       <div class="row mt-2">
         <div class="col-7 col-md-8 PlstT">List Of Patient</div>
@@ -92,7 +92,7 @@
               <button
                 type="button"
                 class="btn btn-success"
-                style="width: 22vh"
+                style="width: 25vh"
                 data-toggle="modal"
                 data-target="#exampleModal2"
               >
@@ -252,7 +252,7 @@
             <!-- Patient Examine Model section End-->
             <br />
             <!-- Patient Give Treatment button -->
-            <div class="resbtn1">
+            <!-- <div class="resbtn1">
               <button
                 type="button"
                 class="btn btn-warning"
@@ -263,7 +263,7 @@
               >
                 Give Treatment
               </button>
-            </div>
+            </div> -->
             <br>
             <!--Give treatment Model-->
             <div
@@ -301,14 +301,14 @@
                                                           <option value="back">Back</option>
                           </select> -->
                             <label for="med">Select Type</label>
-                            <table class="table fixed_header" id="med ">
+                            <table class="table table-hover fixed_header" id="med ">
                               <thead class="thead-dark">
                                 <tr>
                                   <th scope="col">Sr No</th>
                                   <th scope="col">Medicine Type</th>
                                 </tr>
                               </thead>
-                              <tbody>
+                              <tbody >
                                 <tr
                                   (click)="showMedicineType(item)"
                                   *ngFor="
@@ -336,6 +336,7 @@
                               <tr
                                 *ngFor="let item of medicineByType"
                                 (click)="addMedicineFromList(item)"
+                                [ngClass]="{'selectionColor':item.rowColor}"
                               >
                                 <td>{{ item.medicineName }}</td>
                                 <td>{{ item.medicineDesc }}</td>
@@ -362,7 +363,7 @@
                             />
                           </div>
                           <div class="row d-flex mt-2">
-                            <span class="ppdtitle mr-2">Nurse Notes : </span>
+                            <span class="ppdtitle mr-2">Doctor Notes : </span>
                             <input
                               type="text"
                               class="form-control"
@@ -439,7 +440,7 @@
          
 
           <!-- Patient Personal Details section start -->
-          <div class="col-12 col-sm-12 col-md-9 col-lg-8 ppdetails mb-2">
+          <div class="col-12 col-sm-12 col-md-9 col-lg-8 ppdetails mb-2 shadow">
             <div class="row">
               <div class="col-6">
                 <span class="ppdtitle"> First Name -</span>
@@ -581,7 +582,7 @@
           <!-- <th scope="col">Time:</th> -->
           <td>{{ patientTreatment.time }}</td>
           <!-- <th scope="col">Nurse Notes:</th> -->
-          <td>{{ patientTreatment.nurseNote }}</td>
+          <td>{{ patientTreatment.DoctorNote }}</td>
          <button class="btn btn-danger btn-sm" (click)="deleteTreatment(patientTreatment.pt2Id)">
            Delete
          </button>

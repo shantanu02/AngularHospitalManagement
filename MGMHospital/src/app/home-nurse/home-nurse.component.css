@@ -4,7 +4,9 @@
     align-items: center;
     font-size: 1.5rem;
 }
-
+.selectionColor{
+    background-color:rgb(61, 255, 78) ;
+  }
 .inputField{
     display: flex;
     justify-content: center;
@@ -46,7 +48,7 @@
   }
 
   .tbody tr:hover{
-    background: darkkhaki;
+    background: lightgrey;
   }
 
   @media(max-width:1200px){
