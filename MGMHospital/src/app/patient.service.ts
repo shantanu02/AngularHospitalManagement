@@ -237,19 +237,6 @@ GetAllPAtientMedicines(){
 }
 
 
-AddPatientTreatment2(patientTreatment2 : PatientTreatment2){
-  return this.httpClient.post<number>("http://localhost:8080/patientTreatment2/addPatintTreatment2",patientTreatment2);
-}
-
-DeletePatientTreatment2(pt2Id : number){
-  return this.httpClient.delete<number>("http://localhost:8080/patientTreatment2/deletePatientTreatment2ById/"+pt2Id);
-}
-
-GetAllPatientTreatment2ByPatientId(patientId:number){
-  return this.httpClient.get<PatientTreatment2[]>("http://localhost:8080/patientTreatment2/getPatientTreatment2ById/"+patientId);
-
-}
-
 
 getAllPatientInformationByNurseId(nurseId:number)
 {

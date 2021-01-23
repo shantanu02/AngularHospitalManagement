@@ -23,11 +23,11 @@
   </div>
 </div>
 
-<div class="container-fluid">
-  <div class="row mt-2">
+<div class="container-fluid middleback">
+  <div class="row mt-1">
     <div
       class="col-12 col-sm-12 col-md-12 col-lg-5"
-      style="border: 2px solid black"
+      
     >
       <div class="row mt-2">
         <div class="col-7 col-md-8 PlstT">List Of Patient</div>
@@ -62,7 +62,7 @@
             <tbody class="tbody">
               <tr
                 *ngFor="let p of patientList; let i = index"
-                (click)="getPatientInformationByPatientId(p.patientId)"
+                (click)="showdetails(p)"
               >
                 <th scope="row" style="width: 25%">{{ i + 1 }}</th>
                 <td style="width: 25%; text-align: center">
@@ -78,7 +78,7 @@
       </div>
     </div>
 
-    <div class="col-12 col-sm-12 col-md-12 col-lg-7 pl-0 ml-0" style="border: 2px solid black;">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-7 pl-0 ml-0" >
       <div class="row ml-2 mt-2">
         <div class="col-12 col-sm-6 col-md-7">
           <h4 class="pstext">Patient Details :</h4>
@@ -264,7 +264,7 @@
                 Give Treatment
               </button>
             </div>
-            
+            <br>
             <!--Give treatment Model-->
             <div
               class="modal fade"
@@ -310,7 +310,7 @@
                               </thead>
                               <tbody>
                                 <tr
-                                  (click)="getMedicinesByType(item)"
+                                  (click)="showMedicineType(item)"
                                   *ngFor="
                                     let item of medicineTypeList;
                                     let i = index
@@ -323,7 +323,7 @@
                               </tbody>
                             </table>
                           </div>
-
+                           
                           <table class="table">
                             <thead>
                               <tr>
@@ -366,8 +366,8 @@
                             <input
                               type="text"
                               class="form-control"
-                              name="nurseNote"
-                              [(ngModel)]="nurseNote"
+                              name="doctorNote"
+                              [(ngModel)]="doctorNote"
                             />
                           </div>
                         </div>
@@ -395,40 +395,48 @@
               </div>
             </div>
 
+            
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Treatment
+              </button>
+              <div
+                class="dropdown-menu"
+                style="justify-content: center; align-items: center"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <button
+                  type="button"
+                  class="btn btn-light ml-3"
+                  style="width: 22vh"
+                  data-toggle="modal"
+                  data-target="#exampleModal3"
+                >
+                  Give Treatment
+                </button>
 
+                <button
+                  type="button"
+                  class="btn btn-light mt-2 ml-3"
+                  style="width: 22vh"
+                  (click)="ViewTreatment()"
+                >
+                  View Treatment
+                </button>
+              </div>
+            </div>
           </div>
+
           
-          <!-- <div class="col-md-8" style="border: 1px solid black">
-            <div class="row content11">
-              <div class="col-2 d-flex justify-content-center">
-                <img [src]="imgsrc" style="width: auto; height: 100px" />
-              </div>
-              <div class="col-md-10 col-sm-12">
-                <b>Patient Information :</b>
-                <table class="table table-sm">
-                  <tbody>
-                    <tr>
-                      <th scope="row">Patient id :</th>
-                      <td>{{ objPatientInformation.patientId }}</td>
-                      <th scope="row">Name :</th>
-                      <td>
-                        {{
-                          objPatientInformation.patientFName +
-                            " " +
-                            objPatientInformation.patientLName
-                        }}
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Email:</th>
-                      <td>{{ objPatientInformation.patientEmail }}</td>
-                      <th scope="row">Phone No :</th>
-                      <td>{{ objPatientInformation.patientPhone }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div> -->
+          
+         
 
           <!-- Patient Personal Details section start -->
           <div class="col-12 col-sm-12 col-md-9 col-lg-8 ppdetails mb-2">
@@ -560,6 +568,27 @@
   </div>
 </div> 
 
+<table class="table">
 
+  <tbody>
+    <div *ngFor="let patientTreatment of patientTreatment2">
+      <div *ngFor="let medicine of AllMedicineList">
+        <tr *ngIf="patientTreatment.medicineId == medicine.medicineId">
+          <!-- <th scope="col">Medicine Name:</th> -->
+          <td>{{ medicine.medicineName }}</td>
+          <!-- <th scope="col">Dosage:</th> -->
+          <td>{{ patientTreatment.dosage }}</td>
+          <!-- <th scope="col">Time:</th> -->
+          <td>{{ patientTreatment.time }}</td>
+          <!-- <th scope="col">Nurse Notes:</th> -->
+          <td>{{ patientTreatment.nurseNote }}</td>
+         <button class="btn btn-danger btn-sm" (click)="deleteTreatment(patientTreatment.pt2Id)">
+           Delete
+         </button>
+        </tr>
+      </div>
+    </div>
+  </tbody>
+</table>
 
 

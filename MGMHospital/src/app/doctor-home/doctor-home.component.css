@@ -1,3 +1,7 @@
+.middleback{
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+
 .PlstT{
   display: flex;
   justify-content: center;
@@ -15,7 +19,8 @@
   width: 450px;
   table-layout: fixed;
   border-collapse: collapse;
-  border: 2px solid black;
+  border: 1px solid black;
+ 
 }
 .fixed_header tbody {
   display: block;
@@ -46,7 +51,7 @@
 }
 
 .tbody tr:hover{
-  background: darkkhaki;
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 
 @media(max-width:1200px){
