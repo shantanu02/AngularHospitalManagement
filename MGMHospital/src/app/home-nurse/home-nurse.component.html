@@ -85,7 +85,7 @@
               Update
             </button>
           </div>
-          <!--------------------------------- Update button Model Start--------------------------->
+
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -117,25 +117,31 @@
                         <div class="col-12 col-sm-6 col-md-6">
                           <span class="ppdtitle">First Name : </span>
                           <br />
+
                           <span><input type="text" class="form-control" name="patientFName" id="patientFName"
                               [(ngModel)]="objPatientInformation.patientFName" #patientFName="ngModel"
                               [class.is-invalid]="patientFName.invalid && patientFName.touched" required /></span>
+
                         </div>
 
                         <div class="col-12 col-sm-6 col-md-6">
                           <span class="ppdtitle">Last Name : </span>
                           <br />
+
                           <span><input type="text" class="form-control" id="patientLName" name="patientLName"
                               [(ngModel)]="objPatientInformation.patientLName" #patientLName="ngModel"
                               [class.is-invalid]="patientLName.invalid && patientLName.touched" required /></span>
+
                         </div>
 
                         <div class="col-12">
                           <span class="ppdtitle"> Email-Id : </span>
                           <br />
+
                           <span><input type="text" class="form-control" id="email" name="email"
                               [(ngModel)]="objPatientInformation.patientEmail" #email="ngModel"
                               [class.is-invalid]="email.invalid && email.touched" required /></span>
+
                         </div>
                       </div>
 
@@ -144,17 +150,21 @@
                       <div class="row ppdr1">
                         <div class="col-12 col-sm-6 col-md-6">
                           <span class="ppdtitle"> Address : </span>
+
                           <input type="text" class="form-control" id="address" name="address"
                             [(ngModel)]="objPatientInformation.patientAddress" #address="ngModel"
                             [class.is-invalid]="address.invalid && address.touched" required />
+
                         </div>
 
 
                         <div class="col-6">
                           <span class="ppdtitle"> PhoneNo. : </span>
+
                           <span><input type="text" id="phone" name="phone" class="form-control"
                               [(ngModel)]="objPatientInformation.patientPhone" #phone="ngModel"
                               [class.is-invalid]="phone.invalid && phone.touched" required /></span>
+
                         </div>
                       </div>
 
@@ -163,16 +173,20 @@
                       <div class="row ppdr1">
                         <div class="col-12 col-sm-6 col-md-6 my-2">
                           <span class="ppdtitle"> DOB : </span>
+
                           <span><input type="date" class="form-control" id="dob" name="dob"
                               [(ngModel)]="objPatientInformation.patientDOB" #dob="ngModel"
                               [class.is-invalid]="dob.invalid && dob.touched" required /></span>
+
                         </div>
 
                         <div class="col-6">
                           <span class="ppdtitle"> Weight : </span>
+
                           <span><input type="text" id="weight" name="weight" class="form-control"
                               [(ngModel)]="objPatientInformation.patientWeight" #weight="ngModel"
                               [class.is-invalid]="weight.invalid && weight.touched" required /></span>
+
                         </div>
                       </div>
 
@@ -181,16 +195,20 @@
                       <div class="row ppdr1">
                         <div class="col-12 col-sm-6 col-md-6">
                           <span class="ppdtitle"> IPD: </span>
+
                           <span><input type="text" class="form-control" id="ipd" name="ipd"
                               [(ngModel)]="objPatientInformation.patientIPD" #ipd="ngModel"
                               [class.is-invalid]="ipd.invalid && ipd.touched" required /></span>
+
                         </div>
 
                         <div class="col-6">
                           <span class="ppdtitle"> OPD : </span>
+
                           <span><input type="text" id="opd" name="opd" class="form-control"
                               [(ngModel)]="objPatientInformation.patientOPD" #opd="ngModel"
                               [class.is-invalid]="opd.invalid && opd.touched" required /></span>
+
                         </div>
                       </div>
 
@@ -199,6 +217,7 @@
                       <div class="row ppdr1">
                         <div class="col-12 col-sm-6 col-md-6">
                           <span class="ppdtitle"> Ward : </span>
+
                           <span><input type="text" id="ward" name="ward" class="form-control"
                               [(ngModel)]="objPatientInformation.patientWard" #ward="ngModel"
                               [class.is-invalid]="ward.invalid && ward.touched" required /></span>
@@ -208,6 +227,7 @@
                           <span style="margin-left: auto"><input type="text" class="form-control" id="BedNo"
                               name="BedNo" [(ngModel)]="objPatientInformation.patientBedNo" #BedNo="ngModel"
                               [class.is-invalid]="BedNo.invalid && BedNo.touched" required /></span>
+
                         </div>
                       </div>
 
@@ -220,8 +240,10 @@
                     Close
                   </button>
                   <button type="button" class="btn btn-primary" data-dismiss="modal"
+
                     (click)="updatePatientInformation()"
                     [disabled]="mgmform.form.invalid">
+
                     Save
                   </button>
                 </div>
@@ -279,7 +301,11 @@
                 Examine
               </button>
             </div>
+
             <!---------------------  Patient Examine Model section start-------------------------->
+
+
+            <!-- Patient Examine Model section start-->
 
             <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
@@ -307,9 +333,11 @@
                           <div class="col-7 col-sm-6 col-md-6">
                             <span class="ppdtitle"><i class="fa fa-calendar"></i> Date :
                             </span>
+
                             <span><input type="date" id="dateOfExamination" name="dateOfExamination"
                                 [(ngModel)]="objPatientExamination.peDateTime" 
                                 #dateOfExamination="ngModel" [class.is-invalid]="dateOfExamination.invalid && dateOfExamination.touched" required/></span>
+
                           </div>
                         </div>
                         <div class="row mt-1">
@@ -355,32 +383,40 @@
                         <div class="row ppdr1 mt-1">
                           <div class="col-12 col-sm-6 col-md-6">
                             <span class="ppdtitle"> Other : </span>
+
                             <span><input type="text" id="Others" name="Others" class="form-control"
                                 [(ngModel)]="objPatientExamination.peOthers"
                                 #Others="ngModel" [class.is-invalid]="Others.invalid && Others.touched" required /></span>
+
                           </div>
 
                           <div class="col-12 col-sm-6 mt-1">
                             <span class="ppdtitle"><i class="fa fa-heartbeat"></i> Pulse :
                             </span>
+
                             <span><input type="text" id="pulse" name="pulse" class="form-control"
                                 [(ngModel)]="objPatientExamination.pePulse"
                                 #pulse="ngModel" [class.is-invalid]="pulse.invalid && pulse.touched" required  /></span>
+
                           </div>
                         </div>
                         <div class="row ppdr1">
                           <div class="col-12 col-sm-6 col-md-6">
                             <span class="ppdtitle">RESP: </span>
+
                             <span><input type="text"  id="resp" name="resp" class="form-control"
                                 [(ngModel)]="objPatientExamination.peResp" 
                                 #resp="ngModel" [class.is-invalid]="resp.invalid && resp.touched" required  /></span>
+
                           </div>
                           <div class="col-12 col-sm-6">
                             <span class="ppdtitle"><i class="fa fa-gratipay"></i>BP :</span>
                             <span style="margin-left: auto">
+
                               <input type="text" class="form-control" id="BP" name="BP"
                                 [(ngModel)]="objPatientExamination.peBp"
                                 #BP="ngModel" [class.is-invalid]="BP.invalid && BP.touched" required  />
+
                             </span>
                           </div>
                         </div>
@@ -390,16 +426,20 @@
                             <span class="ppdtitle">
                               <i class="fa fa-thermometer"></i> Temparature :
                             </span>
+
                             <span><input type="text" id="temp" name="temp" class="form-control"
                                 [(ngModel)]="objPatientExamination.peTemp"
                                 #temp="ngModel" [class.is-invalid]="temp.invalid && temp.touched" required/></span>
+
                           </div>
 
                           <div class="col-12 col-sm-6">
                             <span class="ppdtitle"><i class="fa fa-bed"></i>Pluse-Oxy :</span>
+
                             <span style="margin-left: auto"><input type="text" class="form-control" id="oxy" name="oxy"
                                 [(ngModel)]="objPatientExamination.pePulseOx" 
                                 #oxy="ngModel" [class.is-invalid]="oxy.invalid && oxy.touched" required/></span>
+
                           </div>
                         </div>
                         <div class="row ppdr1">
@@ -407,9 +447,11 @@
                             <span class="ppdtitle">
                               <i class="fa fa-flask"></i> FSBS :
                             </span>
+
                             <span><input type="text" id="fsbs" name="fsbs" class="form-control"
                                 [(ngModel)]="objPatientExamination.peFSBS" 
                                 #fsbs="ngModel" [class.is-invalid]="fsbs.invalid && fsbs.touched" required /></span>
+
                           </div>
                         </div>
                       </div>
@@ -419,8 +461,10 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                       Close
                     </button>
+
                     <button type="button" data-dismiss="modal" [disabled]="mgmform.form.invalid"
                       (click)="AddPatientExamination(objPatientExamination)" class="btn btn-primary">
+
                       Save
                     </button>
                   </div>
@@ -430,11 +474,32 @@
             <!-- Patient Examine Model section End-->
             <br />
             <!-- Patient Give Treatment button -->
-            <div class="resbtn1"></div>
+
 
           
             <!----------------- Patient Give Treatment form  Model Section start ---------------------->
            
+
+            <!-- <div class="resbtn1"></div> -->
+            <div class="dropdown resbtn1">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 22vh">
+                Treatment
+              </button>
+              <div class="dropdown-menu" style="justify-content: center; align-items: center"
+                aria-labelledby="dropdownMenuButton">
+                <button type="button" class="btn btn-light ml-3" style="width: 22vh" data-toggle="modal"
+                  data-target="#exampleModal3">
+                  Give Treatment
+                </button>
+
+                <button type="button" class="btn btn-light mt-2 ml-3" style="width: 22vh" (click)="ViewTreatment()">
+                  View Treatment
+                </button>
+              </div>
+            </div>
+            <!-- Patient Give Treatment Model Section start -->
+
             <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -466,6 +531,7 @@
                                   <th scope="col">Medicine Type</th>
                                 </tr>
                               </thead>
+
                               <tbody>
                                 <tr (click)="showMedicineType(item)" *ngFor="
                                     let item of medicineTypeList;
@@ -487,8 +553,17 @@
                                 <th scope="col">Medicine Desc</th>
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr *ngFor="let item of medicineByType" (click)="addMedicineFromList(item)">
+
+
+                            <tbody class="tbody">
+                              <tr
+                                *ngFor="let item of medicineByType"
+                                (click)="addMedicineFromList(item)"
+                                [ngClass]="{'selectionColor':item.rowColor}"
+                                
+                              >
+
+
                                 <td>{{ item.medicineName }}</td>
                                 <td>{{ item.medicineDesc }}</td>
                               </tr>
@@ -497,16 +572,26 @@
 
                           <div class="row d-flex mt-2">
                             <span class="ppdtitle mr-2">Time : </span>
-                            <input type="time" class="form-control" id="timeid" name="time" [(ngModel)]="time" 
+
+
+                            <input
+                              type="datetime-local"
+                              class="form-control"
+                              name="time"
+                              [(ngModel)]="time"
+
                             />
+
                           </div>
                           <div class="row d-flex mt-2">
                             <span class="ppdtitle mr-2">Dosage : </span>
-                            <input type="text" class="form-control" id="dosage" name="dosage" [(ngModel)]="dosage"/>
+
+                            <input type="text" class="form-control" name="dosage" [(ngModel)]="dosage" />
                           </div>
                           <div class="row d-flex mt-2">
                             <span class="ppdtitle mr-2">Nurse Notes : </span>
-                            <input type="text" class="form-control" id="nurseNote" name="nurseNote" [(ngModel)]="nurseNote" />
+                            <input type="text" class="form-control" name="nurseNote" [(ngModel)]="nurseNote" />
+
                           </div>
                         </div>
                         <div class="modal-footer">
@@ -525,6 +610,7 @@
             </div>
             <!-- Patient Give Treatment Model Section End -->
 
+
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -542,6 +628,7 @@
                 </button>
               </div>
             </div>
+
           </div>
 
           <!-- Patient Personal Details section start -->
@@ -550,23 +637,23 @@
               <div class="col-6">
                 <span class="ppdtitle"> First Name -</span>
                 <br />
-                <span class="ppdvalue">{{
-                  objPatientInformation.patientFName
-                }}</span>
+                <span class="ppdvalue">
+                  {{objPatientInformation.patientFName}}
+                </span>
               </div>
               <div class="col-6">
                 <span class="ppdtitle"> Last Name -</span>
                 <br />
-                <span class="ppdvalue">{{
-                  objPatientInformation.patientLName
-                }}</span>
+                <span class="ppdvalue">
+                  {{objPatientInformation.patientLName}}
+                </span>
               </div>
               <div class="col-6">
                 <span class="ppdtitle"> Email-Id : </span>
                 <br />
-                <span class="ppdvalue">{{
-                  objPatientInformation.patientEmail
-                }}</span>
+                <span class="ppdvalue">
+                  {{objPatientInformation.patientEmail}}
+                </span>
               </div>
             </div>
             <div class="row ppdr">
@@ -575,7 +662,7 @@
                 <br />
                 <span class="ppdvalue">{{
                   objPatientInformation.patientAddress
-                }}</span>
+                  }}</span>
               </div>
               <div class="col-6">
                 <span class="ppdtitle"> PhoneNo. : </span>
@@ -588,13 +675,13 @@
                 <span class="ppdtitle"> DOB : </span><br />
                 <span class="ppdvalue">{{
                   objPatientInformation.patientDOB
-                }}</span>
+                  }}</span>
               </div>
               <div class="col-4">
                 <span class="ppdtitle"> Gender : </span><br />
                 <span class="ppdvalue">{{
                   objPatientInformation.patientGender
-                }}</span>
+                  }}</span>
               </div>
               <div class="col-4">
                 <span class="ppdtitle"> Weight : </span><br />
@@ -607,7 +694,7 @@
                 <span class="ppdtitle"> IPD : </span>
                 <span class="ppdvalue">{{
                   objPatientInformation.patientIPD
-                }}</span>
+                  }}</span>
               </div>
               <div class="col-3">
                 <span class="ppdtitle"> OPD : </span>
@@ -628,7 +715,13 @@
           </div>
           <!-- Patient Personal Details section End -->
         </div>
-        <!-- Exmaine and Give Treatment buttons 2nd Copy-->
+
+        <!-- Exmaine and Treatment buttons 2nd Copy-->
+
+        <div>
+          <button (click)="SendRobot()" class="btn btn-danger btn-sm">Send Robot</button>
+        </div>
+
         <div class="row my-3 resbtn2">
           <div class="col-sm-2"></div>
           <!-- Patient 2nd Examine button-->
@@ -641,11 +734,36 @@
           <br />
           <div class="col-6 col-sm-4">
             <!-- Patient 2nd Give Treatment Model section-->
+            <div class="dropdown resbtn2">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Treatment
+              </button>
+              <div class="dropdown-menu" style="justify-content: center; align-items: center"
+                aria-labelledby="dropdownMenuButton">
+                <button type="button" class="btn btn-light ml-3" style="width: 22vh" data-toggle="modal"
+                  data-target="#exampleModal3">
+                  Give Treatment
+                </button>
 
+                <button type="button" class="btn btn-light mt-2 ml-3" style="width: 22vh" (click)="ViewTreatment()">
+                  View Treatment
+                </button>
+              </div>
+            </div>
           </div>
           <div class="col-sm-2"></div>
         </div>
+        <div class="row justify-content-center m-4">
+          <div class="col-6 col-sm-2">
+            <button type="button" class="btn btn-warning" style="width: 22vh;">
+              Go Robot
+            </button>
+          </div>
+        </div>
       </div>
+
+
     </div>
   </div>
 </div>
@@ -678,25 +796,91 @@
     <span aria-hidden="true">&times;</span>
   </button> -->
 
-<table class="table">
 
-  <tbody>
-    <div *ngFor="let patientTreatment of patientTreatment2">
-      <div *ngFor="let medicine of AllMedicineList">
-        <tr *ngIf="patientTreatment.medicineId == medicine.medicineId">
-          <!-- <th scope="col">Medicine Name:</th> -->
-          <td>{{ medicine.medicineName }}</td>
-          <!-- <th scope="col">Dosage:</th> -->
-          <td>{{ patientTreatment.dosage }}</td>
-          <!-- <th scope="col">Time:</th> -->
-          <td>{{ patientTreatment.time }}</td>
-          <!-- <th scope="col">Nurse Notes:</th> -->
-          <td>{{ patientTreatment.nurseNote }}</td>
-          <button class="btn btn-danger btn-sm" (click)="deleteTreatment(patientTreatment.pt2Id)">
-            Delete
-          </button>
-        </tr>
+<div class="container" style="margin-top: 5vh;">
+  <div class="row" *ngIf="viewTreatment">
+    <div class="col-12 col-sm-10">
+      <h4 style="font-weight: bold;">Treatments Table : </h4>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-10">
+      <table class="table table-bordered table-striped mb-0" style="width: 700px">
+
+
+        <tbody style="width: 700px">
+          <div *ngFor="let patientTreatment of patientTreatment2">
+            <div *ngFor="let medicine of AllMedicineList">
+              <tr *ngIf="patientTreatment.medicineId == medicine.medicineId">
+                <!-- <th scope="col">Medicine Name:</th> -->
+                <td style="width: 600px">{{ medicine.medicineName }}</td>
+                <!-- <th scope="col">Dosage:</th> -->
+                <td style="width: 700px">{{ patientTreatment.dosage }}</td>
+                <!-- <th scope="col">Time:</th> -->
+                <td style="width: 600px">{{ patientTreatment.time }}</td>
+                <!-- <th scope="col">Nurse Notes:</th> -->
+                <td style="width: 600px">{{ patientTreatment.nurseNote }}</td>
+                <td style="width: 600px"><button class="btn btn-danger btn-sm"
+                    (click)="deleteTreatment(patientTreatment.pt2Id)">
+                    Delete
+                  </button></td>
+              </tr>
+            </div>
+          </div>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+<!-- <table class="table table-bordered table-striped mb-0" style="width: 700px">
+  <tbody style="width: 700px">
+    <div *ngFor="let PatientTreatment of patientTreatment2">
+      <div *ngFor="let medicines of AllMedicineList">
+        <div *ngIf="PatientTreatment.medicineId == medicines.medicineId">
+          <div *ngIf="i == 0">
+            <thead style="width: 700px">
+              <th scope="col" style="width: 600px">Medicine</th>
+              <th scope="col" style="width: 700px">Dosage</th>
+              <th scope="col" style="width: 600px">Date-Time</th>
+              <th scope="col" style="width: 600px">NurseNote</th>
+            </thead>
+          </div>
+
+
+          <tr style="width: 700px">
+            <td style="width: 600px">{{ medicines.medicineName }}</td>
+            <td style="width: 700px">{{ PatientTreatment.dosage }}</td>
+            <td style="width: 600px">{{ PatientTreatment.time }}</td>
+            <td style="width: 600px">{{ patientTreatment.nurseNote }}</td>
+          </tr>
+
+    <tbody>
+
+      <div *ngFor="let patientTreatment of patientTreatment2">
+        <div *ngFor="let medicine of AllMedicineList">
+          <div  *ngIf="patientTreatment.medicineId == medicine.medicineId">
+            <tr>
+              <th scope="col">Medicine</th>
+              <td>{{ medicine.medicineName }}</td>
+              <th scope="col">Dosage:</th>
+              <td>{{ patientTreatment.dosage }}</td>
+              <th scope="col">Time:</th>
+              <td>{{ patientTreatment.time }}</td>
+              <th scope="col">Doctor Notes:</th>
+              <td>{{ patientTreatment.doctorNote }}</td>
+              <th scope="col">Nurse Notes:</th>
+              <td>{{ patientTreatment.nurseNote }}</td>
+             <button class="btn btn-danger btn-sm mt-2" (click)="deleteTreatment(patientTreatment.pt2Id)">
+               Delete
+             </button>
+            </tr>
+          </div>
+
+
+        </div>
       </div>
     </div>
   </tbody>
-</table>
+</table> -->
+

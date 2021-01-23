@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Nurse } from '../nurse-service.service';
 import { PatientInformation, PatientService } from '../patient.service';
 
 @Component({
@@ -37,9 +38,36 @@ export class RegistrationPatientComponent implements OnInit {
     null
   );
 
+  objNurseSession: Nurse = new Nurse(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
   constructor(private patientService: PatientService, private router: Router) {}
 
-  ngOnInit(): void {}
+  isPatient = true;
+
+  ngOnInit(): void {
+    if (sessionStorage.getItem('nurseLogin') == null) {
+      this.isPatient = false;
+      
+    } else {
+      this.isPatient = true;
+    }
+  }
+  
 
   AddPatientInformation(patientInformation: PatientInformation) {
     this.patientService
@@ -48,8 +76,9 @@ export class RegistrationPatientComponent implements OnInit {
         alert(res);
         if (res) {
           alert('Patient Added Successfully');
+          this.objNurseSession = JSON.parse(sessionStorage.getItem('nurseLogin'));
           if (sessionStorage.getItem('nurseLogin') == null) {
-            this.router.navigate(['homepage']);
+            this.router.navigate(['login']);
           } else {
             this.router.navigate(['nurse-home']);
           }

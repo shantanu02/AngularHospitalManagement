@@ -78,6 +78,11 @@
                             </div>
                         </div>
                     </div>
+                    <!-- <div class="col-12" *ngIf="nzipcode.valid">
+                        <span class="text-success">
+                            Good..!!
+                        </span>
+                    </div> -->
 
                     <!-- Email Id-->
                     <div class="input-group col-lg-6 mt-4">
@@ -371,10 +376,16 @@
                             ZipCode is Required
                         </span>
                         <span class="text-danger" *ngIf="nzipcode.errors.pattern">
-                            ZipCode must be digit Only(maximum 6 digit)
+
+                            ZipCode must be digit Only (Maximum 6 digit)
                         </span>
                     </div>
+                    <div class="col-12" *ngIf="nzipcode.valid">
+                        <span class="text-success">
+                            Good..!!
 
+                        </span>
+                    </div>
 
 
                     <!-- Address -->
@@ -438,7 +449,7 @@
                     </div>
                     <!-- Already Registered -->
                     <div class="text-center w-100">
-                        <p class="text-muted font-weight-bold">Already Registered? <a href="#"
+                        <p class="text-muted font-weight-bold">Already Registered? <a routerLink="/login"
                                 class="text-primary ml-2">Login</a></p>
                     </div>
 

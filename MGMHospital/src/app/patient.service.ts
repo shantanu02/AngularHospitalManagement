@@ -27,7 +27,8 @@ export class PatientInformation{
     public patientWard :string,
     public patientBedNo :string,
     public doctorId :number,
-    public nurseId :number
+    public nurseId :number,
+    public rowColor:boolean = false
 
   ){}
 }
@@ -209,7 +210,6 @@ getAllPatientInformation()
   return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getAllPatientInformation");
 }
 
-
 GetAllPatientsByDoctorId(doctorId:number){
   return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getPatientInformationByDoctorId/"+doctorId);
 
@@ -255,6 +255,10 @@ getAllPatientInformationByNurseId(nurseId:number)
   GetAllPatientTreatment2ByPatientId(patientId:number){
     return this.httpClient.get<PatientTreatment2[]>("http://localhost:8080/patientTreatment2/getPatientTreatment2ById/"+patientId);
 
+  }
+  getAllMedicines()
+  {
+    return this.httpClient.get<Medicines[]>("http://localhost:8080/medicines/getAllMedicines");
   }
 
   DeletePatientTreatment2ByPt2Id(pt2Id:number){

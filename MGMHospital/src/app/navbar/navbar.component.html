@@ -41,7 +41,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto topnav">
         <li class="nav-item active">
-          <a class="nav-link" href="#" (click)="Homepage()"
+          <a class="nav-link" (click)="Homepage()"
             >Home <span class="sr-only">(current)</span></a
           >
         </li>
@@ -62,12 +62,7 @@
           <a class="nav-link" href="#">Contact</a>
         </li>
         <div
-          *ngIf="
-            objManagementSession == null &&
-            objNurse == null &&
-            objDoctorSession == null &&
-            objPatientInformation == null
-          "
+          *ngIf="!hide"
           style="display: flex"
         >
           <li class="nav-item dropdown mr-2">
@@ -98,7 +93,7 @@
             </div>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!hide">
             <a
               class="nav-link btn btn-primary text-white"
               type="button"
@@ -107,37 +102,17 @@
             >
           </li>
         </div>
-        <div *ngIf="objManagementSession != null">
+        <div *ngIf="hide">
           <li class="nav-item">
             <button
               class="btn btn-primary text-white"
-              (click)="LogoutManagement()"
+              (click)="Logout()"
             >
               Logout
             </button>
           </li>
         </div>
-        <div *ngIf="objNurse != null">
-          <li class="nav-item">
-            <button class="btn btn-primary text-white" (click)="LogoutNurse()">
-              Logout
-            </button>
-          </li>
-        </div>
-        <div *ngIf="objDoctorSession != null">
-          <li class="nav-item">
-            <button class="btn btn-primary text-white" (click)="LogoutDoctor()">
-              Logout
-            </button>
-          </li>
-        </div>
-        <div *ngIf="objPatientInformation != null">
-          <li class="nav-item">
-            <button class="btn btn-primary text-white" (click)="LogoutPatient()">
-              Logout
-            </button>
-          </li>
-        </div>
+       
       </ul>
     </div>
   </nav>

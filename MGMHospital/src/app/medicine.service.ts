@@ -7,6 +7,7 @@ export class Medicine{
     public medicineName: string,
     public medicineDesc:string,
     public medicineType:string,
+    public rowColor:boolean = false
 
   ){
   }

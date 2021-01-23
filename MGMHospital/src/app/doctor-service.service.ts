@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 export class Doctor
 {
   constructor(
-    public doctorId:number,
+    public  doctorId:number,
     public  doctorFName:string,
     public  doctorLName:string,
     public  doctorEmail:string,
@@ -39,5 +39,9 @@ export class DoctorServiceService {
   getDoctorByEmail(doctor_email:string)
   {
     return this.httpClient.get<Doctor>("http://localhost:8080/doctor/getDoctorByEmail/"+doctor_email);
+  }
+
+  getAllDoctor(){
+    return this.httpClient.get<Doctor[]>("http://localhost:8080/doctor/getAllDoctor");
   }
 }

@@ -129,12 +129,16 @@ export class DoctorHomeComponent implements OnInit {
 
   patientExaminationList: PatientExamination[];
 
+ 
+
   ngOnInit(): void {
-    this.objDoctor = JSON.parse(sessionStorage.getItem('doctorLogin'));
-    this.docSessId = this.objDoctor.doctorId;
-    if (this.objDoctor == null) {
-      this.router.navigate(['homepage']);
+
+    if(sessionStorage.length === 0){
+      this.router.navigate(['/login']);
     }
+    this.objDoctor = JSON.parse(sessionStorage.getItem('doctorLogin'));
+    this.docSessId = this.objDoctor?.doctorId;
+  
     this.patientService
       .GetAllPatientsByDoctorId(this.docSessId)
       .subscribe((res) => {
@@ -182,6 +186,9 @@ export class DoctorHomeComponent implements OnInit {
   showMedicineType(item:string) {
     this.medicineService.GetMedicinesByType(item).subscribe(res=>{
       this.medicineByType = res;
+      for(var i = 0 ; i < res.length ; i++){
+        this.medicineByType[i].rowColor = false;
+      }
     })
 }
 
@@ -205,11 +212,19 @@ addMedicine()
   })
 }
 addMedicineFromList(item:Medicine)
+
 {
-  this.medicineId = item.medicineId;
-  this.medicineName = item.medicineName;
-  this.medicineDesc = item.medicineDesc;
-  this.medicineType = item.medicineType;
+  //alert(item.medicineName);
+  item.rowColor = !item.rowColor;
+  if(item.rowColor == true){
+    this.medicineId = item.medicineId;
+    this.medicineName = item.medicineName;
+    this.medicineDesc = item.medicineDesc;
+    this.medicineType = item.medicineType;
+  }
+
+  
+ 
 }
 
 ViewTreatment()
@@ -233,9 +248,9 @@ CloseViewTreatment()
 
   deleteTreatment(patientTreatmentId:number)
   {
-    alert(patientTreatmentId);
+    //alert(patientTreatmentId);
     this.patientService.DeletePatientTreatment2(patientTreatmentId).subscribe(res=>{
-      alert("deleted");
+      alert("Medicine Removed from the treatment");
       this.ViewTreatment();
     })
   }

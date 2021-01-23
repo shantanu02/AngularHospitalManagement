@@ -20,16 +20,18 @@ export class RegistrationDoctorComponent implements OnInit {
 
   AddDoctor(objDoctor:Doctor)
   {
+    
       this.doctorServiceService.AddDoctor(objDoctor).subscribe(res=>{
         if(res)
         {
             alert("Registration SuccessFull");
-            this.router.navigate(['homepage']);
+            this.router.navigate(['login']);
         }else
         {
-            alert("Registration Failed");
+            alert("Email Id Already Registered !!!");
             this.router.navigate(['registration-doctor']);
         }
       })
   }
+
 }

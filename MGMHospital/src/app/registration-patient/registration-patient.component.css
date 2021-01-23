@@ -70,3 +70,9 @@ select.form-control {
 
 }
 
+.ifValid.ng-valid{
+    border: 2px solid green;
+}
+.ifValid2.ng-change{
+    border: 2px solid green;
+}
