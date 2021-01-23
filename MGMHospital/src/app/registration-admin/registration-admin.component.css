@@ -1,3 +1,7 @@
+input.ng-valid,select.ng-valid{
+    border: 2px solid green;
+}
+
 @media(max-width:1000px){
     .valid2{
         display: none;

@@ -57,7 +57,17 @@ export class RegistrationPatientComponent implements OnInit {
 
   constructor(private patientService: PatientService, private router: Router) {}
 
-  ngOnInit(): void {}
+  isPatient = true;
+
+  ngOnInit(): void {
+    if (sessionStorage.getItem('nurseLogin') == null) {
+      this.isPatient = false;
+      
+    } else {
+      this.isPatient = true;
+    }
+  }
+  
 
   AddPatientInformation(patientInformation: PatientInformation) {
     this.patientService
@@ -68,7 +78,7 @@ export class RegistrationPatientComponent implements OnInit {
           alert('Patient Added Successfully');
           this.objNurseSession = JSON.parse(sessionStorage.getItem('nurseLogin'));
           if (sessionStorage.getItem('nurseLogin') == null) {
-            this.router.navigate(['homepage']);
+            this.router.navigate(['login']);
           } else {
             this.router.navigate(['nurse-home']);
           }

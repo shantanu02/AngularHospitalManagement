@@ -25,7 +25,7 @@ export class RegistrationDoctorComponent implements OnInit {
         if(res)
         {
             alert("Registration SuccessFull");
-            this.router.navigate(['homepage']);
+            this.router.navigate(['login']);
         }else
         {
             alert("Email Id Already Registered !!!");
@@ -33,4 +33,5 @@ export class RegistrationDoctorComponent implements OnInit {
         }
       })
   }
+
 }

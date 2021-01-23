@@ -28,7 +28,7 @@
                 <div class="row">
 
                     <!-- First Name -->
-                    <div class="input-group col-lg-6">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="d-flex input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
@@ -49,7 +49,7 @@
 
                     <!-- Last Name -->
 
-                    <div class="input-group col-lg-6">
+                    <div class="input-group col-lg-6 mt-4">
 
                         <div class="d-flex">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
@@ -110,7 +110,7 @@
 
                     </div>
                     <!-- Validation Section of Email-Id field  -->
-    <div class="col-12" *ngIf="email.errors && (email.invalid && email.touched )">
+                    <div class="col-12" *ngIf="email.errors && (email.invalid && email.touched )">
                         <span class="text-danger" *ngIf="email.errors.required">
                             Email-Id is Required
                         </span>
@@ -130,7 +130,9 @@
                                 name="Password" placeholder="Password" #pass="ngModel"
                                 class="form-control bg-white border-left-1 border-md"
                                 [class.is-invalid]="pass.invalid && pass.touched" required
-           pattern="^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$">
+
+                                pattern="^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$">
+
 
                         </div>
                         <div class="valid1" *ngIf="(pass.errors && (pass.invalid && pass.touched ))">
@@ -157,77 +159,70 @@
                             <input id="email" type="email" [(ngModel)]="objManagement.management_phone" name="email"
                                 placeholder="Mobile Number" #phone="ngModel"
                                 class="form-control bg-white border-left-1 border-md"
-                                [class.is-invalid]="phone.invalid && phone.touched" required
-                                pattern="[7-9]{1}[0-9]{9}">
-                        </div>
-                    </div>
-                    <!-- Validation Section of Password and PhoneNo Field -->
-                    <div class="col-12">
-
-                            <input id="phone" type="number" [(ngModel)]="objManagement.management_phone" name="email"
-                                placeholder="Mobile Number" #phone="ngModel"
-                                class="form-control bg-white border-left-1 border-md"
                                 [class.is-invalid]="phone.invalid && phone.touched" required pattern="[7-9]{1}[0-9]{9}">
                         </div>
-                        <div class="valid1" *ngIf="(phone.errors && (phone.invalid && phone.touched ))">
-                            <span class="text-danger" *ngIf="phone.errors.required">
-                                PhoneNo is Required
-                            </span>
-                            <span class="text-danger" *ngIf="phone.errors.pattern">
-                                Phone number must be 10 digit and start with (7,8,9)
-                            </span>
-                        </div>
                     </div>
                     <!-- Validation Section of Password and PhoneNo Field -->
-                    <div class="col-12 valid2">
+                    <div class="valid1" *ngIf="(phone.errors && (phone.invalid && phone.touched ))">
+                        <span class="text-danger" *ngIf="phone.errors.required">
+                            PhoneNo is Required
+                        </span>
+                        <span class="text-danger" *ngIf="phone.errors.pattern">
+                            Phone number must be 10 digit and start with (7,8,9)
+                        </span>
+                    </div>
+                </div>
+                <!-- Validation Section of Password and PhoneNo Field -->
+                <div class="col-12 valid2">
 
-                        <div class="row">
-                            <div class="col-6">
-                                <div *ngIf="(pass.errors && (pass.invalid && pass.touched ))">
-                                    <span class="text-danger" *ngIf="pass.errors.required">
-                                        Password is Required
-                                    </span>
-                                    <span class="text-danger" *ngIf="pass.errors.pattern">
-                                        Mini eight charc, at least one uppercase letter, one lowercase letter, one
-                                        number and one special character
+                    <div class="row">
+                        <div class="col-6">
+                            <div *ngIf="(pass.errors && (pass.invalid && pass.touched ))">
+                                <span class="text-danger" *ngIf="pass.errors.required">
+                                    Password is Required
+                                </span>
+                                <span class="text-danger" *ngIf="pass.errors.pattern">
+                                    Mini eight charc, at least one uppercase letter, one lowercase letter, one
+                                    number and one special character
 
-                                    </span>
-                                </div>
+                                </span>
                             </div>
-                            <div class="col-6">
-                                <div *ngIf="(phone.errors && (phone.invalid && phone.touched ))">
-                                    <span class="text-danger" *ngIf="phone.errors.required">
-                                        PhoneNo is Required
-                                    </span>
-                                    <span class="text-danger" *ngIf="phone.errors.pattern">
-                                        Phone number must be 10 digit and start with (7,8,9)
-                                    </span>
-                                </div>
+                        </div>
+                        <div class="col-6">
+                            <div *ngIf="(phone.errors && (phone.invalid && phone.touched ))">
+                                <span class="text-danger" *ngIf="phone.errors.required">
+                                    PhoneNo is Required
+                                </span>
+                                <span class="text-danger" *ngIf="phone.errors.pattern">
+                                    Phone number must be 10 digit and start with (7,8,9)
+                                </span>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Submit Button -->
-                    <div class="form-group col-lg-12 mx-auto mb-0 mt-4">
-                        <button (click)="AddManagement(objManagement)" class="btn btn-primary btn-block py-2"
+                <!-- Submit Button -->
+                <div class="form-group col-lg-12 mx-auto mb-0 mt-4">
+                    <button (click)="AddManagement(objManagement)" class="btn btn-primary btn-block py-2"
+                        [disabled]="mgmform.form.invalid">
 
-                            [disabled]="mgmform.form.invalid">
+                        <span class="font-weight-bold">Create your account</span>
+                    </button>
+                </div>
 
-                            <span class="font-weight-bold">Create your account</span>
-                        </button>
-                    </div>
+                <!-- Divider Text -->
+                <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                    <div class="border-bottom w-100 ml-5"></div>
+                    <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+                    <div class="border-bottom w-100 mr-5"></div>
+                </div>
+                <!-- Already Registered -->
+                <div class="text-center w-100">
+                    <p class="text-muted font-weight-bold">Already Registered?
+                        <a routerLink="/login" class="text-primary ml-2">Login</a>
+                    </p>
+                </div>
 
-                    <!-- Divider Text -->
-                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-                        <div class="border-bottom w-100 ml-5"></div>
-                        <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
-                        <div class="border-bottom w-100 mr-5"></div>
-                    </div>
-                    <!-- Already Registered -->
-                    <div class="text-center w-100">
-                        <p class="text-muted font-weight-bold">Already Registered? <a href="#"
-                                class="text-primary ml-2">Login</a></p>
-                    </div>
 
             </form>
         </div>

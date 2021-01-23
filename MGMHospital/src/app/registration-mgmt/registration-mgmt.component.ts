@@ -23,7 +23,7 @@ export class RegistrationMgmtComponent implements OnInit {
       this.managementService.AddManagement(objManagement).subscribe(res => {
         if (res) {
           alert("Registration SuccessFull");
-          this.router.navigate(['homepage']);
+          this.router.navigate(['login']);
         }
         else {
           alert("Registration Failed");
