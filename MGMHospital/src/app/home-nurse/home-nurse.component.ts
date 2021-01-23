@@ -20,6 +20,11 @@ export class HomeNurseComponent implements OnInit {
   constructor(private router: Router, private patientService: PatientService,private medicineService:MedicineService) {}
   objMedicinesList: Medicine[];
   medicinesByTypeList: Medicine[];
+  tableMedicineName:string="Medicine Name"
+  tableMedicineDosage:string = "Dosage";
+  tableMedicineTime:string="Time";
+  tableMedicineNurseNotes="Nurse Notes"
+  tableAction:string="Action";
   objNurseSession: Nurse = new Nurse(
     null,
     null,
@@ -248,10 +253,13 @@ export class HomeNurseComponent implements OnInit {
 
   deleteTreatment(patientTreatmentId:number)
   {
-    alert(patientTreatmentId);
     this.patientService.DeletePatientTreatment2(patientTreatmentId).subscribe(res=>{
-      alert("deleted");
       this.ViewTreatment();
     })
+  }
+
+  SendRobot()
+  {
+    this.router.navigate(['robot1']);
   }
 }

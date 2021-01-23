@@ -676,7 +676,7 @@
                                   <th scope="col">Medicine Type</th>
                                 </tr>
                               </thead>
-                              <tbody>
+                              <tbody class="tbody">
                                 <tr
                                   (click)="showMedicineType(item)"
                                   *ngFor="
@@ -700,7 +700,7 @@
                                 <th scope="col">Medicine Desc</th>
                               </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="tbody">
                               <tr
                                 *ngFor="let item of medicineByType"
                                 (click)="addMedicineFromList(item)"
@@ -891,6 +891,9 @@
           </div>
           <!-- Patient Personal Details section End -->
         </div>
+        <div>
+          <button (click)="SendRobot()" class="btn btn-danger btn-sm">Send Robot</button>
+        </div>
         <!-- Exmaine and Give Treatment buttons 2nd Copy-->
         <div class="row my-3 resbtn2">
           <div class="col-sm-2"></div>
@@ -949,21 +952,27 @@
   <table class="table">
 
     <tbody>
+
       <div *ngFor="let patientTreatment of patientTreatment2">
         <div *ngFor="let medicine of AllMedicineList">
-          <tr *ngIf="patientTreatment.medicineId == medicine.medicineId">
-            <!-- <th scope="col">Medicine Name:</th> -->
-            <td>{{ medicine.medicineName }}</td>
-            <!-- <th scope="col">Dosage:</th> -->
-            <td>{{ patientTreatment.dosage }}</td>
-            <!-- <th scope="col">Time:</th> -->
-            <td>{{ patientTreatment.time }}</td>
-            <!-- <th scope="col">Nurse Notes:</th> -->
-            <td>{{ patientTreatment.nurseNote }}</td>
-           <button class="btn btn-danger btn-sm" (click)="deleteTreatment(patientTreatment.pt2Id)">
-             Delete
-           </button>
-          </tr>
+          <div  *ngIf="patientTreatment.medicineId == medicine.medicineId">
+            <tr>
+              <th scope="col">Medicine</th>
+              <td>{{ medicine.medicineName }}</td>
+              <th scope="col">Dosage:</th>
+              <td>{{ patientTreatment.dosage }}</td>
+              <th scope="col">Time:</th>
+              <td>{{ patientTreatment.time }}</td>
+              <th scope="col">Doctor Notes:</th>
+              <td>{{ patientTreatment.doctorNote }}</td>
+              <th scope="col">Nurse Notes:</th>
+              <td>{{ patientTreatment.nurseNote }}</td>
+             <button class="btn btn-danger btn-sm mt-2" (click)="deleteTreatment(patientTreatment.pt2Id)">
+               Delete
+             </button>
+            </tr>
+          </div>
+
         </div>
       </div>
     </tbody>
