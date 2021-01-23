@@ -53,6 +53,9 @@
 .tbody tr:hover{
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
+.selectionColor{
+  background-color:rgb(61, 255, 78) ;
+}
 
 @media(max-width:1200px){
   .fixed_header {
@@ -260,17 +263,29 @@ h1,p{
   width: 22vh;
 }
 
-.ppdetails{
-  border: 2px solid black;
+.ppdvalue{
+  font-family: 'Montserrat', sans-serif;
+  color:rgb(0, 0, 0);
+  font-weight: bold;
 }
 
+.ppdetails{
+  border: 1px solid rgb(105, 102, 102);
+}
+
+.shadow {
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc;
+}
 .ppdr{
   margin-top: 6vh;
 }
 
 .ppdtitle{
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
+  color:#2a2a2a;
 }
 
 .p-pid{
