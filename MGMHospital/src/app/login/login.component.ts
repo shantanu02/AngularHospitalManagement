@@ -25,7 +25,22 @@ export class LoginComponent implements OnInit {
     private doctorServiceService: DoctorServiceService, private headerService: HeaderService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const role = sessionStorage.getItem('role');
+
+    if (role ==  'nurse') {
+      this.router.navigate(['nurse-home']);
+    }
+    else if (role ==  'doctor') {
+      this.router.navigate(['doctor-home']);
+    }
+    else if (role ==  'mgmt') {
+      this.router.navigate(['Management-Homepage']);
+    } else {
+      this.router.navigate(['login']);
+    }
+  
+  }
 
   objUserLogin: UserLogin = new UserLogin(null, null, null);
   objManagementSession: Management = new Management(

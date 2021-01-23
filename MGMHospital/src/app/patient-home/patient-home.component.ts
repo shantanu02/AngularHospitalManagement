@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HeaderService } from '../header.service';
 import { Medicine, MedicineService } from '../medicine.service';
 import {
   PatientExamination,
@@ -54,12 +55,18 @@ export class PatientHomeComponent implements OnInit {
   public uiAlert = false;
 
   constructor(private patientService: PatientService, private router: Router
-    ,private medicineService: MedicineService) {}
+    ,private medicineService: MedicineService, private headerService: HeaderService) {}
     datetime:string = "";
   PatientTreatment2List:PatientTreatment2[];
   AllMedicineList:Medicine[];
 
   ngOnInit(): void {
+
+    if(sessionStorage.getItem('role')){
+      this.headerService.hide.next(true);
+    }
+
+
     if(sessionStorage.length === 0){
       this.router.navigate(['/login']);
     }

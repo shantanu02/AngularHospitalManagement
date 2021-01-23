@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Doctor, DoctorServiceService } from '../doctor-service.service';
+import { HeaderService } from '../header.service';
 import { Management } from '../management.service';
 import { Nurse, NurseServiceService } from '../nurse-service.service';
 import { PatientInformation, PatientService } from '../patient.service';
@@ -13,7 +14,7 @@ import { PatientInformation, PatientService } from '../patient.service';
 export class ManagementHomepageComponent implements OnInit {
 
 
-  constructor(private router: Router,private patientService: PatientService , private doctorService : DoctorServiceService , private nurseService : NurseServiceService) { }
+  constructor(private headerService: HeaderService,private router: Router,private patientService: PatientService , private doctorService : DoctorServiceService , private nurseService : NurseServiceService) { }
   objManagementSession:Management = new Management(null,null,null,null,null,null);
    objPatientInformation:PatientInformation = new PatientInformation(null,null,null,null,null,null,
    null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
@@ -25,11 +26,19 @@ export class ManagementHomepageComponent implements OnInit {
   dId:number;  
 
   ngOnInit(): void {
+
+    if(sessionStorage.getItem('role')){
+      this.headerService.hide.next(true);
+    }
+
     if(sessionStorage.length === 0){
       this.router.navigate(['/login']);
     }
     this.objManagementSession = JSON.parse(sessionStorage.getItem('mgmtLogin'));
-    //window.location.reload();
+   
+    if (this.objManagementSession == null) {
+      this.router.navigate(['homepage']);
+    }
 
   }
 
