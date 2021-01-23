@@ -1,6 +1,7 @@
 <!--Navbar-->
+
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 
@@ -8,7 +9,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-primary py-3">
         <div class="container" style="justify-content: center;align-items:center">
             <!-- Navbar Brand -->
-            <h1 class="display-4"style="color: whitesmoke;">Registration for Doctor</h1>
+            <h1 class="display-4" style="color: whitesmoke;">Registration for Doctor</h1>
         </div>
     </nav>
 </header>
@@ -23,186 +24,460 @@
 
         <!-- Registeration Form -->
         <div class="col-md-7 col-lg-6 ml-auto">
-            <form action="#">
+            <form #mgmform="ngForm">
                 <div class="row">
 
                     <!-- First Name -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="firstName" type="text" [(ngModel)]="objDoctor.doctorFName" name="firstname" placeholder="First Name"
-                          class="form-control bg-white border-left-0 border-md">
+                        <input id="firstName" type="text" [(ngModel)]="objDoctor.doctorFName" name="firstname"
+                            placeholder="First Name" class="form-control bg-white border-left-1 border-md"
+                            #fname="ngModel" [class.is-invalid]="fname.invalid && fname.touched" required>
+                    </div>
+
+                    <div class="valid1" *ngIf="(fname.errors && (fname.invalid && fname.touched ))">
+                        <span class="text-danger" *ngIf="fname.errors.required">
+                            FirstName is Required
+                        </span>
                     </div>
 
                     <!-- Last Name -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="lastName" type="text" name="lastname" [(ngModel)]="objDoctor.doctorLName" placeholder="Last Name"
-                            class="form-control bg-white border-left-0 border-md">
+                        <input id="lastName" type="text" name="lastname" [(ngModel)]="objDoctor.doctorLName"
+                            placeholder="Last Name" class="form-control bg-white border-left-1 border-md"
+                            #lname="ngModel" [class.is-invalid]="lname.invalid && lname.touched" required>
                     </div>
 
+                    <div  class="valid1" *ngIf="(lname.errors && (lname.invalid && lname.touched ))">
+                        <span class="text-danger" *ngIf="lname.errors.required">
+                            LastName is Required
+                        </span>
+                    </div>
+                    
+                    <!-- Validation Section of Firstname and lastname field -->
+
+                    <div class="col-md-12 col-sm-6 valid2">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-3">
+                                <div *ngIf="(fname.errors && (fname.invalid && fname.touched ))">
+                                    <span class="text-danger" *ngIf="fname.errors.required">
+                                        FirstName is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-3">
+                                <div *ngIf="(lname.errors && (lname.invalid && lname.touched ))">
+                                    <span class="text-danger" *ngIf="lname.errors.required">
+                                        LastName is Required
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Email Id-->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
-                              <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
                             </span>
                         </div>
-                        <input id="UserName" type="text" name="UserName" [(ngModel)]="objDoctor.doctorEmail" placeholder="Email Address"
-                            class="form-control bg-white border-left-0 border-md">
+                        <input id="UserName" type="text" name="UserName" [(ngModel)]="objDoctor.doctorEmail"
+                            placeholder="Email Address" class="form-control bg-white border-left-1 border-md"
+                            #email="ngModel" [class.is-invalid]="email.invalid && email.touched" required
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                     </div>
 
+                    <div class="valid1" *ngIf="email.errors && (email.invalid && email.touched )">
+                        <span class="text-danger" *ngIf="email.errors.required">
+                            Email-Id is Required
+                        </span>
+                        <span class="text-danger" *ngIf="email.errors.pattern">
+                            Enter valid Email-Id
+                        </span>
+                    </div>
                     <!-- Password -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
-                              <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                             </span>
                         </div>
-                        <input id="Password" type="text" name="Password" [(ngModel)]="objDoctor.doctorPassword" placeholder="Password"
-                            class="form-control bg-white border-left-0 border-md">
+                        <input id="Password" type="text" name="Password" [(ngModel)]="objDoctor.doctorPassword"
+                            placeholder="Password" class="form-control bg-white border-left-1 border-md" #pass="ngModel"
+                            [class.is-invalid]="pass.invalid && pass.touched" required
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
                     </div>
+
+                    <div class="valid1" *ngIf="(pass.errors && (pass.invalid && pass.touched ))">
+
+                        <span class="text-danger" *ngIf="pass.errors.required">
+                            Password is Required
+                        </span>
+                        <span class="text-danger" *ngIf="pass.errors.pattern">
+                            Mini eight charc, at least one uppercase letter, one lowercase letter, one
+                            number and one special character
+                        </span>
+                    </div>
+
+                    <!----------------------Validation Section of Email and Password field--------------------->
+                    <div class="col-md-12 col-sm-6 valid2">
+                        <div class="row">
+                            <!--------- Validate Email----------------->
+                            <div class="col-6">
+                                <div *ngIf="email.errors && (email.invalid && email.touched )">
+                                    <span class="text-danger" *ngIf="email.errors.required">
+                                        Email-Id is Required
+                                    </span>
+                                    <span class="text-danger" *ngIf="email.errors.pattern">
+                                        Enter valid Email-Id
+                                    </span>
+                                </div>
+                            </div>
+                            <!--------- Validate Password ----------------->
+                            <div class="col-6">
+                                <div *ngIf="(pass.errors && (pass.invalid && pass.touched ))">
+                                    <span class="text-danger" *ngIf="pass.errors.required">
+                                        Password is Required
+                                    </span>
+                                    <span class="text-danger" *ngIf="pass.errors.pattern">
+                                        Mini eight charc, at least one uppercase letter, one lowercase letter, one
+                                        number and one special character
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!----------------------------------------------------------------------------------------------------------->
 
                     <!-- phone Number-->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
-                              <i class="fa fa-phone" aria-hidden="true"></i>
+                                <i class="fa fa-phone" aria-hidden="true"></i>
                             </span>
                         </div>
-                        <input id="email" type="text" name="phone" [(ngModel)]="objDoctor.doctorPhone" placeholder="Mobile Number"
-                            class="form-control bg-white border-left-0 border-md">
+                        <input id="email" type="text" name="phone" [(ngModel)]="objDoctor.doctorPhone"
+                            placeholder="Mobile Number" class="form-control bg-white border-left-1 border-md"
+                            #phone="ngModel" [class.is-invalid]="phone.invalid && phone.touched" required
+                            pattern="[7-9]{1}[0-9]{9}">
                     </div>
-
+                    <div class="valid1" *ngIf="(phone.errors && (phone.invalid && phone.touched ))">
+                        <span class="text-danger" *ngIf="phone.errors.required">
+                            PhoneNo is Required
+                        </span>
+                        <span class="text-danger" *ngIf="phone.errors.pattern">
+                            Phone number must be 10 digit and start with (7,8,9)
+                        </span>
+                    </div>
                     <!-- Gender -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <select id="job" name="jobtitle" [(ngModel)]="objDoctor.doctorGender"
-                            class="form-control custom-select bg-white border-left-0 border-md">
+                        <select id="gender" name="gendertitle" [(ngModel)]="objDoctor.doctorGender"
+                            class="form-control custom-select bg-white border-left-1 border-md" #gender="ngModel"
+                            [class.is-invalid]="gender.invalid && gender.touched" required="required">
 
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
                     </div>
 
+                    <div class="valid1" *ngIf="(gender.errors && (gender.invalid && gender.touched ))">
+                        <span class="text-danger" *ngIf="gender.errors.required">
+                            Please select gender
+                        </span>
+                    </div>
+                    <!----------------------Validation Section of Phone Number and Gender field--------------------->
+                   
+                    <div class="col-md-12 col-sm-6 valid2">
+                        <div class="row">
+                            <!--------- Validate Phone Number----------------->
+                            <div class="col-6">
+                                <div *ngIf="(phone.errors && (phone.invalid && phone.touched ))">
+                                    <span class="text-danger" *ngIf="phone.errors.required">
+                                        PhoneNo is Required
+                                    </span>
+                                    <span class="text-danger" *ngIf="phone.errors.pattern">
+                                        Phone number must be 10 digit and start with (7,8,9)
+                                    </span>
+                                </div>
+                            </div>
+                            <!--------- Validate Gender ----------------->
+                            <div class="col-6">
+                                <div *ngIf="(gender.errors && (gender.invalid && gender.touched ))">
+                                    <span class="text-danger" *ngIf="gender.errors.required">
+                                        Please select gender
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!------------------------------------------------------------------------------------------------------------------->
+
                     <!-- Qualification -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <select id="quali" name="jobtitle" [(ngModel)]="objDoctor.doctorQualification"
-                            class="form-control custom-select bg-white border-left-0 border-md">
+                        <select id="qualification" name="qualificationititle"
+                            [(ngModel)]="objDoctor.doctorQualification"
+                            class="form-control custom-select bg-white border-left-1 border-md" #qualification="ngModel"
+                            [class.is-invalid]="qualification.invalid && qualification.touched" required>
+
+                            <option disabled>Select Qualification</option>
                             <option value="MBBS">MBBS</option>
                             <option value="Dentist">Dentist</option>
                             <option value="MD">MD</option>
                         </select>
                     </div>
 
+                    <div class="valid1" *ngIf="(qualification.errors && (qualification.invalid && qualification.touched ))">
+                    <span class="text-danger" *ngIf="qualification.errors.required">
+                        Please select qualification
+                    </span>
+                </div>
                     <!-- Experience in  -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="experience" [(ngModel)]="objDoctor.doctorExperience" type="email" name="email" placeholder="Experience(In year)"
-                            class="form-control bg-white border-left-0 border-md">
+                        <input id="experience" [(ngModel)]="objDoctor.doctorExperience" type="email" name="email"
+                            placeholder="Experience(In year)" class="form-control bg-white border-left-1 border-md"
+                            #experience="ngModel" [class.is-invalid]="experience.invalid && experience.touched"
+                            required>
                     </div>
 
-                    <!-- DOB -->
-                    <div class="input-group col-lg-6 mb-4">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text bg-white px-4 border-md border-right-0">
-                              <i class="fa fa-user text-muted"></i>
-                          </span>
-                      </div>
-                      <input id="DOB" [(ngModel)]="objDoctor.doctorDOB" type="date" name="DOB" placeholder="DOB(YYYY/MM/DD)"
-                          class="form-control bg-white border-left-0 border-md">
-                  </div>
-                        <!-- zip code -->
+                    <div class="valid1" *ngIf="(experience.errors && (experience.invalid && experience.touched ))">
+                        <span class="text-danger" *ngIf="experience.errors.required">
+                            Experience is required
+                        </span>
+                    </div>
 
-                        <div class="input-group col-lg-6 mb-4">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                  <i class="fa fa-user text-muted"></i>
-                              </span>
-                          </div>
-                          <input id="email" [(ngModel)]="objDoctor.doctorZipCode" type="text" name="zip" placeholder="Zip Code"
-                              class="form-control bg-white border-left-0 border-md">
-                      </div>
+                    <!----------------------Validation Section of Qualification and Experience field--------------------->
+                    <div class="col-md-12 col-sm-6 valid2">
+                        <div class="row">
+
+                            <!--------- Validate qualification----------------->
+
+                            <div class="col-6">
+                                <div
+                                    *ngIf="(qualification.errors && (qualification.invalid && qualification.touched ))">
+                                    <span class="text-danger" *ngIf="qualification.errors.required">
+                                        Please select qualification
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!--------- Validate experience ----------------->
+                            <div class="col-6">
+                                <div *ngIf="(experience.errors && (experience.invalid && experience.touched ))">
+                                    <span class="text-danger" *ngIf="experience.errors.required">
+                                        Experience is required
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------------------------------------------------------------------------------------->
+
+                    <!-- DOB -->
+                    <div class="input-group col-lg-6 mt-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="DOB" [(ngModel)]="objDoctor.doctorDOB" type="date" name="DOB"
+                            placeholder="DOB(YYYY/MM/DD)" class="form-control bg-white border-left-1 border-md"
+                            #dob="ngModel" [class.is-invalid]="dob.invalid && dob.touched" required>
+                    </div>
+
+                    <div class="valid1" *ngIf="(dob.errors && (dob.invalid && dob.touched))">
+                        <span class="text-danger" *ngIf="dob.errors.required">
+                            Please select Date of birth
+                        </span>
+                    </div>
+
+                    <!-- zip code -->
+
+                    <div class="input-group col-lg-6 mt-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="email" [(ngModel)]="objDoctor.doctorZipCode" type="text" name="zip"
+                            placeholder="Zip Code" class="form-control bg-white border-left-1 border-md" #zip="ngModel"
+                            [class.is-invalid]="zip.invalid && zip.touched" required>
+                    </div>
+
+                    <div class="valid1" *ngIf="(zip.errors && (zip.invalid && zip.touched ))">
+                        <span class="text-danger" *ngIf="zip.errors.required">
+                            Zip code is required
+                        </span>
+                    </div>
+
+                    <!----------------------Validation Section of DOB and zipCode field--------------------->
+
+                    <div class="col-md-12 col-sm-6 valid2">
+                        <div class="row">
+                            <!--------- Validate Dob----------------->
+                            <div class="col-6">
+                                <div *ngIf="(dob.errors && (dob.invalid && dob.touched))">
+                                    <span class="text-danger" *ngIf="dob.errors.required">
+                                        Please select Date of birth
+                                    </span>
+                                </div>
+                            </div>
+                            <!--------- Validate Zip ----------------->
+                            <div class="col-6">
+                                <div *ngIf="(zip.errors && (zip.invalid && zip.touched ))">
+                                    <span class="text-danger" *ngIf="zip.errors.required">
+                                        Zip code is required
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--------------------------------------------------------------------------------------------------->
 
 
                     <!-- state -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
-                            <input id="email" type="email" name="email" [(ngModel)]="objDoctor.doctorState" placeholder="State"
-                            class="form-control bg-white border-left-0 border-md">
+                            <input id="state" type="text" name="state" [(ngModel)]="objDoctor.doctorState"
+                                placeholder="State" class="form-control bg-white border-left-1 border-md"
+                                #state="ngModel" [class.is-invalid]="state.invalid && state.touched" required>
                         </div>
 
+                    </div>
+
+                    <div class="valid1" *ngIf="(state.errors && (state.invalid && state.touched))">
+                        <span class="text-danger" *ngIf="state.errors.required">
+                            Please file the State
+                        </span>
                     </div>
 
                     <!-- City -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
                         </div>
-                        <input id="email" type="text" name="City" [(ngModel)]="objDoctor.doctorCity" placeholder="City"
-                        class="form-control bg-white border-left-0 border-md">
+                        <input id="city" type="text" name="city" [(ngModel)]="objDoctor.doctorCity" placeholder="City"
+                            class="form-control bg-white border-left-1 border-md" #city="ngModel"
+                            [class.is-invalid]="city.invalid && city.touched" required>
                     </div>
+
+                    <div class="valid1" *ngIf="(city.errors && (city.invalid && city.touched ))">
+                        <span class="text-danger" *ngIf="city.errors.required">
+                            Please fill the City field
+                        </span>
+                    </div>
+
+                    <!----------------------Validation Section of state and city field--------------------->
+
+                    <div class="col-md-12 col-sm-6 valid2">
+                        <div class="row">
+
+                            <!--------- Validate state----------------->
+                            <div class="col-6">
+                                <div *ngIf="(state.errors && (state.invalid && state.touched))">
+                                    <span class="text-danger" *ngIf="state.errors.required">
+                                        Please file the State
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!--------- Validate city ----------------->
+                            <div class="col-6">
+                                <div *ngIf="(city.errors && (city.invalid && city.touched ))">
+                                    <span class="text-danger" *ngIf="city.errors.required">
+                                        Please fill the City field
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--------------------------------------------------------------------------------------------------->
 
 
                     <!--Specialist In-->
 
-                    <div class="input-group col-lg-12 mb-4">
-                      <label for="job">Specialist</label>
-                        <select id="job" class="ml-2" name="jobtitle" [(ngModel)]="objDoctor.doctorSpecialization"
-                            class="form-control custom-select bg-white border-left-0 border-md">
+                    <div class="input-group col-lg-12 mt-4">
 
+                        <select id="specialtist" class="ml-2" name="specialtisttitle"
+                            [(ngModel)]="objDoctor.doctorSpecialization"
+                            class="form-control custom-select bg-white border-left-1 border-md" #specialist="ngModel"
+                            [class.is-invalid]="specialist.invalid && specialist.touched" required>
+
+                            <option value="" disabled>Select specialist</option>
                             <option value="ENT">ENT</option>
                             <option value="Dentist">Dentist</option>
                             <option value="Dietician">Dietician</option>
                         </select>
                     </div>
 
-                    <!-- Address -->
-                    <div class="input-group col-lg-12 mb-4">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                          <i class="fa fa-address-book" aria-hidden="true"></i>
+                    <!----------------------Validation Section of  Specialist field--------------------->
+                    <div class="col-12" *ngIf="(specialist.errors && (specialist.invalid && specialist.touched ))">
+                        <span class="text-danger" *ngIf="specialist.errors.required">
+                            Please select option
                         </span>
+
                     </div>
-                    <input id="address" type="text" name="Address" [(ngModel)]="objDoctor.doctorAddress" placeholder="Address"
-                        class="form-control bg-white border-left-0 border-md">
+                    <!--------------------------------------------------------------------------------------------------->
+
+                    <!-- Address -->
+                    <div class="input-group col-lg-12 mt-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-address-book" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <input id="address" type="text" name="Address" [(ngModel)]="objDoctor.doctorAddress"
+                            placeholder="Address" class="form-control bg-white border-left-1 border-md"
+                            #address="ngModel" [class.is-invalid]="address.invalid && address.touched" required>
                     </div>
 
-                    
-                      
+                    <!----------------------Validation Section of  Specialist field--------------------->
+                    <div class="col-12" *ngIf="(address.errors && (address.invalid && address.touched ))">
+                        <span class="text-danger" *ngIf="address.errors.required">
+                            Please fill address
+                        </span>
+
+                    </div>
+                    <!--------------------------------------------------------------------------------------------------->
 
                     <!-- Submit Button -->
-                    <div class="form-group col-lg-12 mx-auto mb-0">
-                       <button (click)="AddDoctor(objDoctor)" class="btn btn-primary btn-block py-2">
-                         <span class="font-weight-bold">Create your account</span>y
-                         
-                       </button>
+                    <div class="form-group col-lg-12 mx-auto mt-4">
+                        <button (click)="AddDoctor(objDoctor)" class="btn btn-primary btn-block py-2"
+                            [disabled]="mgmform.form.invalid">
+                            <span class="font-weight-bold">Create your account</span>
+                        </button>
+
+
 
 
                     </div>
@@ -213,6 +488,7 @@
                         <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
                         <div class="border-bottom w-100 mr-5"></div>
                     </div>
+
                     <!-- Already Registered -->
                     <div class="text-center w-100">
                         <p class="text-muted font-weight-bold">Already Registered? <a href="#"

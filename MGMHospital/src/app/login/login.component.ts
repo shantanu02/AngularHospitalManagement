@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
     null,
     null,
     null,
-    null
+    null,null
   );
   objPatientInformation: PatientInformation = new PatientInformation(
     null,

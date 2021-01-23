@@ -1,34 +1,62 @@
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<div class="container" style="height: auto;">
+
+
+<div class="container-fluid">
+
+
     <div class="img">
         <img [src]="imgsrc" alt=" " />
     </div>
-    <div class="login-content">
-        <form>
+    <div class="login-content" style="width: auto;">
+        <form #mgmform="ngForm">
             <img [src]="imgsrc2">
             <h2 class="title">Welcome</h2>
             <div class="input-div one">
                 <div class="i">
                     <i class="fa fa-user fa-2x"></i>
                 </div>
-                <div class="div">
-                    <input [(ngModel)]="objUserLogin.userEmail" name="Email Address" type="text" placeholder="Username">
+                <div class="div" style="margin-top:0px;">
+                    <input [(ngModel)]="objUserLogin.userEmail" id="email" name="Email Address" type="text"
+                        placeholder="Username" #email="ngModel" [class.is-invalid]="email.invalid && email.touched"
+                        required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                 </div>
             </div>
+            <!--------- Validation Section of Email-Id field  ------------>
+
+            <div class="col-8" *ngIf="email.errors && (email.invalid && email.touched )">
+                <span class="text-danger" *ngIf="email.errors.required">
+                    Email-Id is Required
+                </span>
+                <span class="text-danger" *ngIf="email.errors.pattern">
+                    Enter valid Email-Id
+                </span>
+            </div>
+
             <div class="input-div pass">
                 <div class="i">
                     <i class="fa fa-lock fa-2x"></i>
                 </div>
                 <div class="div">
 
-                    <input [(ngModel)]="objUserLogin.userPassword" name="password" type="password" placeholder="Password">
+                    <input [(ngModel)]="objUserLogin.userPassword" id="pass" name="password" type="password"
+                        placeholder="Password" #pass="ngModel" [class.is-invalid]="pass.invalid && pass.touched"
+                        required pattern="^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$">
                 </div>
             </div>
+
+            <!-------------- Validation Section of Password field------------>
+
+            <div class="col-8" *ngIf="pass.errors && (pass.invalid && pass.touched )">
+                <span class="text-danger" *ngIf="pass.errors.required">
+                    Password is Required
+                </span>
+            </div>
+
             <a href="#">Forgot Password?</a>
-            <button (click)="Validate(objUserLogin)" class="btn  btn-primary">Login</button>
+
+            <button (click)="Validate(objUserLogin)" class="btn  btn-primary"
+                >Login</button>
 
         </form>
     </div>
-</div>

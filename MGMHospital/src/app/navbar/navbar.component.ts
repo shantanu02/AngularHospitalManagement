@@ -49,7 +49,7 @@ export class NavbarComponent implements OnInit {
     null,
     null,
     null,
-    null
+    null,null
   );
   objPatientInformation: PatientInformation = new PatientInformation(
     null,
@@ -113,10 +113,10 @@ export class NavbarComponent implements OnInit {
     if (this.objNurse != null) {
       this.router.navigate(['nurse-home']);
     }
-    if (this.objDoctorSession != null) {
+    else if (this.objDoctorSession != null) {
       this.router.navigate(['doctor-home']);
     }
-    if (this.objManagementSession != null) {
+    else if (this.objManagementSession != null) {
       this.router.navigate(['Management-Homepage']);
     } else {
       this.router.navigate(['homepage']);

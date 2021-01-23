@@ -1,6 +1,5 @@
-
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <!--Navbar-->
 <header class="header">
@@ -22,173 +21,410 @@
 
         <!-- Registeration Form -->
         <div class="col-md-7 col-lg-6 ml-auto">
-            <form action="#">
+            <form #nurseRegForm="ngForm">
                 <div class="row">
 
                     <!-- First Name -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
+
+                            <input id="firstName" [(ngModel)]="objNurse.nurseFName" type="text" name="firstname"
+                                placeholder="First Name" class="form-control bg-white border-left-1 border-md"
+                                #nfname="ngModel" [class.is-invalid]="nfname.invalid && nfname.touched" required>
                         </div>
-                        <input id="firstName" [(ngModel)]="objNurse.nurseFName" type="text" name="firstname" placeholder="First Name"
-                            class="form-control bg-white border-left-0 border-md">
+                        <div class="valid1" *ngIf="(nfname.errors && (nfname.invalid && nfname.touched ))">
+                            <span class="text-danger" *ngIf="nfname.errors.required">
+                                FirstName is Required
+                            </span>
+                        </div>
                     </div>
 
                     <!-- Last Name -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 llm">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
+
+                            <input id="lastName" type="text" [(ngModel)]="objNurse.nurseLName" name="lastname"
+                                placeholder="Last Name" class="form-control bg-white border-left-1 border-md"
+                                #nlname="ngModel" [class.is-invalid]="nlname.invalid && nlname.touched" required>
                         </div>
-                        <input id="lastName" type="text" [(ngModel)]="objNurse.nurseLName" name="lastname" placeholder="Last Name"
-                            class="form-control bg-white border-left-0 border-md">
-                    </div>
-
-
-                    <!-- Email Id-->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                              <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <div class="valid1" *ngIf="(nlname.errors && (nlname.invalid && nlname.touched ))">
+                            <span class="text-danger" *ngIf="nlname.errors.required">
+                                LastName is Required
                             </span>
                         </div>
-                        <input id="UserName" type="text" name="UserName" [(ngModel)]="objNurse.nurseEmail" placeholder="Email Address"
-                            class="form-control bg-white border-left-0 border-md">
+                    </div>
+                    <!-- Validation Section of Firstname and lastname field -->
+                    <div class="col-12 valid2">
+                        <div class="row">
+                            <div class="col-6">
+                                <div *ngIf="(nfname.errors && (nfname.invalid && nfname.touched ))">
+                                    <span class="text-danger" *ngIf="nfname.errors.required">
+                                        FirstName is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div *ngIf="(nlname.errors && (nlname.invalid && nlname.touched ))">
+                                    <span class="text-danger" *ngIf="nlname.errors.required">
+                                        LastName is Required
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email Id-->
+                    <div class="input-group col-lg-6 mt-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </span>
+                            <input id="UserName" type="text" name="UserName" [(ngModel)]="objNurse.nurseEmail"
+                                placeholder="Email Address" class="form-control bg-white border-left-1 border-md"
+                                #nemail="ngModel" class="form-control bg-white border-left-1 border-md"
+                                [class.is-invalid]="nemail.invalid && nemail.touched" required
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        </div>
+                        <div class="valid1" *ngIf="nemail.errors && (nemail.invalid && nemail.touched )">
+                            <span class="text-danger" *ngIf="nemail.errors.required">
+                                Email-Id is Required
+                            </span>
+                            <span class="text-danger" *ngIf="nemail.errors.pattern">
+                                Enter valid Email-Id
+                            </span>
+                        </div>
                     </div>
 
                     <!-- Password -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
-                              <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                            </span>
+                            <input id="Password" type="Password" name="Password" [(ngModel)]="objNurse.nursePassword"
+                                placeholder="Password" class="form-control bg-white border-left-1 border-md"
+                                #npass="ngModel" [class.is-invalid]="npass.invalid && npass.touched" required
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
+                        </div>
+                        <div class="valid1" *ngIf="(npass.errors && (npass.invalid && npass.touched ))">
+                            <span class="text-danger" *ngIf="npass.errors.required">
+                                Password is Required
+                            </span>
+                            <span class="text-danger" *ngIf="npass.errors.pattern">
+                                Mini eight charac , at least one uppercase letter, one lowercase letter, one
+                                number and one special character(@,#,$,%,&,*)
 
                             </span>
                         </div>
-                        <input id="Password" type="text" name="Password" [(ngModel)]="objNurse.nursePassword" placeholder="Password"
-                            class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Validation Section of Nurse Email and Password field -->
+                    <div class="col-12 valid2">
+                        <div class="row">
+                            <div class="col-6">
+                                <div *ngIf="nemail.errors && (nemail.invalid && nemail.touched )">
+                                    <span class="text-danger" *ngIf="nemail.errors.required">
+                                        Email-Id is Required
+                                    </span>
+                                    <span class="text-danger" *ngIf="nemail.errors.pattern">
+                                        Enter valid Email-Id
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div *ngIf="(npass.errors && (npass.invalid && npass.touched ))">
+                                    <span class="text-danger" *ngIf="npass.errors.required">
+                                        Password is Required
+                                    </span>
+                                    <span class="text-danger" *ngIf="npass.errors.pattern">
+                                        Mini eight charc, at least one uppercase letter, one lowercase letter, one
+                                        number and one special character(@,#,$,%,&,*)
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- phone Number-->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
-                              <i class="fa fa-phone" aria-hidden="true"></i>
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </span>
+                            <input id="phone" type="number" name="phone" [(ngModel)]="objNurse.nursePhone"
+                                placeholder="Mobile Number" class="form-control bg-white border-left-1 border-md"
+                                #phone="ngModel" class="form-control bg-white border-left-1 border-md"
+                                [class.is-invalid]="phone.invalid && phone.touched" required pattern="[7-9]{1}[0-9]{9}">
+                        </div>
+                        <div class="valid1" *ngIf="(phone.errors && (phone.invalid && phone.touched ))">
+                            <span class="text-danger" *ngIf="phone.errors.required">
+                                PhoneNo is Required
+                            </span>
+                            <span class="text-danger" *ngIf="phone.errors.pattern">
+                                Phone number must be 10 digit and should start with (7,8,9)
                             </span>
                         </div>
-                        <input id="phone" type="number" name="phone" [(ngModel)]="objNurse.nursePhone" placeholder="Mobile Number"
-                            class="form-control bg-white border-left-0 border-md">
                     </div>
 
                     <!-- Gender -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
+                            <select id="Gender" name="Gender" [(ngModel)]="objNurse.nurseGender"
+                                class="form-control custom-select bg-white border-left-1 border-md" #gender="ngModel"
+                                [class.is-invalid]="gender.invalid && gender.touched" required>
+                                <option value="" disabled>Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Female">Others</option>
+                            </select>
                         </div>
-                        <select id="job" name="jobtitle" [(ngModel)]="objNurse.nurseGender"
-                            class="form-control custom-select bg-white border-left-0 border-md">
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
+                        <div class="valid1" *ngIf="(gender.errors && (gender.invalid && gender.touched ))">
+                            <span class="text-danger" *ngIf="gender.errors.required">
+                                Gender is Required
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Validation Section of Nurse phone Number and  Gender field -->
+                    <div class="col-12 valid2">
+                        <div class="row">
+                            <div class="col-6">
+                                <div *ngIf="(phone.errors && (phone.invalid && phone.touched ))">
+                                    <span class="text-danger" *ngIf="phone.errors.required">
+                                        PhoneNo is Required
+                                    </span>
+                                    <span class="text-danger" *ngIf="phone.errors.pattern">
+                                        Phone number must be 10 digit and should start with (7,8,9)
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div *ngIf="(gender.errors && (gender.invalid && gender.touched ))">
+                                    <span class="text-danger" *ngIf="gender.errors.required">
+                                        Gender is Required
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Qualification -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
-                        </div>
-                        <select id="job" name="jobtitle" [(ngModel)]="objNurse.nurseQualification"
-                            class="form-control custom-select bg-white border-left-0 border-md">
-                            <option value=""> Select Qualification</option>
-                            <option value="Bachelor of Science in Nursing "> Bachelor of Science in Nursing (BSN)</option>
-                            <option value="Doctorate Of Nursing Practice ">Doctorate Of Nursing Practice (DNP)</option>
-                            <option value="Clinical Nurse Specialist">Clinical Nurse Specialist (CNS)</option>
-                            <option value="Family Nurse Practitioner">Family Nurse Practitioner (FNP)</option>
+                            <select id="Quli2" name="Quli2" [(ngModel)]="objNurse.nurseQualification"
+                                class="form-control custom-select bg-white border-left-1 border-md" #qualifi="ngModel"
+                                [class.is-invalid]="qualifi.invalid && qualifi.touched" required>
 
-                          </select>
+                                <option value="default">Select Qualification</option>
+                                <option value="Bachelor of Science in Nursing ">Bachelor of Science in Nursing (BSN)
+                                </option>
+                                <option value="Doctorate Of Nursing Practice ">Doctorate Of Nursing Practice (DNP)
+                                </option>
+                                <option value="Clinical Nurse Specialist">Clinical Nurse Specialist (CNS)</option>
+                                <option value="Family Nurse Practitioner">Family Nurse Practitioner (FNP)</option>
+
+                            </select>
+                        </div>
+                        <div class="valid1" *ngIf="(qualifi.errors && (qualifi.invalid && qualifi.touched ))">
+                            <span class="text-danger" *ngIf="qualifi.errors.required">
+                                Qualification is Required
+                            </span>
+                        </div>
                     </div>
 
                     <!-- Experience in  -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
+                            <input id="experience" type="number" name="Experience"
+                                [(ngModel)]="objNurse.nurseExperience" placeholder="Experience(In year)"
+                                class="form-control bg-white border-left-1 border-md" #nexperi="ngModel"
+                                [class.is-invalid]="nexperi.invalid && nexperi.touched" required>
                         </div>
-                        <input id="experience" type="number" name="Experience" [(ngModel)]="objNurse.nurseExperience" placeholder="Experience(In year)"
-                            class="form-control bg-white border-left-0 border-md">
+                        <div class="valid1" *ngIf="(nexperi.errors && (nexperi.invalid && nexperi.touched ))">
+                            <span class="text-danger" *ngIf="nexperi.errors.required">
+                                Experience is Required
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Validation Section of Nurse Qulification and Experiance field -->
+                    <div class="col-12 valid2">
+                        <div class="row">
+                            <div class="col-6">
+                                <div *ngIf="(qualifi.errors && (qualifi.invalid && qualifi.touched ))">
+                                    <span class="text-danger" *ngIf="qualifi.errors.required">
+                                        Qualification is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div *ngIf="(nexperi.errors && (nexperi.invalid && nexperi.touched ))">
+                                    <span class="text-danger" *ngIf="nexperi.errors.required">
+                                        Experience is Required
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-
                     <!-- state -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
+
+                            <input id="state" type="text" name="State" [(ngModel)]="objNurse.nurseState"
+                                placeholder="State" class="form-control bg-white border-left-1 border-md"
+                                #nstate="ngModel" [class.is-invalid]="nstate.invalid && nstate.touched" required
+                                pattern="^[A-Za-z]+$">
                         </div>
-                        <input id="state" type="text" name="State" [(ngModel)]="objNurse.nurseState" placeholder="State"
-                        class="form-control bg-white border-left-0 border-md">
+                        <div class="valid1" *ngIf="(nstate.errors && (nstate.invalid && nstate.touched ))">
+                            <span class="text-danger" *ngIf="nstate.errors.required">
+                                State is Required
+                            </span>
+                            <span class="text-danger" *ngIf="nstate.errors.pattern">
+                                Invalid State Name 
+                            </span>
+                        </div>
                     </div>
 
                     <!-- City -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
+
+                            <input id="City" type="text" name="City" [(ngModel)]="objNurse.nurseCity" placeholder="City"
+                                class="form-control bg-white border-left-1 border-md" #ncity="ngModel"
+                                [class.is-invalid]="ncity.invalid && ncity.touched" required
+                                pattern="^[A-Za-z]+$">
                         </div>
-                        <input id="City" type="text" name="City" [(ngModel)]="objNurse.nurseCity" placeholder="City"
-                        class="form-control bg-white border-left-0 border-md">
+                        <div class="valid1" *ngIf="(ncity.errors && (ncity.invalid && ncity.touched ))">
+                            <span class="text-danger" *ngIf="ncity.errors.required">
+                                City is Required
+                            </span>
+                            <span class="text-danger" *ngIf="ncity.errors.pattern">
+                                Invalid City Name 
+                            </span>
+                        </div>
                     </div>
 
+                    <!-- Validation Section of Nurse State and City field -->
+                    <div class="col-12 valid2">
+                        <div class="row">
+                            <div class="col-6">
+                                <div *ngIf="(nstate.errors && (nstate.invalid && nstate.touched ))">
+                                    <span class="text-danger" *ngIf="nstate.errors.required">
+                                        State is Required
+                                    </span>
+                                    <span class="text-danger" *ngIf="nstate.errors.pattern">
+                                        Invalid State Name 
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div *ngIf="(ncity.errors && (ncity.invalid && ncity.touched ))">
+                                    <span class="text-danger" *ngIf="ncity.errors.required">
+                                        City is Required
+                                    </span>
+                                    <span class="text-danger" *ngIf="ncity.errors.pattern">
+                                        Invalid City Name 
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                  <!-- Zip code -->
-                    <div class="input-group col-lg-6 mb-4">
+                    <!-- Zip code -->
+                    <div class="input-group col-lg-6 mt-4">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
+
+                            <input id="ZipCode" type="text" name="Code" [(ngModel)]="objNurse.nurseZipCode"
+                                placeholder="Zip Code" class="form-control bg-white border-left-1 border-md"
+                                #nzipcode="ngModel" [class.is-invalid]="nzipcode.invalid && nzipcode.touched" required
+                                pattern="[0-9]{5}">
                         </div>
-                        <input id="ZipCode" type="text" name="Code" [(ngModel)]="objNurse.nurseZipCode" placeholder="Zip Code"
-                        class="form-control bg-white border-left-0 border-md">
+                    </div>
+                    <!-- Validation Section of ZipCodes  -->
+                    <div class="col-12" *ngIf="(nzipcode.errors && (nzipcode.invalid && nzipcode.touched ))">
+                        <span class="text-danger" *ngIf="nzipcode.errors.required">
+                            ZipCode is Required
+                        </span>
+                        <span class="text-danger" *ngIf="nzipcode.errors.pattern">
+                            ZipCode must be digit Only (Max 5 digit)
+                        </span>
                     </div>
 
 
 
                     <!-- Address -->
-                    <div class="input-group col-lg-12 mb-4">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                          <i class="fa fa-address-book" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <input id="address" type="text" name="address" [(ngModel)]="objNurse.nurseAddress" placeholder="Address"
-                    class="form-control bg-white border-left-0 border-md">
-                    </div>
-
-                       <!-- NurseDOB -->
-                    <div class="input-group col-lg-12 mb-4">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                          <i class="fa fa-address-book" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                        <input id="DOB" type="date" name="DOB" [(ngModel)]="objNurse.nurseDOB"
-                        class="form-control bg-white border-left-0 border-md">
+                    <div class="input-group col-lg-12 mt-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-address-book" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <input id="address" type="text" name="address" [(ngModel)]="objNurse.nurseAddress"
+                            placeholder="Address" class="form-control bg-white border-left-1 border-md"
+                            #naddress="ngModel" [class.is-invalid]="naddress.invalid && naddress.touched" required
+                            pattern="^([a-zA-z0-9/\\#''(),-\s]{2,255})$">
                     </div>
 
+                    <!-- Validation Section of Address  -->
+                    <div class="col-12" *ngIf="(naddress.errors && (naddress.invalid && naddress.touched ))">
+                        <span class="text-danger" *ngIf="naddress.errors.required">
+                            Address is Required
+                        </span>
+                        <span class="text-danger" *ngIf="naddress.errors.pattern">
+                            Enter Valid Address
+                        </span>
+                    </div>
+
+                    <!-- NurseDOB -->
+                    <div class="input-group col-lg-12 mt-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-address-book" aria-hidden="true"></i>
+                            </span>
+
+                            <input id="DOB" type="date" name="DOB" [(ngModel)]="objNurse.nurseDOB"
+                                class="form-control bg-white border-left-1 border-md" #ndob="ngModel"
+                                [class.is-invalid]="ndob.invalid && ndob.touched" required>
+                        </div>
+                    </div>
+
+                    <!-- Validation Section of Address  -->
+                    <div class="col-12" *ngIf="(ndob.errors && (ndob.invalid && ndob.touched ))">
+                        <span class="text-danger" *ngIf="ndob.errors.required">
+                            DOB is Required
+                        </span>
+                    </div>
 
                     <!-- Submit Button -->
-                    <div class="form-group col-lg-12 mx-auto mb-0">
-                        <button (click)="AddNurse(objNurse)" class="btn btn-primary btn-block py-2">
-                          <span class="font-weight-bold">Create your account</span>
+                    <div class="form-group col-lg-12 mx-auto mt-4">
+                        <button (click)="AddNurse(objNurse)" class="btn btn-primary btn-block py-2"
+                            [disabled]="nurseRegForm.form.invalid">
+                            <span class="font-weight-bold">Create your account</span>
                         </button>
 
 

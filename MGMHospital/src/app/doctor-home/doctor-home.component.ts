@@ -1,170 +1,258 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Doctor } from '../doctor-service.service';
-import { MedicineService , Medicine } from '../medicine.service';
-import { CombinePatientTreatment, PatientExamination, PatientInformation, PatientMedicines, PatientService, PatientTreatment, PatientTreatment2 } from '../patient.service';
+import { MedicineService, Medicine } from '../medicine.service';
+import {
+  CombinePatientTreatment,
+  PatientExamination,
+  PatientInformation,
+  PatientMedicines,
+  PatientService,
+  PatientTreatment,
+  PatientTreatment2,
+} from '../patient.service';
 
 @Component({
   selector: 'app-doctor-home',
   templateUrl: './doctor-home.component.html',
-  styleUrls: ['./doctor-home.component.css']
+  styleUrls: ['./doctor-home.component.css'],
 })
 export class DoctorHomeComponent implements OnInit {
+  
+
+  constructor(
+    private patientService: PatientService,
+    private router: Router,
+    private medicineService: MedicineService
+  ) {}
 
   public imgsrc = 'assets/patientpic.svg';
-  public showdata = false;
-  patient_name : string= "";
+ 
+  patient_name: string = '';
+  public uiAlert = false;
+ 
+  objDoctor: Doctor = new Doctor(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+ 
+  objPatientInformation: PatientInformation = new PatientInformation(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
 
-  patientList : PatientInformation[] = [];
-  patientExaminationList : PatientExamination[] = [];
+  objPatientExamination: PatientExamination = new PatientExamination(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+  objMedicine:Medicine = new Medicine(null,null,null,null);
 
-  docSessId: number = 1 ;
+ objPatientTreatment2:PatientTreatment2 = new PatientTreatment2(null,null,null,null,null,null,null);
+  
+ dosage:string = "";
+ time:string="";
+ doctorNote :string="";
 
-  objPatientInformation: PatientInformation = new PatientInformation(null,null,null,null,
-    null,null,null,null,null,null,
-    null,null,null,null,null,null,null,
-    null,null,null,null,null,null,null,null,null);
-  objPatientExamination: PatientExamination = new PatientExamination(null,null,null,null,null,null
-    ,null,null,null,null,null,null,null,null,null,null,null,null);
+  viewTreatment:boolean = false;
+  
+  docSessId:number;
 
-    objDoctor: Doctor = new Doctor(
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    );
-    medicineType : String = "";
-
-    combinePatientTreatment : CombinePatientTreatment = new CombinePatientTreatment(null,null,null,null,null,null,null,null);
-
-    patientTreatment : PatientTreatment = new PatientTreatment(null,null,null,null,null);
-    patientMedicines : PatientMedicines = new PatientMedicines(null,null,null,null,null);
-
-    allPatientMedicinesList :  PatientMedicines[];
-
-    patientMedicinesList :  PatientMedicines[];
-
-    ptIdList: number[];
-
-    patientTreatment2 : PatientTreatment2;
+  medicineId:number;
+  medicineDesc:string="";
+  medicineType:string="";
+  medicineName:string="";
     
-    patientTreatment2List : PatientTreatment2[];
+  patientTreatment2:PatientTreatment2[];
+  AllMedicineList:Medicine[];
 
-   SearchPatient(){
-    if(this.patient_name != ""){
-      this.patientList = this.patientList.filter((res : any) => {
-        return res.patientFName.toLocaleUpperCase().match(this.patient_name.toLocaleUpperCase());
-      });
-    }
-    else if(this.patient_name == ""){
-      this.ngOnInit();
-    }
+  medicineByType:Medicine[];
 
-  }
-  showdetails(){
-    this.showdata = true;
-  }
+  patientList: PatientInformation[];
 
-  //for medicines
+  medicineTypeList: String[] =[];
 
-   medicineTypeList :String[] = [];
+  showdata: any = false;
 
-    medicinesListByType:Medicine[] = [];
-
-   stringfyData : string = JSON.stringify(this.medicinesListByType);
-
-   time :string="";
-   dosage :string="";
-   docNote :string="";
-
- public  uiAlert = false;
-
-
-
-  constructor(private patientService: PatientService , private router: Router , private medicineService:MedicineService) { }
+  patientExaminationList: PatientExamination[];
 
   ngOnInit(): void {
     this.objDoctor = JSON.parse(sessionStorage.getItem('doctorLogin'));
+    this.docSessId = this.objDoctor.doctorId;
     if (this.objDoctor == null) {
       this.router.navigate(['homepage']);
     }
-    this.patientService.GetAllPatientsByDoctorId(this.docSessId).subscribe(res =>{
+    this.patientService
+      .GetAllPatientsByDoctorId(this.docSessId)
+      .subscribe((res) => {
+        this.patientList = res;
+      });
 
-      this.patientList = res;
-    });
-
-    this.medicineService.GetMedicineType().subscribe(res =>{
+    this.medicineService.GetMedicineType().subscribe((res) => {
       this.medicineTypeList = res;
+    });
+  }
+
+
+
+  SearchPatient() {
+    if (this.patient_name != '') {
+      this.patientList = this.patientList.filter((res: any) => {
+        return res.patientFName
+          .toLocaleUpperCase()
+          .match(this.patient_name.toLocaleUpperCase());
+      });
+    } else if (this.patient_name == '') {
+      this.ngOnInit();
+    }
+  }
+
+
+  showdetails(objPatient: PatientInformation) {
+    this.showdata = true;
+    //alert(objPatient.patientId);
+    this.patientService
+      .GetPatientInformation(objPatient.patientId)
+      .subscribe((res) => {
+        this.objPatientInformation = res;
+        this.patientService
+        .GetPatientExaminationByPatientId(
+          this.objPatientInformation.patientId
+        )
+        .subscribe((result) => {
+          //alert(result.patientId);
+          this.patientExaminationList = result;
+        }); 
+      });
+  }
+
+  showMedicineType(item:string) {
+    this.medicineService.GetMedicinesByType(item).subscribe(res=>{
+      this.medicineByType = res;
     })
+}
+
+asd(item) {
+  alert(item);
+}
+
+addMedicine()
+{
+  this.objPatientTreatment2.dosage = this.dosage;
+  this.objPatientTreatment2.medicineId = this.medicineId;
+  this.objPatientTreatment2.patientId = this.objPatientInformation.patientId;
+  this.objPatientTreatment2.time = this.time;
+  this.objPatientTreatment2.doctorNote = this.doctorNote;
+
+  this.patientService.AddPatientTreatment2(this.objPatientTreatment2).subscribe(res=>{
+    this.time = "";
+    this.dosage = "";
+    this.doctorNote = "";
+    this.ViewTreatment();
+  })
+}
+addMedicineFromList(item:Medicine)
+{
+  this.medicineId = item.medicineId;
+  this.medicineName = item.medicineName;
+  this.medicineDesc = item.medicineDesc;
+  this.medicineType = item.medicineType;
+}
+
+ViewTreatment()
+{
+  this.viewTreatment = true;
+  this.patientService.GetAllPatientTreatment2ByPatientId(this.objPatientInformation.patientId).subscribe(res=>{
+    this.patientTreatment2 = res;
+  })
+
+  this.medicineService.GetAllMedicines().subscribe(res=>{
+    this.AllMedicineList = res;
+  })
+}
+
+CloseViewTreatment()
+  {
+    this.viewTreatment = false;
 
   }
-  async display(){
-  this.uiAlert = true;
-}
-
-getPatientInformationByPatientId(patientId:number){
-  this.patientService.GetPatientInformationByPatientId(patientId).subscribe(res =>{
-    this.objPatientInformation = res;
-    this.patientService.GetPatientExaminationByPatientId(this.objPatientInformation.patientId).subscribe(result =>{
-      //alert(result.patientId);
-     this.patientExaminationList = result;
-
-    });
-  });
-}
-
-// selectChangeHandler (event: any) {
-//   //update the ui
-//   this.selectedDay = event.target.value;
-// }
-
-getMedicinesByType(medicineType:String){
-  this.medicineService.GetMedicinesByType(medicineType).subscribe(res =>{
-
-    this.medicinesListByType = res;
-  });
-}
-
-AddPatientTreatmentAndMedicines(combinePatientTreatment:CombinePatientTreatment,medicineId : number){
-
-
-  this.patientTreatment2.medicineId = medicineId;
-  this.patientTreatment2.dosage = this.dosage;
-  this.patientTreatment2.time = this.time;
-  this.patientTreatment2.patientId =  this.objPatientInformation.patientId ;
-  this.patientTreatment2.doctorNote = this.docNote;
  
-  this.patientService.AddPatientTreatment2(this.patientTreatment2).subscribe(res =>{
-      alert(res+" added");
-  });
+
+  deleteTreatment(patientTreatmentId:number)
+  {
+    alert(patientTreatmentId);
+    this.patientService.DeletePatientTreatment2(patientTreatmentId).subscribe(res=>{
+      alert("deleted");
+      this.ViewTreatment();
+    })
+  }
 
 
 
-}
 
-setTime(time:string){
-  //alert(time);
-  this.time = time;
-  //this.patientMedicines.pmTime = time;
-  //alert(this.patientMedicines.pmTime);
-}
 
-setDosage(dosage :string){
-  this.dosage = dosage;
-}
 
-setDoctorNotes(doctorNotes :string){
-  this.docNote = doctorNotes;
-}
+
+
+
+  async display() {
+    this.uiAlert = true;
+  }
+
+
+ 
 
 }
