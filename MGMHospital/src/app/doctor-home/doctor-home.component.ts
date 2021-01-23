@@ -212,7 +212,7 @@ addMedicine()
 addMedicineFromList(item:Medicine)
 
 {
-  alert(item.medicineName);
+  //alert(item.medicineName);
   item.rowColor = !item.rowColor;
   if(item.rowColor == true){
     this.medicineId = item.medicineId;
