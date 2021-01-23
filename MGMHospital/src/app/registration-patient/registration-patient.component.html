@@ -38,8 +38,8 @@
 
                         <div class="input-group col-lg-6 mt-4">
 
-               
-                     
+
+
 
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
@@ -208,7 +208,7 @@
                                 class="form-control bg-white border-left-1 border-md" #phone="ngModel"
                                 [class.is-invalid]="phone.invalid && phone.touched" required pattern="[7-9]{1}[0-9]{9}">
 
-                     
+
                         </div>
 
                         <div class="valid1" *ngIf="(phone.errors && (phone.invalid && phone.touched ))">
@@ -569,8 +569,8 @@
 
                         <!--patient's SID-->
 
-                        <div class="input-group col-lg-6 mb-4" >
-            <div class="input-group-prepend">
+                        <div *ngIf="objNurseSession != null" class="input-group col-lg-6 mb-4" >
+                          <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
                                     <i class="fa fa-envelope text-muted"></i>
                                 </span>
@@ -626,7 +626,6 @@
                                 name="bednumber" placeholder="Patient's Bed Number"
                                 class="form-control bg-white border-left-0 border-md">
                         </div>
-
                     </div>
                 </form>
             </div>

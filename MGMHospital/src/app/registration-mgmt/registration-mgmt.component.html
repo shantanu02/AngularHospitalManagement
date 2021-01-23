@@ -131,7 +131,7 @@
                                 class="form-control bg-white border-left-1 border-md"
                                 [class.is-invalid]="pass.invalid && pass.touched" required
            pattern="^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$">
-                   
+
                         </div>
                         <div class="valid1" *ngIf="(pass.errors && (pass.invalid && pass.touched ))">
                             <span class="text-danger" *ngIf="pass.errors.required">
@@ -229,7 +229,6 @@
                                 class="text-primary ml-2">Login</a></p>
                     </div>
 
-                
             </form>
         </div>
     </div>

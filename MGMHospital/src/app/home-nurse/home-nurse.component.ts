@@ -124,6 +124,7 @@ export class HomeNurseComponent implements OnInit {
     if (this.objNurseSession == null) {
       this.router.navigate(['homepage']);
     }
+
     this.patientService.getAllPatientInformationByNurseId(this.objNurseSession.nurseId).subscribe((res) => {
       this.patientList = res;
     });

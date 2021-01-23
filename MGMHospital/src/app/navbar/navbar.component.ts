@@ -87,6 +87,7 @@ export class NavbarComponent implements OnInit {
     this.objNurse = JSON.parse(sessionStorage.getItem('nurseLogin'));
     this.objDoctorSession = JSON.parse(sessionStorage.getItem('doctorLogin'));
     this.objPatientInformation = JSON.parse(sessionStorage.getItem('patientLogin')
+
     );
   }
 
