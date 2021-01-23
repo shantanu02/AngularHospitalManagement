@@ -49,7 +49,7 @@ export class NavbarComponent implements OnInit {
     null,
     null,
     null,
-    null
+    null,null
   );
   constructor(private router: Router) {}
 
@@ -81,11 +81,11 @@ export class NavbarComponent implements OnInit {
     {
         this.router.navigate(['nurse-home']);
     }
-    if(this.objDoctorSession != null)
+    else if(this.objDoctorSession != null)
     {
         this.router.navigate(['doctor-home']);
     }
-    if(this.objManagementSession != null)
+    else if(this.objManagementSession != null)
     {
         this.router.navigate(['Management-Homepage']);
     }

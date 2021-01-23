@@ -34,4 +34,8 @@ export class MedicineService {
     return this.httpClient.get<Medicine[]>("http://localhost:8080/medicines/getMedcinesByType/"+medicinesType);
   }
 
+  GetAllMedicines(){
+    return this.httpClient.get<Medicine[]>("http://localhost:8080/medicines/getAllMedcines");
+  }
+
 }

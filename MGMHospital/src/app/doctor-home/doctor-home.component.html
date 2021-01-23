@@ -1,325 +1,565 @@
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
 </head>
-<div class="container-fluid" style="height:auto;">
-    <!-- Row 1-->
-    <div class="row d-flex content1">
-        <div class="col-md-4 col-sm-6" style="border: 1px solid black;">
-            <b>Patient list : </b>
-            <div class="input-group flex-nowrap inputField">
-                <input type="text" class="form-control" placeholder="Enter Patient Name" [(ngModel)]="patient_name"
-                    (ngModelChange)="SearchPatient()">
-            </div>
-            <table class="table1 table-sm table-fixed">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                    </tr>
-                </thead>
 
-                <tbody class="tbody" *ngFor ="let p of patientList">
-
-                    <tr>
-
-                            <td> <button class="btn" (click)="getPatientInformationByPatientId(p.patientId)">{{p.patientId}}</button></td>
-
-
-                       <td> <button class="btn" (click)="getPatientInformationByPatientId(p.patientId)">{{p.patientFName + ' ' + p.patientLName}}</button></td>
-
-
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-md-8 " style="border: 1px solid black;">
-            <div class="row  content11">
-                <div class="col-2 d-flex justify-content-center">
-                    <img [src]="imgsrc" style="width: auto; height: 100px;">
-                </div>
-                <div class="col-md-10 col-sm-12"><b>Patient Information :</b>
-                    <table class="table table-sm">
-                        <tbody>
-                            <tr>
-                                <th scope="row">Patient id :</th>
-                                <td>{{objPatientInformation.patientId}}</td>
-                                <th scope="row">Name : </th>
-                                <td>{{objPatientInformation.patientFName + ' '+ objPatientInformation.patientLName}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Email:</th>
-                                <td>{{objPatientInformation.patientEmail}}</td>
-                                <th scope="row">Phone No :</th>
-                                <td>{{objPatientInformation.patientPhone}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="row  d-flex content11">
-                <div class="col-md-12"><i class="fa fa-stethoscope" aria-hidden="true"></i><b>Examine Report</b>
-                    <form>
-                        <table class="table2 table-bordered table-sm"  >
-
-                                <!-- <tr> -->
-                                    <!-- <th scope="col">Head</th>
-                                    <td>{{objPatientExamination.peHead}}</td>
-                                    <th scope="col">Neck</th>
-                                    <td>{{objPatientExamination.peNeck}}</td>
-                                    <th scope="col">Chest</th>
-                                    <td>{{objPatientExamination.peChest}}</td>
-                                    <th scope="col">Back</th>
-                                    <td>{{objPatientExamination.peBack}}</td>
-                                    <th scope="col">Heart</th>
-                                    <td>{{objPatientExamination.peHeart}}</td>
-                                    <th scope="col">Neuro</th>
-                                    <td>{{objPatientExamination.peNeuro}}</td>
-                                    <th scope="col">Adomen</th>
-                                    <td>{{objPatientExamination.peAbdomen}}</td>
-                                    <th scope="col">Extremities</th>
-                                    <td>{{objPatientExamination.peExtermities}}</td>
-                                    <th scope="col">Others</th>
-                                    <td>{{objPatientExamination.peOthers}}</td> -->
-                                <!-- </tr> -->
-                                <!-- <tr>
-
-                                </tr> -->
-                                <thead>
-
-                                    <tr>
-                                        <th scope="col">Date</th>
-
-                                        <th scope="col">Pulse</th>
-
-                                        <th scope="col">Resp</th>
-
-                                        <th scope="col">BP</th>
-
-                                        <th scope="col">Temp</th>
-
-                                        <th scope="col">Pulse-Ox</th>
-
-                                        <th scope="col">Fsbs</th>
-
-                                        <th scope="col">Head</th>
-
-                                        <th scope="col">Neck</th>
-
-                                        <th scope="col">Chest</th>
-
-                                        <th scope="col">Back</th>
-
-                                        <th scope="col">Heart</th>
-
-                                        <th scope="col">Neuro</th>
-
-                                        <th scope="col">Adomen</th>
-
-                                        <th scope="col">Extremities</th>
-
-                                        <th scope="col">Others</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody class="tbody" *ngFor ="let p of patientExaminationList">
-                                <tr>
-
-                                    <td>{{p.peDateTime}}</td>
-
-                                    <td>{{p.pePulse}}</td>
-
-                                    <td>{{p.peResp}}</td>
-
-                                    <td>{{p.peBp}}</td>
-
-                                    <td>{{p.peTemp}}</td>
-
-                                    <td>{{p.pePulseOx}}</td>
-
-                                    <td>{{p.peFSBS}}</td>
-
-                                    <td>{{p.peHead}}</td>
-
-                                    <td>{{p.peNeck}}</td>
-
-                                    <td>{{p.peChest}}</td>
-
-                                    <td>{{p.peBack}}</td>
-
-                                    <td>{{p.peHeart}}</td>
-
-                                    <td>{{p.peNeuro}}</td>
-
-                                    <td>{{p.peAbdomen}}</td>
-
-                                    <td>{{p.peExtermities}}</td>
-
-                                    <td>{{p.peOthers}}</td>
-
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </form>
-                </div>
-            </div>
-        </div>
+<!-- Nurse Home page Image Silder section -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        class="d-block w-100"
+        src="../../assets/img/slide-one.jpg"
+        alt="First slide"
+      />
+      <div class="carousel-caption">
+        <h1>Providing</h1>
+        <p>Highquality Service For Men & Women</p>
+        <button>learn more</button>
+      </div>
     </div>
-
-    <p class="h5">View Treatment</p>
-    <!-- Row 2 -->
-    <div class="row content2" style="border: 1px solid black;">
-        <div class="col-md-4 col-sm-3" style="border: 1px solid black;">
-            <b>Select Problem </b>
-
-            <select class="form-control" id="#" [(ngModel)]="medicineType" (change)="getMedicinesByType(medicineType)">
-                <option disabled>Select Problem</option>
-                <option *ngFor="let item of medicineTypeList" [value]="item">{{item}}</option>
-            </select>
-
-
-            <!-- <select class="form-control" (change)="getMedicinesByType($event)" searchable="Search here..">
-                <option disabled>Select Problem</option>
-                <option class="btn"  *ngFor="let item of medicineTypeList" value="item" >
-                        {{item}}
-                </option>
-            </select> -->
-        </div>
-
-        <div class="col-md-8 col-sm-3" style="border: 1px solid black;">
-            <b>Medicines</b>
-            <div style="width:100%">
-                <table  class="table1 table-sm sticky ">
-                    <thead>
-                        <tr >
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Desc</th>
-                            <th>Time</th>
-                            <th>Dosage</th>
-                            <th>Doctor's Note</th>
-                            <th></th>
-
-                        </tr>
-                    </thead>
-                    <tbody *ngFor ="let m of medicinesListByType">
-                        <tr >
-                            <!-- <td [(ngModel)] = "combinePatientTreatment.medicineId" [value]="m.medicineId" id="medicineId" name ="medicineId">{{m.medicineId}}</td> -->
-                            <td>
-                                <input [(ngModel)] = "m.medicineId"
-                                type="hidden" id="medicineId" name="medicineId" [value]="m.medicineId" >
-                                {{m.medicineId}}
-                            </td>
-                            <td>{{m.medicineName}}</td>
-                            <td>{{m.medicineDesc}}</td>
-                            <td><input [(ngModel)] = "m.pmTime" (change)="setTime(m.pmTime)" type="time" id="appt" name="appt"></td>
-                            <td>
-                                <textarea [(ngModel)] = "m.pmDosage" (change)="setDosage(m.pmDosage)"
-                                class="form-control " id="pmDosage" rows="1" placeholder="Dosage"></textarea>
-                            </td>
-                            <td>
-                                <textarea  [(ngModel)] = "m.ptDoctorNotes" (change)="setDoctorNotes(m.ptDoctorNotes)"
-                                class="form-control " id="ptDoctorNotes" rows="1" placeholder="Doctors Note"></textarea>
-                            </td>
-                            <td><input class="btn btn-primary" (click)="AddPatientTreatmentAndMedicines(combinePatientTreatment,m.medicineId)" type="submit" value="Add"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-        <!-- <div class="col-md-4 col-sm-3">
-            <b><i class="fa fa-sticky-note" aria-hidden="true"></i>Mediciens Description</b>
-        </div> -->
-
-
-    </div>
-
-    <!-- Row 3 -->
-    <div class="row mt-3  content3" *ngIf="uiAlert" style="border: 1px solid black;"
-        style="background-color:gray; color: white; font-weight: bold;">
-        <div class="col-md-3 col-sm-12">Medicien Name</div>
-        <div class="col-md-4 col-sm-12">Description</div>
-        <div class="col-md-3 col-sm-12">Type</div>
-    </div>
-
-    <!-- Row 4 -->
-
-    <div class="row  content3" *ngIf="uiAlert" style="border: 1px solid black;" style="background-color:whitesmoke">
-        <div class="col-md-3 col-sm-12"></div>
-        <div class="col-md-4 col-sm-12"></div>
-        <div class="col-md-3 col-sm-12"></div>
-        <div class="col-md-1 col-sm-6">
-            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal1"
-                data-whatever="">Update</button>
-        </div>
-
-        <div class="col-md-1 col-sm-6"><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal2">
-           Remove
-          </button>
-
-
-    </div>
-      <!-- Model for Update Mediciens -->
-
-
-        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Update</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label>Medicien Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Medicien name here....">
-                            </div>
-                            <div class="form-group">
-                                <label>Medicien Type</label>
-                                <input type="text" class="form-control" id="type" placeholder="Medicien type here....">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">Description:</label>
-                                <textarea class="form-control" id="message-text"
-                                    placeholder="description here...."></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-success btn-sm">Update</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Model for Remove Mediciens -->
-
-        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        sure, you want to delete ?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
+
+<div class="container-fluid">
+  <div class="row mt-2">
+    <div
+      class="col-12 col-sm-12 col-md-12 col-lg-5"
+      style="border: 2px solid black"
+    >
+      <div class="row mt-2">
+        <div class="col-7 col-md-8 PlstT">List Of Patient</div>
+      </div>
+      <div class="row mt-2 justify-content-center">
+        <div class="col-12 col-sm-10 col-md-10">
+          <div class="input-group flex-nowrap inputField">
+            <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Patient Name"
+            [(ngModel)]="patient_name"
+            (ngModelChange)="SearchPatient()"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2 justify-content-center">
+        <div class="col-10 col-md-10">
+          <table class="table fixed_header">
+            <thead>
+              <tr>
+                <!-- <th class="th1" style="width: 20%;">Srno</th>
+                            <th style="width: 30%; text-align: center;">Patient No.</th>
+                            <th style="width: 40%; text-align: center;">Patient First Name</th> -->
+
+                <th scope="col">Sr no</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+              </tr>
+            </thead>
+            <tbody class="tbody">
+              <tr
+                *ngFor="let p of patientList; let i = index"
+                (click)="getPatientInformationByPatientId(p.patientId)"
+              >
+                <th scope="row" style="width: 25%">{{ i + 1 }}</th>
+                <td style="width: 25%; text-align: center">
+                  {{ p.patientFName }}
+                </td>
+                <td style="width: 50%; text-align: center">
+                  {{ p.patientLName }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-7 pl-0 ml-0" style="border: 2px solid black;">
+      <div class="row ml-2 mt-2">
+        <div class="col-12 col-sm-6 col-md-7">
+          <h4 class="pstext">Patient Details :</h4>
+        </div>
+      </div>
+      <div *ngIf="showdata">
+        <div class="row mt-1 ml-4 rowdet">
+          <div class="col-12 col-sm-3 col-md-3 p-0">
+            <!-- Patient 1st Examine button-->
+            <div class="mt-5 resbtn1">
+              <button
+                type="button"
+                class="btn btn-success"
+                style="width: 22vh"
+                data-toggle="modal"
+                data-target="#exampleModal2"
+              >
+                View Examination
+              </button>
+            </div>
+            <!-- Patient Examine Model section start-->
+            <div
+              class="modal fade"
+              id="exampleModal2"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable modal-xl " role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                     Examination Report
+                    </h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="col-12 ppdetails" style="border: none">
+                          <table class="table fixed_header" style="width: 100%;">
+                            <thead>
+                              <tr>
+                                <th scope="col">Sr No</th>
+                                <th scope="col">Date Time</th>
+                                <th scope="col">Pulse</th>
+                                <th scope="col">Resp</th>
+                                <th scope="col">BP</th>
+                                <th scope="col">Temparature</th>
+                                <th scope="col">Pulse-Ox</th>
+                                <th scope="col">FSBS</th>
+                              </tr>
+                            </thead>
+                            <tbody class="tbody">
+                              <tr
+                                *ngFor="let p of patientExaminationList;let i = index"   
+                              >
+                                <th scope="row" style="width: 25%">{{ i + 1 }}</th>
+                                <td style="width: 50%; text-align: center">
+                                 {{p.peDateTime}}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{ p.pePulse }}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{ p.peResp }}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{ p.peBp }}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{ p.peTemp }}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{ p.pePulseOx }}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{ p.peFSBS }}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+
+
+                        </div>
+
+                        <div class="col-12 ppdetails" style="border: none">
+                          <table class="table fixed_header" style="width: 100%;">
+                            <thead>
+                              <tr>
+                               
+                                <th scope="col">Date Time</th>
+                                <th scope="col">Head</th>
+                                <th scope="col">Neck</th>
+                                <th scope="col">Chest</th>
+                                <th scope="col">Back</th>
+                                <th scope="col">Heart</th>
+                                <th scope="col">Neuro</th>
+                                <th scope="col">Abdomen</th>
+                                <th scope="col">Extermities</th>
+                                <th scope="col">Others</th>
+                              </tr>
+                            </thead>
+                            <tbody class="tbody">
+                              <tr
+                                *ngFor="let p of patientExaminationList;let i = index"   
+                              >
+                               
+                                <td style="width: 50%; text-align: center">
+                                 {{p.peDateTime}}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{p.peHead }}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{ p.peNeck }}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{p.peChest }}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{p.peBack }}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{ p.peHeart }}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{p.peNeuro }}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{ p.peAbdomen }}
+                                </td>
+                                <td style="width: 50%; text-align: center">
+                                  {{p.peExtermities }}
+                                </td>
+                                <td style="width: 60%; text-align: center">
+                                  {{p.peOthers }}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                          
+
+                        </div>
+
+
+
+
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Patient Examine Model section End-->
+            <br />
+            <!-- Patient Give Treatment button -->
+            <div class="resbtn1">
+              <button
+                type="button"
+                class="btn btn-warning"
+                style="width: 22vh"
+                data-toggle="modal"
+                data-target="#exampleModal3"
+
+              >
+                Give Treatment
+              </button>
+            </div>
+            
+            <!--Give treatment Model-->
+            <div
+              class="modal fade"
+              id="exampleModal3"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Give Treatment Form
+                    </h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body contact-info">
+                    <div class="modal-body">
+                      <form>
+                        <div class="col-12 mb-3 ppdetails" style="border: none">
+                          <div class="row d-flex justify-content-center">
+                            <!-- <select class="form-control">
+                            <option value="" selected disabled>Select Treatment</option>
+                                                          <option value="chest">Chest</option>
+                                                          <option value="head">Head</option>
+                                                          <option value="back">Back</option>
+                          </select> -->
+                            <label for="med">Select Type</label>
+                            <table class="table fixed_header" id="med ">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col">Sr No</th>
+                                  <th scope="col">Medicine Type</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr
+                                  (click)="getMedicinesByType(item)"
+                                  *ngFor="
+                                    let item of medicineTypeList;
+                                    let i = index
+                                  "
+                                >
+                                  <td>{{ i + 1 }}</td>
+                                  <td>{{ item }}</td>
+                                </tr>
+                                <hr />
+                              </tbody>
+                            </table>
+                          </div>
+
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col" hidden>Medicine Id</th>
+                                <th scope="col">Medicine Name</th>
+                                <th scope="col">Medicine Desc</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr
+                                *ngFor="let item of medicineByType"
+                                (click)="addMedicineFromList(item)"
+                              >
+                                <td>{{ item.medicineName }}</td>
+                                <td>{{ item.medicineDesc }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                          <div class="row d-flex mt-2">
+                            <span class="ppdtitle mr-2">Time : </span>
+                            <input
+                              type="time"
+                              class="form-control"
+                              name="time"
+                              [(ngModel)]="time"
+                            />
+                          </div>
+                          <div class="row d-flex mt-2">
+                            <span class="ppdtitle mr-2">Dosage : </span>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="dosage"
+                              [(ngModel)]="dosage"
+                            />
+                          </div>
+                          <div class="row d-flex mt-2">
+                            <span class="ppdtitle mr-2">Nurse Notes : </span>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="nurseNote"
+                              [(ngModel)]="nurseNote"
+                            />
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            type="button"
+                            data-dismiss="modal"
+                            class="btn btn-primary"
+                            (click)="addMedicine()"
+                          >
+                            Add
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          
+          <!-- <div class="col-md-8" style="border: 1px solid black">
+            <div class="row content11">
+              <div class="col-2 d-flex justify-content-center">
+                <img [src]="imgsrc" style="width: auto; height: 100px" />
+              </div>
+              <div class="col-md-10 col-sm-12">
+                <b>Patient Information :</b>
+                <table class="table table-sm">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Patient id :</th>
+                      <td>{{ objPatientInformation.patientId }}</td>
+                      <th scope="row">Name :</th>
+                      <td>
+                        {{
+                          objPatientInformation.patientFName +
+                            " " +
+                            objPatientInformation.patientLName
+                        }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Email:</th>
+                      <td>{{ objPatientInformation.patientEmail }}</td>
+                      <th scope="row">Phone No :</th>
+                      <td>{{ objPatientInformation.patientPhone }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div> -->
+
+          <!-- Patient Personal Details section start -->
+          <div class="col-12 col-sm-12 col-md-9 col-lg-8 ppdetails mb-2">
+            <div class="row">
+              <div class="col-6">
+                <span class="ppdtitle"> First Name -</span>
+                <br />
+                <span class="ppdvalue">{{
+                  objPatientInformation.patientFName
+                }}</span>
+              </div>
+              <div class="col-6">
+                <span class="ppdtitle"> Last Name -</span>
+                <br />
+                <span class="ppdvalue">{{
+                  objPatientInformation.patientLName
+                }}</span>
+              </div>
+              <div class="col-6">
+                <span class="ppdtitle"> Email-Id : </span>
+                <br />
+                <span class="ppdvalue">{{
+                  objPatientInformation.patientEmail
+                }}</span>
+              </div>
+            </div>
+            <div class="row ppdr">
+              <div class="col-6">
+                <span class="ppdtitle"> Address : </span>
+                <br />
+                <span class="ppdvalue">{{
+                  objPatientInformation.patientAddress
+                }}</span>
+              </div>
+              <div class="col-6">
+                <span class="ppdtitle"> PhoneNo. : </span>
+                <span class="ppdvalue">
+                  {{ objPatientInformation.patientPhone }}</span
+                >
+              </div>
+            </div>
+            <div class="row ppdr">
+              <div class="col-4">
+                <span class="ppdtitle"> DOB : </span><br />
+                <span class="ppdvalue">{{
+                  objPatientInformation.patientDOB
+                }}</span>
+              </div>
+              <div class="col-4">
+                <span class="ppdtitle"> Gender : </span><br />
+                <span class="ppdvalue">{{
+                  objPatientInformation.patientGender
+                }}</span>
+              </div>
+              <div class="col-4">
+                <span class="ppdtitle"> Weight : </span><br />
+                <span class="ppdvalue">
+                  {{ objPatientInformation.patientWeight }}</span
+                >
+              </div>
+            </div>
+            <div class="row ppdr">
+              <div class="col-3">
+                <span class="ppdtitle"> IPD : </span>
+                <span class="ppdvalue">{{
+                  objPatientInformation.patientIPD
+                }}</span>
+              </div>
+              <div class="col-3">
+                <span class="ppdtitle"> OPD : </span>
+                <span class="ppdvalue">
+                  {{ objPatientInformation.patientOPD }}</span
+                >
+              </div>
+              <div class="col-3">
+                <span class="ppdtitle"> Ward : </span>
+                <span class="ppdvalue">
+                  {{ objPatientInformation.patientWard }}</span
+                >
+              </div>
+              <div class="col-3">
+                <span class="ppdtitle">Bed No :</span>
+                <span class="ppdvalue">
+                  {{ objPatientInformation.patientBedNo }}</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Patient Personal Details section End -->
+        </div>
+
+
+
+
+
+        <!-- Exmaine and Give Treatment buttons 2nd Copy-->
+        <div class="row my-3 resbtn2">
+          <div class="col-sm-2"></div>
+          <!-- Patient 2nd Examine button-->
+          <!-- Model of 2nd button is same as of 1st button -->
+          <div class="col-6 col-sm-4 d-flex justify-content-end">
+            <button
+              type="button"
+              class="btn btn-success"
+              style="width: 22vh"
+              data-toggle="modal"
+              data-target="#exampleModal2"
+            >
+              Examine
+            </button>
+          </div>
+          <br />
+          <div class="col-6 col-sm-4">
+            <!-- Patient 2nd Give Treatment Model section-->
+            <button
+              type="button"
+              class="btn btn-warning"
+              style="width: 22vh"
+              data-toggle="modal"
+              data-target="#exampleModal3"
+            >
+              Give Treatment
+            </button>
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+
+
