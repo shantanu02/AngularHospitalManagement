@@ -1,0 +1,16 @@
+ @media(max-width:1000px){
+    .valid2{
+        display: none;
+    }
+
+    .llm{
+        margin-top: 18px;
+    }
+}
+
+@media(min-width:1000px){
+    .valid1{
+        display: none;
+    }
+
+} 
