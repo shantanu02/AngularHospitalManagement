@@ -230,10 +230,13 @@ export class HomeNurseComponent implements OnInit {
   }
   addMedicineFromList(item:Medicine)
   {
-    this.medicineId = item.medicineId;
-    this.medicineName = item.medicineName;
-    this.medicineDesc = item.medicineDesc;
-    this.medicineType = item.medicineType;
+    item.rowColor = !item.rowColor;
+    if(item.rowColor == true){
+      this.medicineId = item.medicineId;
+      this.medicineName = item.medicineName;
+      this.medicineDesc = item.medicineDesc;
+      this.medicineType = item.medicineType;
+    }
   }
   ViewTreatment()
   {

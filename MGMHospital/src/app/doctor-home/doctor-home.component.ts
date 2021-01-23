@@ -129,6 +129,8 @@ export class DoctorHomeComponent implements OnInit {
 
   patientExaminationList: PatientExamination[];
 
+ 
+
   ngOnInit(): void {
     this.objDoctor = JSON.parse(sessionStorage.getItem('doctorLogin'));
     this.docSessId = this.objDoctor.doctorId;
@@ -182,6 +184,9 @@ export class DoctorHomeComponent implements OnInit {
   showMedicineType(item:string) {
     this.medicineService.GetMedicinesByType(item).subscribe(res=>{
       this.medicineByType = res;
+      for(var i = 0 ; i < res.length ; i++){
+        this.medicineByType[i].rowColor = false;
+      }
     })
 }
 
@@ -205,11 +210,19 @@ addMedicine()
   })
 }
 addMedicineFromList(item:Medicine)
+
 {
-  this.medicineId = item.medicineId;
-  this.medicineName = item.medicineName;
-  this.medicineDesc = item.medicineDesc;
-  this.medicineType = item.medicineType;
+  //alert(item.medicineName);
+  item.rowColor = !item.rowColor;
+  if(item.rowColor == true){
+    this.medicineId = item.medicineId;
+    this.medicineName = item.medicineName;
+    this.medicineDesc = item.medicineDesc;
+    this.medicineType = item.medicineType;
+  }
+
+  
+ 
 }
 
 ViewTreatment()
