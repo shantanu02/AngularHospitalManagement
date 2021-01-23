@@ -18,10 +18,6 @@ export class RegistrationMgmtComponent implements OnInit {
   isvalid = true;
 
   
-    
- 
-
-
   AddManagement(objManagement: Management) {
     
       this.managementService.AddManagement(objManagement).subscribe(res => {

@@ -22,7 +22,9 @@
 
         <!-- Registeration Form -->
         <div class="col-md-7 col-lg-6 ml-auto">
-            <form #mngform="ngForm">
+
+            <form #mgmform="ngForm">
+
                 <div class="row">
 
                     <!-- First Name -->
@@ -36,6 +38,7 @@
                                 class="form-control bg-white border-left-1 border-md" #fname="ngModel" type="text"
                                 name="firstname" placeholder="First Name"
                                 [class.is-invalid]="fname.invalid && fname.touched" required>
+
                         </div>
                         <div class="valid1" *ngIf="(fname.errors && (fname.invalid && fname.touched ))">
                             <span class="text-danger" *ngIf="fname.errors.required">
@@ -45,7 +48,9 @@
                     </div>
 
                     <!-- Last Name -->
-                    <div class="input-group col-lg-6 llm">
+
+                    <div class="input-group col-lg-6">
+
                         <div class="d-flex">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
@@ -55,6 +60,11 @@
                                 class="form-control bg-white border-left-1 border-md"
                                 [class.is-invalid]="lname.invalid && lname.touched" required>
                         </div>
+
+                    </div>
+                    <!-- Validation Section of Firstname and lastname field -->
+                    <div class="col-12">
+
                         <div class="valid1" *ngIf="(lname.errors && (lname.invalid && lname.touched ))">
                             <span class="text-danger" *ngIf="lname.errors.required">
                                 LastName is Required
@@ -63,6 +73,7 @@
                     </div>
                     <!-- Validation Section of Firstname and lastname field -->
                     <div class="col-12 valid2">
+
                         <div class="row">
                             <div class="col-6">
                                 <div *ngIf="(fname.errors && (fname.invalid && fname.touched ))">
@@ -83,7 +94,9 @@
 
 
                     <!-- Email Id-->
-                    <div class="input-group col-lg-12 mt-4">
+
+                    <div class="input-group  col-lg-12 mt-4">
+
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -97,7 +110,7 @@
 
                     </div>
                     <!-- Validation Section of Email-Id field  -->
-                    <div class="col-12" *ngIf="email.errors && (email.invalid && email.touched )">
+    <div class="col-12" *ngIf="email.errors && (email.invalid && email.touched )">
                         <span class="text-danger" *ngIf="email.errors.required">
                             Email-Id is Required
                         </span>
@@ -117,7 +130,8 @@
                                 name="Password" placeholder="Password" #pass="ngModel"
                                 class="form-control bg-white border-left-1 border-md"
                                 [class.is-invalid]="pass.invalid && pass.touched" required
-                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
+           pattern="^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$">
+                   
                         </div>
                         <div class="valid1" *ngIf="(pass.errors && (pass.invalid && pass.touched ))">
                             <span class="text-danger" *ngIf="pass.errors.required">
@@ -128,6 +142,7 @@
                                 number and one special character
 
                             </span>
+
                         </div>
                     </div>
 
@@ -137,6 +152,17 @@
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
                             </span>
+
+
+                            <input id="email" type="email" [(ngModel)]="objManagement.management_phone" name="email"
+                                placeholder="Mobile Number" #phone="ngModel"
+                                class="form-control bg-white border-left-1 border-md"
+                                [class.is-invalid]="phone.invalid && phone.touched" required
+                                pattern="[7-9]{1}[0-9]{9}">
+                        </div>
+                    </div>
+                    <!-- Validation Section of Password and PhoneNo Field -->
+                    <div class="col-12">
 
                             <input id="phone" type="number" [(ngModel)]="objManagement.management_phone" name="email"
                                 placeholder="Mobile Number" #phone="ngModel"
@@ -154,6 +180,7 @@
                     </div>
                     <!-- Validation Section of Password and PhoneNo Field -->
                     <div class="col-12 valid2">
+
                         <div class="row">
                             <div class="col-6">
                                 <div *ngIf="(pass.errors && (pass.invalid && pass.touched ))">
@@ -183,7 +210,9 @@
                     <!-- Submit Button -->
                     <div class="form-group col-lg-12 mx-auto mb-0 mt-4">
                         <button (click)="AddManagement(objManagement)" class="btn btn-primary btn-block py-2"
-                            [disabled]="mngform.form.invalid">
+
+                            [disabled]="mgmform.form.invalid">
+
                             <span class="font-weight-bold">Create your account</span>
                         </button>
                     </div>
