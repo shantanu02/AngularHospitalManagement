@@ -12,6 +12,7 @@ import { PatientInformation, PatientService } from '../patient.service';
 })
 export class ManagementHomepageComponent implements OnInit {
 
+
   constructor(private router: Router,private patientService: PatientService , private doctorService : DoctorServiceService , private nurseService : NurseServiceService) { }
   objManagementSession:Management = new Management(null,null,null,null,null,null);
    objPatientInformation:PatientInformation = new PatientInformation(null,null,null,null,null,null,
@@ -24,6 +25,9 @@ export class ManagementHomepageComponent implements OnInit {
   dId:number;  
 
   ngOnInit(): void {
+    if(sessionStorage.length === 0){
+      this.router.navigate(['/login']);
+    }
     this.objManagementSession = JSON.parse(sessionStorage.getItem('mgmtLogin'));
     //window.location.reload();
 

@@ -120,6 +120,11 @@ export class HomeNurseComponent implements OnInit {
   examinationReportAlert: boolean = false;
   patientList: PatientInformation[];
   ngOnInit(): void {
+
+    if(sessionStorage.length === 0){
+      this.router.navigate(['/login']);
+    }
+
     this.objNurseSession = JSON.parse(sessionStorage.getItem('nurseLogin'));
     if (this.objNurseSession == null) {
       this.router.navigate(['homepage']);

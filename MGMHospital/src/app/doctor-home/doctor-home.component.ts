@@ -132,11 +132,13 @@ export class DoctorHomeComponent implements OnInit {
  
 
   ngOnInit(): void {
-    this.objDoctor = JSON.parse(sessionStorage.getItem('doctorLogin'));
-    this.docSessId = this.objDoctor.doctorId;
-    if (this.objDoctor == null) {
-      this.router.navigate(['homepage']);
+
+    if(sessionStorage.length === 0){
+      this.router.navigate(['/login']);
     }
+    this.objDoctor = JSON.parse(sessionStorage.getItem('doctorLogin'));
+    this.docSessId = this.objDoctor?.doctorId;
+  
     this.patientService
       .GetAllPatientsByDoctorId(this.docSessId)
       .subscribe((res) => {
@@ -246,9 +248,9 @@ CloseViewTreatment()
 
   deleteTreatment(patientTreatmentId:number)
   {
-    alert(patientTreatmentId);
+    //alert(patientTreatmentId);
     this.patientService.DeletePatientTreatment2(patientTreatmentId).subscribe(res=>{
-      alert("deleted");
+      alert("Medicine Removed from the treatment");
       this.ViewTreatment();
     })
   }
