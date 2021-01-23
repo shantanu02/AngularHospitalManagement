@@ -8,6 +8,9 @@ import { PatientExamination, PatientInformation, PatientService } from '../patie
   styleUrls: ['./patient-home.component.css'],
 })
 export class PatientHomeComponent implements OnInit {
+
+
+  
   objPatientInformation: PatientInformation = new PatientInformation(
     null,
     null,
@@ -43,6 +46,7 @@ export class PatientHomeComponent implements OnInit {
   public imgsrc2 = 'assets/nurnotes.jpg';
 
   public showdata = false;
+
   patient_name: string = '';
 
   public m_name: string = 'Naproxen';
@@ -77,6 +81,7 @@ export class PatientHomeComponent implements OnInit {
   ];
 
   stringfyData: string = JSON.stringify(this.mediciens);
+
 
   public uiAlert = false;
   constructor(private patientService: PatientService,private router: Router) {}

@@ -362,7 +362,7 @@
                             <input id="ZipCode" type="text" name="Code" [(ngModel)]="objNurse.nurseZipCode"
                                 placeholder="Zip Code" class="form-control bg-white border-left-1 border-md"
                                 #nzipcode="ngModel" [class.is-invalid]="nzipcode.invalid && nzipcode.touched" required
-                                pattern="[0-9]{5}">
+                                pattern="[0-9]{6}">
                         </div>
                     </div>
                     <!-- Validation Section of ZipCodes  -->
@@ -371,7 +371,7 @@
                             ZipCode is Required
                         </span>
                         <span class="text-danger" *ngIf="nzipcode.errors.pattern">
-                            ZipCode must be digit Only (Max 5 digit)
+                            ZipCode must be digit Only(maximum 6 digit)
                         </span>
                     </div>
 
