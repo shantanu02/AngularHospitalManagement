@@ -46,7 +46,6 @@ const routes: Routes = [
   {path:'error-page', component:ErrorPageComponent},
   {path:'nurse-home', component:HomeNurseComponent},
   {path:'Management-Homepage', component:ManagementHomepageComponent},
-
   {path:'', redirectTo:'homepage', pathMatch:'full'},
 
 

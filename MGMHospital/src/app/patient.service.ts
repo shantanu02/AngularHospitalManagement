@@ -209,7 +209,6 @@ getAllPatientInformation()
   return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getAllPatientInformation");
 }
 
-
 GetAllPatientsByDoctorId(doctorId:number){
   return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getPatientInformationByDoctorId/"+doctorId);
 
@@ -237,20 +236,6 @@ GetAllPAtientMedicines(){
 }
 
 
-AddPatientTreatment2(patientTreatment2 : PatientTreatment2){
-  return this.httpClient.post<number>("http://localhost:8080/patientTreatment2/addPatintTreatment2",patientTreatment2);
-}
-
-DeletePatientTreatment2(pt2Id : number){
-  return this.httpClient.delete<number>("http://localhost:8080/patientTreatment2/deletePatientTreatment2ById/"+pt2Id);
-}
-
-GetAllPatientTreatment2ByPatientId(patientId:number){
-  return this.httpClient.get<PatientTreatment2[]>("http://localhost:8080/patientTreatment2/getPatientTreatment2ById/"+patientId);
-
-}
-
-
 getAllPatientInformationByNurseId(nurseId:number)
 {
   return this.httpClient.get<PatientInformation[]>("http://localhost:8080/patient/getPatientByNurse/"+nurseId);
@@ -267,7 +252,7 @@ getAllPatientInformationByNurseId(nurseId:number)
 
   GetAllPatientTreatment2ByPatientId(patientId:number){
     return this.httpClient.get<PatientTreatment2[]>("http://localhost:8080/patientTreatment2/getPatientTreatment2ById/"+patientId);
-
+  }
   getAllMedicines()
   {
     return this.httpClient.get<Medicines[]>("http://localhost:8080/medicines/getAllMedicines");
