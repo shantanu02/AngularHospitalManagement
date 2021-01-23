@@ -12,6 +12,7 @@
             <!-- For Demo Purpose -->
             <!-- Registeration Form -->
             <div class="col-md-7 col-lg-12 ml-auto">
+
                 <form #mgmform="ngForm">
                     <div class="row">
 
@@ -36,11 +37,16 @@
                         <!-- Patient's Last Name -->
 
                         <div class="input-group col-lg-6 mt-4">
+
+               
+                     
+
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
                                     <i class="fa fa-user text-muted"></i>
                                 </span>
                             </div>
+
                             <input id="patientLName" [(ngModel)]="patientInformation.patientLName" type="text"
                                 name="lname" placeholder="Patient's Last Name"
                                 class="form-control bg-white border-left-0 border-md" #lname="ngModel"
@@ -100,11 +106,13 @@
 
                         <!-- petient DOB-->
                         <div class="input-group col-lg-6 mt-4">
+
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
                                     <i class="fa fa-user text-muted"></i>
                                 </span>
                             </div>
+
                             <input id="patientDOB" [(ngModel)]="patientInformation.patientDOB" type="date" name="dob"
                                 placeholder="Date of Birth" class="form-control bg-white border-left-0 border-md"
                                 #dob="ngModel" [class.is-invalid]="dob.invalid && dob.touched" required>
@@ -163,12 +171,14 @@
 
                         <!-- Password-->
                         <div class="input-group col-lg-4 mt-4">
+
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
                                     <i class="fa fa-unlock-alt" aria-hidden="true"></i>
 
                                 </span>
                             </div>
+
                             <input id="patientPassword" [(ngModel)]="patientInformation.patientPassword" type="password"
                                 name="password" placeholder="Password"
                                 class="form-control bg-white border-left-0 border-md" #pass="ngModel"
@@ -197,6 +207,8 @@
                                 name="phonenumber" placeholder="Phone Number"
                                 class="form-control bg-white border-left-1 border-md" #phone="ngModel"
                                 [class.is-invalid]="phone.invalid && phone.touched" required pattern="[7-9]{1}[0-9]{9}">
+
+                     
                         </div>
 
                         <div class="valid1" *ngIf="(phone.errors && (phone.invalid && phone.touched ))">
@@ -256,6 +268,7 @@
                         <div class="input-group col-lg-6 mt-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
+
                                     <i class="fa fa-address-book" aria-hidden="true"></i>
                                 </span>
                             </div>
@@ -274,6 +287,7 @@
                             </span>
                         </div>
 
+
                         <!-- Patient's Temp Address-->
                         <div class="input-group col-lg-6 mt-4">
                             <div class="input-group-prepend">
@@ -281,6 +295,7 @@
                                     <i class="fa fa-address-book" aria-hidden="true"></i>
                                 </span>
                             </div>
+
                             <input id="patientTempAddress" [(ngModel)]="patientInformation.patientTempAddress"
                                 name="patient temp address" placeholder="Temporary Address"
                                 class="form-control bg-white border-left-0 border-md" #patientTempAddress="ngModel"
@@ -428,6 +443,7 @@
                         </div>
                         <!-------------------------------------------------------------------------------------------->
 
+
                         <!-- Weight-->
                         <div class="input-group col-lg-6 mt-4">
                             <div class="input-group-prepend">
@@ -437,9 +453,11 @@
                             </div>
                             <input id="patientWeight" [(ngModel)]="patientInformation.patientWeight" type="text"
                                 name="weight" placeholder="Weight"
+
                                 class="form-control bg-white border-left-0 border-md"
                                 #patientWeight="ngModel" [class.is-invalid]="patientWeight.invalid && patientWeight.touched"
                                 required pattern="^(\d{1,3}(-\d{4})?|[A-Z]\d[A-Z] *\d[A-Z]\d)$">
+
                         </div>
                         <div class="valid1" *ngIf="(patientWeight.errors && (patientWeight.invalid && patientWeight.touched ))">
                                         <span class="text-danger" *ngIf="patientWeight.errors.required">
@@ -460,9 +478,11 @@
                             </div>
                             <select id="patientTriage" [(ngModel)]="patientInformation.patientTriage" name="tirage"
                                 class="form-control custom-select bg-white border-left-0 border-md"
+
                                 placeholder="Triage"
                                 #patientTriage="ngModel" [class.is-invalid]="patientTriage.invalid && patientTriage.touched"
                                 required>
+
                                 <option value="">Select Degree of urgency</option>
                                 <option value="green">Green</option>
                                 <option value="yellow">Yellow</option>
@@ -472,6 +492,7 @@
 
                             </select>
                         </div>
+
 
                         <div class="valid1" *ngIf="(patientTriage.errors && (patientTriage.invalid && patientTriage.touched))">
                             <span class="text-danger" *ngIf="patientTriage.errors.required">
@@ -505,7 +526,6 @@
                         </div>
                         <!-------------------------------------------------------------------------------------------->
 
-
                         <!--petient's Complaint -->
                         <div class="input-group col-lg-6 mt-4">
                             <div class="input-group-prepend">
@@ -534,7 +554,9 @@
 
 
                         <!-- Medical History -->
+
                         <div class="input-group col-lg-6 mt-4">
+
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
                                     <i class="fa fa-envelope text-muted"></i>
@@ -546,7 +568,9 @@
                         </div>
 
                         <!--patient's SID-->
+
                         <div class="input-group col-lg-6 mt-4">
+
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
                                     <i class="fa fa-envelope text-muted"></i>
@@ -591,7 +615,9 @@
                         </div>
 
                         <!--patient's  Bed Number-->
+
                         <div class="input-group col-lg-6 mt-4">
+
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
                                     <i class="fa fa-envelope text-muted"></i>

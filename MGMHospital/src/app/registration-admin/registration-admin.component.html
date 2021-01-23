@@ -1,13 +1,12 @@
-
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <!--Navbar-->
 <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light bg-primary py-3">
         <div class="container">
             <!-- Navbar Brand -->
-            <h2 class="display-4"style="color: whitesmoke;">Registration for Admin</h2>
+            <h2 class="display-4" style="color: whitesmoke;">Registration for Admin</h2>
         </div>
     </nav>
 </header>
@@ -26,67 +25,165 @@
                 <div class="row">
 
                     <!-- First Name -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
+                    <div class="input-group col-lg-6">
+                        <div class="d-flex input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
+
+                            <input id="firstName" [(ngModel)]="objAdmin.admin_fname"
+                                class="form-control bg-white border-left-1 border-md" #fname="ngModel" type="text"
+                                name="firstname" placeholder="First Name"
+                                [class.is-invalid]="fname.invalid && fname.touched" required>
                         </div>
-                        <input [(ngModel)]="objAdmin.admin_fname" id="firstName" type="text" name="firstname" placeholder="First Name"
-                            class="form-control bg-white border-left-0 border-md">
+                        <div class="valid1" *ngIf="(fname.errors && (fname.invalid && fname.touched ))">
+                            <span class="text-danger" *ngIf="fname.errors.required">
+                                FirstName is Required
+                            </span>
+                        </div>
                     </div>
 
                     <!-- Last Name -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
+                    <div class="input-group col-lg-6 llm">
+                        <div class="d-flex">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
                             </span>
+                            <input id="lastName" [(ngModel)]="objAdmin.admin_lname" type="text" name="lastname"
+                                placeholder="Last Name" #lname="ngModel"
+                                class="form-control bg-white border-left-1 border-md"
+                                [class.is-invalid]="lname.invalid && lname.touched" required>
                         </div>
-                        <input [(ngModel)]="objAdmin.admin_lname" id="lastName" type="text" name="lastname" placeholder="Last Name"
-                            class="form-control bg-white border-left-0 border-md">
+                        <div class="valid1" *ngIf="(lname.errors && (lname.invalid && lname.touched ))">
+                            <span class="text-danger" *ngIf="lname.errors.required">
+                                LastName is Required
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Validation Section of Firstname and lastname field -->
+                    <div class="col-12 valid2">
+                        <div class="row">
+                            <div class="col-6">
+                                <div *ngIf="(fname.errors && (fname.invalid && fname.touched ))">
+                                    <span class="text-danger" *ngIf="fname.errors.required">
+                                        FirstName is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div *ngIf="(lname.errors && (lname.invalid && lname.touched ))">
+                                    <span class="text-danger" *ngIf="lname.errors.required">
+                                        LastName is Required
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
                     <!-- Email Id-->
-                    <div class="input-group col-lg-12 mb-4">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                          <i class="fa fa-envelope" aria-hidden="true"></i>
-                        </span>
+                    <div class="input-group col-lg-12 mt-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <input id="admin_email" [(ngModel)]="objAdmin.admin_email" type="text" name="admin_email"
+                            placeholder="Email Address" #email="ngModel"
+                            class="form-control bg-white border-left-1 border-md"
+                            [class.is-invalid]="email.invalid && email.touched" required
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
                     </div>
-                        <input id="email" [(ngModel)]="objAdmin.admin_email" type="text" name="Email" placeholder="Email Address"
-                            class="form-control bg-white border-left-0 border-md">
+                    <!-- Validation Section of Email-Id field  -->
+                    <div class="col-12" *ngIf="email.errors && (email.invalid && email.touched )">
+                        <span class="text-danger" *ngIf="email.errors.required">
+                            Email-Id is Required
+                        </span>
+                        <span class="text-danger" *ngIf="email.errors.pattern">
+                            Enter valid Email-Id
+                        </span>
                     </div>
 
                     <!-- Password -->
-                    <div class="input-group col-lg-6 mb-4">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                          <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                    <div class="input-group col-lg-6 mt-4">
+                        <div class="d-flex input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                            </span>
 
-                        </span>
-                    </div>
-                        <input id="Password" [(ngModel)]="objAdmin.admin_password" type="Password" name="Password" placeholder="Password"
-                            class="form-control bg-white border-left-0 border-md">
+                            <input id="Password" [(ngModel)]="objAdmin.admin_password" type="password" name="Password"
+                                placeholder="Password" #pass="ngModel"
+                                class="form-control bg-white border-left-1 border-md"
+                                [class.is-invalid]="pass.invalid && pass.touched" required
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
+                        </div>
+                        <div class="valid1" *ngIf="(pass.errors && (pass.invalid && pass.touched ))">
+                            <span class="text-danger" *ngIf="pass.errors.required">
+                                Password is Required
+                            </span>
+                            <span class="text-danger" *ngIf="pass.errors.pattern">
+                                Mini eight charc, at least one uppercase letter, one lowercase letter, one
+                                number and one special character
+
+                            </span>
+                        </div>
                     </div>
 
                     <!--Mobile Number-->
-                    <div class="input-group col-lg-6 mb-4">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                          <i class="fa fa-phone" aria-hidden="true"></i>
-                        </span>
+                    <div class="input-group col-lg-6 mt-4">
+                        <div class="d-flex input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </span>
+
+                            <input id="phone" type="number" [(ngModel)]="objAdmin.admin_phone" name="email"
+                                placeholder="Mobile Number" #phone="ngModel"
+                                class="form-control bg-white border-left-1 border-md"
+                                [class.is-invalid]="phone.invalid && phone.touched" required pattern="[7-9]{1}[0-9]{9}">
+                        </div>
+                        <div class="valid1" *ngIf="(phone.errors && (phone.invalid && phone.touched ))">
+                            <span class="text-danger" *ngIf="phone.errors.required">
+                                PhoneNo is Required
+                            </span>
+                            <span class="text-danger" *ngIf="phone.errors.pattern">
+                                Phone number must be 10 digit and start with (7,8,9)
+                            </span>
+                        </div>
                     </div>
-                        <input id="Phone" [(ngModel)]="objAdmin.admin_phone" type="text" name="Phone" placeholder="Mobile Number"
-                            class="form-control bg-white border-left-0 border-md">
+                    <!-- Validation Section of Password and PhoneNo Field -->
+                    <div class="col-12 valid2">
+                        <div class="row">
+                            <div class="col-6">
+                                <div *ngIf="(pass.errors && (pass.invalid && pass.touched ))">
+                                    <span class="text-danger" *ngIf="pass.errors.required">
+                                        Password is Required
+                                    </span>
+                                    <span class="text-danger" *ngIf="pass.errors.pattern">
+                                        Mini eight charc, at least one uppercase letter, one lowercase letter, one
+                                        number and one special character
+
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div *ngIf="(phone.errors && (phone.invalid && phone.touched ))">
+                                    <span class="text-danger" *ngIf="phone.errors.required">
+                                        PhoneNo is Required
+                                    </span>
+                                    <span class="text-danger" *ngIf="phone.errors.pattern">
+                                        Phone number must be 10 digit and start with (7,8,9)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Submit Button -->
-                    <div class="form-group col-lg-12 mx-auto mb-0">
-                       <button (click)="AddAdmin(objAdmin)" class="btn btn-primary btn-block py-2">
-                        <span class="font-weight-bold">Create your account</span>
-                       </button>
+                    <div class="form-group col-lg-12 mx-auto mt-4">
+                        <button (click)="AddAdmin(objAdmin)" class="btn btn-primary btn-block py-2">
+                            <span class="font-weight-bold">Create your account</span>
+                        </button>
                     </div>
 
                     <!-- Divider Text -->
@@ -105,4 +202,3 @@
             </form>
         </div>
     </div>
-

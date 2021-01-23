@@ -15,16 +15,22 @@ export class RegistrationMgmtComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isvalid = true;
+
+  
   AddManagement(objManagement: Management) {
-    this.managementService.AddManagement(objManagement).subscribe(res => {
-      if (res) {
-        alert("Registration SuccessFull");
-        this.router.navigate(['homepage']);
-      }
-      else {
-        alert("Registration Failed");
-      }
-    })
+    
+      this.managementService.AddManagement(objManagement).subscribe(res => {
+        if (res) {
+          alert("Registration SuccessFull");
+          this.router.navigate(['homepage']);
+        }
+        else {
+          alert("Registration Failed");
+        }
+      })
+
+
   }
 
 }

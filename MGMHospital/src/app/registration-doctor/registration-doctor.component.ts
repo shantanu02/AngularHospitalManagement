@@ -10,7 +10,7 @@ import { Doctor, DoctorServiceService } from '../doctor-service.service';
 })
 export class RegistrationDoctorComponent implements OnInit {
 
-  objDoctor:Doctor = new Doctor(null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+  objDoctor:Doctor = new Doctor(null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
 
   constructor(private doctorServiceService:DoctorServiceService,
     private router: Router) { }
