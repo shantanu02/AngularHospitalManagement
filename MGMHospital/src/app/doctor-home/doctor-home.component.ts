@@ -1,66 +1,258 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Doctor } from '../doctor-service.service';
+import { MedicineService, Medicine } from '../medicine.service';
+import {
+  CombinePatientTreatment,
+  PatientExamination,
+  PatientInformation,
+  PatientMedicines,
+  PatientService,
+  PatientTreatment,
+  PatientTreatment2,
+} from '../patient.service';
 
 @Component({
   selector: 'app-doctor-home',
   templateUrl: './doctor-home.component.html',
-  styleUrls: ['./doctor-home.component.css']
+  styleUrls: ['./doctor-home.component.css'],
 })
 export class DoctorHomeComponent implements OnInit {
- 
-  public imgsrc = 'assets/patientpic.svg';
-  public showdata = false;
-  patient_name : string= "";
- 
-  public m_name :string ="Naproxen";
-  public m_type:string ="Naprosyn";
-  public m_desc:string = "Nonsteroidal anti-inflammatory drugs"
-
-  patient :any = [
-    { p_id: 1, p_name: "semon"},
-    { p_id: 2, p_name: "john"},
-    { p_id: 3, p_name: "Jhon"},
-    { p_id: 4, p_name: "Kroos"},
-    { p_id: 5, p_name: "Tom"},
-    { p_id: 6, p_name: "Tony"}
-    
-   ]
-   
-   SearchPatient(){
-    if(this.patient_name != ""){
-      this.patient = this.patient.filter((res : any) => {
-        return res.p_name.toLocaleUpperCase().match(this.patient_name.toLocaleUpperCase());
-      });
-    }
-    else if(this.patient_name == ""){
-      this.ngOnInit();
-    }
-    
-  }
-  showdetails(){
-    this.showdata = true;
-  }
-
-   
-   treatment:any = ['Chest','Back','Head']
   
-    mediciens:any = [
-   { m_id: 1, m_name: "ciprofloxacin", m_type: "Cipro XR",m_desc:"for fever"},
-   { m_id: 2, m_name: "azithromycin", m_type: "show",m_desc:"for fever"},
-   { m_id: 3, m_name: "Jhon", m_type: "show",m_desc:"for fever"},
-   { m_id: 4, m_name: "Jhon", m_type: "show",m_desc:"for fever"},
-   { m_id: 5, m_name: "Jhon", m_type: "show",m_desc:"for fever"},
-   { m_id: 6, m_name: "Jhon", m_type: "show",m_desc:"for fever"}
-  ]
 
- stringfyData : string = JSON.stringify(this.mediciens);
+  constructor(
+    private patientService: PatientService,
+    private router: Router,
+    private medicineService: MedicineService
+  ) {}
+
+  public imgsrc = 'assets/patientpic.svg';
  
+  patient_name: string = '';
+  public uiAlert = false;
+ 
+  objDoctor: Doctor = new Doctor(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+ 
+  objPatientInformation: PatientInformation = new PatientInformation(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
 
- public  uiAlert = false;
-  constructor() { }
+  objPatientExamination: PatientExamination = new PatientExamination(
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+  objMedicine:Medicine = new Medicine(null,null,null,null);
+
+ objPatientTreatment2:PatientTreatment2 = new PatientTreatment2(null,null,null,null,null,null,null);
+  
+ dosage:string = "";
+ time:string="";
+ doctorNote :string="";
+
+  viewTreatment:boolean = false;
+  
+  docSessId:number;
+
+  medicineId:number;
+  medicineDesc:string="";
+  medicineType:string="";
+  medicineName:string="";
+    
+  patientTreatment2:PatientTreatment2[];
+  AllMedicineList:Medicine[];
+
+  medicineByType:Medicine[];
+
+  patientList: PatientInformation[];
+
+  medicineTypeList: String[] =[];
+
+  showdata: any = false;
+
+  patientExaminationList: PatientExamination[];
 
   ngOnInit(): void {
+    this.objDoctor = JSON.parse(sessionStorage.getItem('doctorLogin'));
+    this.docSessId = this.objDoctor.doctorId;
+    if (this.objDoctor == null) {
+      this.router.navigate(['homepage']);
+    }
+    this.patientService
+      .GetAllPatientsByDoctorId(this.docSessId)
+      .subscribe((res) => {
+        this.patientList = res;
+      });
+
+    this.medicineService.GetMedicineType().subscribe((res) => {
+      this.medicineTypeList = res;
+    });
   }
-  async display(){
-  this.uiAlert = true;
+
+
+
+  SearchPatient() {
+    if (this.patient_name != '') {
+      this.patientList = this.patientList.filter((res: any) => {
+        return res.patientFName
+          .toLocaleUpperCase()
+          .match(this.patient_name.toLocaleUpperCase());
+      });
+    } else if (this.patient_name == '') {
+      this.ngOnInit();
+    }
+  }
+
+
+  showdetails(objPatient: PatientInformation) {
+    this.showdata = true;
+    //alert(objPatient.patientId);
+    this.patientService
+      .GetPatientInformation(objPatient.patientId)
+      .subscribe((res) => {
+        this.objPatientInformation = res;
+        this.patientService
+        .GetPatientExaminationByPatientId(
+          this.objPatientInformation.patientId
+        )
+        .subscribe((result) => {
+          //alert(result.patientId);
+          this.patientExaminationList = result;
+        }); 
+      });
+  }
+
+  showMedicineType(item:string) {
+    this.medicineService.GetMedicinesByType(item).subscribe(res=>{
+      this.medicineByType = res;
+    })
 }
+
+asd(item) {
+  alert(item);
+}
+
+addMedicine()
+{
+  this.objPatientTreatment2.dosage = this.dosage;
+  this.objPatientTreatment2.medicineId = this.medicineId;
+  this.objPatientTreatment2.patientId = this.objPatientInformation.patientId;
+  this.objPatientTreatment2.time = this.time;
+  this.objPatientTreatment2.doctorNote = this.doctorNote;
+
+  this.patientService.AddPatientTreatment2(this.objPatientTreatment2).subscribe(res=>{
+    this.time = "";
+    this.dosage = "";
+    this.doctorNote = "";
+    this.ViewTreatment();
+  })
+}
+addMedicineFromList(item:Medicine)
+{
+  this.medicineId = item.medicineId;
+  this.medicineName = item.medicineName;
+  this.medicineDesc = item.medicineDesc;
+  this.medicineType = item.medicineType;
+}
+
+ViewTreatment()
+{
+  this.viewTreatment = true;
+  this.patientService.GetAllPatientTreatment2ByPatientId(this.objPatientInformation.patientId).subscribe(res=>{
+    this.patientTreatment2 = res;
+  })
+
+  this.medicineService.GetAllMedicines().subscribe(res=>{
+    this.AllMedicineList = res;
+  })
+}
+
+CloseViewTreatment()
+  {
+    this.viewTreatment = false;
+
+  }
+ 
+
+  deleteTreatment(patientTreatmentId:number)
+  {
+    alert(patientTreatmentId);
+    this.patientService.DeletePatientTreatment2(patientTreatmentId).subscribe(res=>{
+      alert("deleted");
+      this.ViewTreatment();
+    })
+  }
+
+
+
+
+
+
+
+
+
+  async display() {
+    this.uiAlert = true;
+  }
+
+
+ 
+
 }

@@ -1,0 +1,64 @@
+.container-fluid{
+    background: url('/assets/bac3.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.row.content1{
+    height: auto;
+}
+.row.content11{
+    height: auto;
+}
+.row.content2{
+    height: auto;
+}
+
+.row.content3{
+    height: auto;
+}
+
+.checkboxes {
+    text-align:center;
+   }
+
+  .checkboxes input{
+    margin: 0px 0px 0px 0px;
+   }
+
+   .checkboxes label{
+     margin: 0px 20px 0px 3px;
+   }
+
+   /*Tbale css */
+ 
+  .table1{
+      display: block;
+      height: 200px;
+      overflow-y: scroll;
+      
+  }
+  .table2{
+    display: block;
+    overflow-x: scroll;
+}
+
+/* -----------------Patient Report--------------------------*/
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+
+   /*----------------Treatment Report-----------------------------*/
+   .my-custom-scrollbar-1 {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+    }
+   
+    
