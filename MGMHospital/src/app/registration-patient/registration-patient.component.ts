@@ -73,7 +73,7 @@ export class RegistrationPatientComponent implements OnInit {
     this.patientService
       .AddPatientInformation(patientInformation)
       .subscribe((res) => {
-        alert(res);
+       // alert(res);
         if (res) {
           alert('Patient Added Successfully');
           this.objNurseSession = JSON.parse(sessionStorage.getItem('nurseLogin'));

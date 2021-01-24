@@ -40,6 +40,8 @@ export class ForgetPasswordComponent implements OnInit {
     ],
   });
 
+  emailId : string ;
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -83,5 +85,8 @@ export class ForgetPasswordComponent implements OnInit {
       this.uiAlert = true;
     }
   }
+
+
+
 
 }

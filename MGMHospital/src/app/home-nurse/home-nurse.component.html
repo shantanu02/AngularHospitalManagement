@@ -611,7 +611,7 @@
             <!-- Patient Give Treatment Model Section End -->
 
 
-            <div class="dropdown">
+            <!-- <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Treatment
@@ -627,7 +627,7 @@
                   View Treatment
                 </button>
               </div>
-            </div>
+            </div> -->
 
           </div>
 
@@ -717,10 +717,10 @@
         </div>
 
         <!-- Exmaine and Treatment buttons 2nd Copy-->
-
+<!-- 
         <div>
           <button (click)="SendRobot()" class="btn btn-danger btn-sm">Send Robot</button>
-        </div>
+        </div> -->
 
         <div class="row my-3 resbtn2">
           <div class="col-sm-2"></div>
@@ -756,8 +756,8 @@
         </div>
         <div class="row justify-content-center m-4">
           <div class="col-6 col-sm-2">
-            <button type="button" class="btn btn-warning" style="width: 22vh;">
-              Go Robot
+            <button type="button" (click)="SendRobot()" class="btn btn-warning" style="width: 22vh;">
+              Send Robot
             </button>
           </div>
         </div>
