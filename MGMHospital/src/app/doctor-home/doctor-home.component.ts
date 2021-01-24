@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Doctor } from '../doctor-service.service';
+import { HeaderService } from '../header.service';
 import { MedicineService, Medicine } from '../medicine.service';
 import {
   CombinePatientTreatment,
@@ -24,7 +25,8 @@ export class DoctorHomeComponent implements OnInit {
   constructor(
     private patientService: PatientService,
     private router: Router,
-    private medicineService: MedicineService
+    private medicineService: MedicineService,
+    private headerService: HeaderService
   ) {}
 
   public imgsrc = 'assets/patientpic.svg';
@@ -133,7 +135,12 @@ export class DoctorHomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if(sessionStorage.getItem('role')){
+      this.headerService.hide.next(true);
+    }
+
     if(sessionStorage.length === 0){
+      
       this.router.navigate(['/login']);
     }
     this.objDoctor = JSON.parse(sessionStorage.getItem('doctorLogin'));

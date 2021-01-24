@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HeaderService } from '../header.service';
 import { Medicine, MedicineService } from '../medicine.service';
 import { Nurse } from '../nurse-service.service';
 import {
@@ -17,7 +18,7 @@ import {
   styleUrls: ['./home-nurse.component.css'],
 })
 export class HomeNurseComponent implements OnInit {
-  constructor(private router: Router, private patientService: PatientService,private medicineService:MedicineService) {}
+  constructor(private router: Router, private patientService: PatientService,private medicineService:MedicineService, private headerService: HeaderService) {}
   objMedicinesList: Medicine[];
   medicinesByTypeList: Medicine[];
   tableMedicineName:string="Medicine Name"
@@ -120,6 +121,10 @@ export class HomeNurseComponent implements OnInit {
   examinationReportAlert: boolean = false;
   patientList: PatientInformation[];
   ngOnInit(): void {
+
+    if(sessionStorage.getItem('role')){
+      this.headerService.hide.next(true);
+    }
 
     if(sessionStorage.length === 0){
       this.router.navigate(['/login']);
