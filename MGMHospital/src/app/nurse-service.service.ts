@@ -37,5 +37,11 @@ export class NurseServiceService {
   {
     return this.httpClient.get<Nurse>("http://localhost:8080/nurse/nurseByEmail/"+nurse_email);
   }
+  getAllNurse(){
+    return this.httpClient.get<Nurse[]>("http://localhost:8080/nurse/getAllNurse");
+  }
+
+  
+
 
 }

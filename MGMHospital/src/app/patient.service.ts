@@ -27,7 +27,8 @@ export class PatientInformation{
     public patientWard :string,
     public patientBedNo :string,
     public doctorId :number,
-    public nurseId :number
+    public nurseId :number,
+    public rowColor:boolean = false
 
   ){}
 }

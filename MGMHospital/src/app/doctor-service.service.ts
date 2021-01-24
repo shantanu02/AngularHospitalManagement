@@ -40,4 +40,8 @@ export class DoctorServiceService {
   {
     return this.httpClient.get<Doctor>("http://localhost:8080/doctor/getDoctorByEmail/"+doctor_email);
   }
+
+  getAllDoctor(){
+    return this.httpClient.get<Doctor[]>("http://localhost:8080/doctor/getAllDoctor");
+  }
 }

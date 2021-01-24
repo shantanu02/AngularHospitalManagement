@@ -704,6 +704,8 @@
                               <tr
                                 *ngFor="let item of medicineByType"
                                 (click)="addMedicineFromList(item)"
+                                [ngClass]="{'selectionColor':item.rowColor}"
+                                
                               >
                                 <td>{{ item.medicineName }}</td>
                                 <td>{{ item.medicineDesc }}</td>
