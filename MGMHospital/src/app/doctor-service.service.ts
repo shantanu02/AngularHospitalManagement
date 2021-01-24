@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 export class Doctor
 {
   constructor(
-    public doctorId:number,
+    public  doctorId:number,
     public  doctorFName:string,
     public  doctorLName:string,
     public  doctorEmail:string,

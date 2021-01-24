@@ -26,7 +26,7 @@ import { ManagementHomepageComponent } from './management-homepage/management-ho
 import { HomeNurseComponent } from './home-nurse/home-nurse.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  {path: 'login', component: LoginComponent },
   {path:'registration-doctor',component:RegistrationDoctorComponent},
   {path:'registration-nurse',component:RegistrationNurseComponent},
   {path:'registration-patient',component:RegistrationPatientComponent},

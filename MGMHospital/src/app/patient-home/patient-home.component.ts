@@ -60,6 +60,9 @@ export class PatientHomeComponent implements OnInit {
   AllMedicineList:Medicine[];
 
   ngOnInit(): void {
+    if(sessionStorage.length === 0){
+      this.router.navigate(['/login']);
+    }
     this.objPatientInformation = JSON.parse(
       sessionStorage.getItem('patientLogin')
     );

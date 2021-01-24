@@ -20,6 +20,7 @@ export class RegistrationDoctorComponent implements OnInit {
 
   AddDoctor(objDoctor:Doctor)
   {
+    
       this.doctorServiceService.AddDoctor(objDoctor).subscribe(res=>{
         if(res)
         {
@@ -27,7 +28,7 @@ export class RegistrationDoctorComponent implements OnInit {
             this.router.navigate(['homepage']);
         }else
         {
-            alert("Registration Failed");
+            alert("Email Id Already Registered !!!");
             this.router.navigate(['registration-doctor']);
         }
       })
